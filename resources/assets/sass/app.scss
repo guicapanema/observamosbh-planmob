@@ -1,0 +1,19 @@
+// Bulma
+@import "~bulma/bulma";
+
+.home-hero {
+	background-image:
+	linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+	url('/img/bh.jpg');
+	background-size: cover;
+}
+
+// .home-hero .color-overlay {
+// 	position: relative;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    height: 100%;
+//    background-color: black;
+//    opacity: 0.6;
+// }
