@@ -18,3 +18,14 @@ Route::get('/', function () {
 Route::get('/plano', function () {
     return view('plano');
 });
+
+Route::get('/plano/{vue_capture?}', function () {
+    return view('plano');
+})->where('vue_capture', '[\/\w\.-]*');
+
+
+// API
+Route::get('/acoes', 'AcaoController@list');
+Route::get('/eixos', 'EixoController@list');
+Route::get('/indicadores', 'IndicadorController@list');
+Route::get('/programas', 'ProgramaController@list');

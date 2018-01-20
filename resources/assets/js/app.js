@@ -6,8 +6,16 @@
  */
 
 require('./bootstrap');
+require('./removeAccents');
 
 window.Vue = require('vue');
+import VueRouter from 'vue-router';
+import Buefy from 'buefy';
+
+Vue.use(VueRouter);
+Vue.use(Buefy, {
+	defaultIconPack: 'fa'
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +23,35 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('planmob', require('./components/PlanMob.vue'));
+const planmob = Vue.component('planmob', require('./components/PlanMob.vue'));
+Vue.component('cartao', require('./components/Cartao.vue'));
+Vue.component('menu-filtros', require('./components/MenuFiltros.vue'));
+
+const routes = [
+	{
+		path: '/',
+		component: planmob,
+		children: [
+			{
+				path: 'eixo/:eixo',
+				component: planmob,
+				children: [
+					{
+					path: 'programa/:programa',
+					component: planmob
+					}
+				]
+			}
+		]
+  	}
+]
+
+const router = new VueRouter({
+	mode: 'history',
+	base: '/plano',
+	routes
+})
 
 const app = new Vue({
-    el: '#app'
-});
+	router
+}).$mount('#app')

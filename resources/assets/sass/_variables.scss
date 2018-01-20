@@ -1,0 +1,22 @@
+// 1. Import the initial variables
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+// 2. Set your own initial variables
+// Update blue
+$dark: rgb(26, 23, 27);
+$primary: rgb(44, 39, 90);
+$warn: rgb(223, 174, 57);
+$danger: rgb(230, 68, 97);
+$success: rgb(106, 176, 35);
+$info: rgb(82, 161, 212);
+
+
+
+// 4. Setup your Custom Colors
+$linkedin: #0077b5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #55acee;
+$twitter-invert: findColorInvert($twitter);
+$github: #333;
+$github-invert: findColorInvert($github);

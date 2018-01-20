@@ -19,7 +19,7 @@
 	<nav class="navbar is-light" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="http://bhtrans.pbh.gov.br">
-				<img src="img/logo-planmob.png" alt="Bulma: a modern CSS framework based on Flexbox">
+				<img src="/img/logo-planmob.png" alt="Bulma: a modern CSS framework based on Flexbox">
 			</a>
 			<a class="navbar-item" href="/">
 				Início
@@ -39,9 +39,7 @@
 		</div>
 	</nav>
 
-	<div id="app">
-		@yield('content')
-	</div>
+	@yield('content')
 
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"></script>
