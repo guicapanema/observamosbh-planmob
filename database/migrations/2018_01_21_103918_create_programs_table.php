@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-
-class CreateAcoesTable extends Migration
+class CreateProgramsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +13,14 @@ class CreateAcoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('acoes', function (Blueprint $table) {
+        Schema::create('programs', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('programa_id');
-			$table->string('nome');
-			$table->string('chave');
-			$table->string('imagem')->nullable();
-			$table->text('descricao');
-			$table->string('modais', 256);
+			$table->integer('axis_id');
+			$table->string('name');
+			$table->string('alias');
+			$table->string('image')->nullable();
+			$table->text('description');
+			$table->string('modals', 256);
 			$table->string('tags', 256);
             $table->timestamps();
         });
@@ -34,6 +33,6 @@ class CreateAcoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('acoes');
+        Schema::dropIfExists('programs');
     }
 }

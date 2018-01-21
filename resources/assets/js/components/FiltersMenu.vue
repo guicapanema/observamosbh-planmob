@@ -5,19 +5,19 @@
 		</p>
 		<div class="panel-block">
 			<p class="control has-icons-left">
-				<input v-model="filtros['busca']" class="input is-small" type="text" placeholder="buscar">
+				<input v-model="filters['busca']" class="input is-small" type="text" placeholder="buscar">
 				<span class="icon is-small is-left">
 					<i class="fa fa-search"></i>
 				</span>
 			</p>
 		</div>
 		<p class="panel-tabs">
-			<a :class="{'is-active': visao === 'modais'}" @click="visao = 'modais'">modais</a>
-			<a :class="{'is-active': visao === 'tags'}" @click="visao = 'tags'">tags</a>
+			<a :class="{'is-active': view === 'modals'}" @click="view = 'modals'">modals</a>
+			<a :class="{'is-active': view === 'tags'}" @click="view = 'tags'">tags</a>
 			<!-- <a>public</a>
 			<a>private</a> -->
 		</p>
-		<template v-if="visao === 'modais'">
+		<template v-if="view === 'modals'">
 			<a :class="{'panel-block': true,
 						'is-active': hasModal('pedestre')}"
 				@click="onSetModal('pedestre')">
@@ -59,7 +59,7 @@
 				logística
 			</a>
 		</template>
-		<template v-if="visao === 'tags'">
+		<template v-if="view === 'tags'">
 			<a  v-for="tag of tags"
 				:class="{'panel-block': true,
 						'is-active': hasTag(tag)}"
@@ -80,63 +80,63 @@
 
     export default {
 
-		props: ['filtros', 'tags'],
+		props: ['filters', 'tags'],
 
 		data() {
 			return {
-				visao: 'modais'
+				view: 'modals'
 			}
 		},
 
 		mounted() {
-			this.filtros['busca'] = '';
+			this.filters['busca'] = '';
 		},
 
 		methods: {
 
 			hasModal(modal) {
-				if(this.filtros['modais']) {
-					return this.filtros['modais'].indexOf(modal) >= 0;
+				if(this.filters['modals']) {
+					return this.filters['modals'].indexOf(modal) >= 0;
 				}
 				return false;
 			},
 
 			hasTag(tag) {
-				if(this.filtros['tags']) {
-					return this.filtros['tags'].indexOf(tag) >= 0;
+				if(this.filters['tags']) {
+					return this.filters['tags'].indexOf(tag) >= 0;
 				}
 				return false;
 			},
 
 			onSetModal(modal) {
-				if(this.filtros['modais']) {
-					let index = this.filtros['modais'].indexOf(modal);
+				if(this.filters['modals']) {
+					let index = this.filters['modals'].indexOf(modal);
 					if(index >= 0) {
-						this.filtros['modais'].splice(index, 1);
+						this.filters['modals'].splice(index, 1);
 					} else {
-						this.filtros['modais'].push(modal);
+						this.filters['modals'].push(modal);
 					}
 				} else {
-					Vue.set(this.filtros, 'modais', [modal]);
+					Vue.set(this.filters, 'modals', [modal]);
 				}
 			},
 
 			onSetTag(tag) {
-				if(this.filtros['tags']) {
-					let index = this.filtros['tags'].indexOf(tag);
+				if(this.filters['tags']) {
+					let index = this.filters['tags'].indexOf(tag);
 					if(index >= 0) {
-						this.filtros['tags'].splice(index, 1);
+						this.filters['tags'].splice(index, 1);
 					} else {
-						this.filtros['tags'].push(tag);
+						this.filters['tags'].push(tag);
 					}
 				} else {
-					Vue.set(this.filtros, 'tags', [tag]);
+					Vue.set(this.filters, 'tags', [tag]);
 				}
 			},
 
 			onCleanFilters() {
-				for (let key in this.filtros) {
-					this.filtros[key] = [];
+				for (let key in this.filters) {
+					this.filters[key] = [];
 				}
 				this.$router.push('/');
 			}

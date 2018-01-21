@@ -25,7 +25,7 @@ Route::get('/plano/{vue_capture?}', function () {
 
 
 // API
-Route::get('/acoes', 'AcaoController@list');
-Route::get('/eixos', 'EixoController@list');
-Route::get('/indicadores', 'IndicadorController@list');
-Route::get('/programas', 'ProgramaController@list');
+Route::get('/acoes', 'ActionController@list');
+Route::get('/eixos', 'AxisController@list');
+Route::get('/indicadores', 'IndicatorController@list');
+Route::get('/programas', 'ProgramController@list');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProgramasTable extends Migration
+class CreateIndicatorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateProgramasTable extends Migration
      */
     public function up()
     {
-        Schema::create('programas', function (Blueprint $table) {
-			$table->increments('id');
-			$table->integer('eixo_id');
-			$table->string('nome');
-			$table->string('chave');
-			$table->string('imagem')->nullable();
-			$table->text('descricao');
-			$table->string('modais', 256);
+        Schema::create('indicators', function (Blueprint $table) {
+            $table->increments('id');
+			$table->integer('parent_id');
+			$table->string('parent_type');
+			$table->string('name');
+			$table->string('alias');
+			$table->text('description');
+			$table->text('formula')->nullable();
+			$table->string('modals', 256);
 			$table->string('tags', 256);
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ class CreateProgramasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programas');
+        Schema::dropIfExists('indicators');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEixosTable extends Migration
+class CreateAxesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateEixosTable extends Migration
      */
     public function up()
     {
-        Schema::create('eixos', function (Blueprint $table) {
-			$table->increments('id');
-			$table->string('nome');
-			$table->string('chave');
-			$table->string('imagem');
-			$table->text('descricao');
-			$table->string('modais', 256);
-            $table->string('tags', 256);
+        Schema::create('axes', function (Blueprint $table) {
+            $table->increments('id');
+			$table->string('name');
+			$table->string('alias');
+			$table->string('image');
+			$table->text('description');
+			$table->string('modals', 256);
+			$table->string('tags', 256);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateEixosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eixos');
+        Schema::dropIfExists('axes');
     }
 }

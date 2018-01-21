@@ -1,21 +1,21 @@
 <template>
 	<article class="media box" @click="onClick()">
-		<figure v-if="item.imagem" class="media-left">
+		<figure v-if="item.image" class="media-left">
 			<p class="image is-64x64">
-				<img :src="'/img/' + item.imagem">
+				<img :src="item.image">
 			</p>
 		</figure>
 		<div class="media-content">
 			<div class="content">
 				<p>
-					<strong>{{item.nome}}</strong>
+					<strong>{{item.name}}</strong>
 					<br>
-					{{item.descricao}}
+					{{item.description}}
 				</p>
 			</div>
 			<nav class="level is-mobile">
 				<div class="level-left">
-					<span v-for="modal of item.modais">
+					<span v-for="modal of item.modals">
 						<b-tooltip :label="modal" type="is-light">
 							<b-icon v-if="modal === 'pedestre'" icon="female" type="is-info"></b-icon>
 							<b-icon v-if="modal === 'bicicleta'" icon="bicycle" type="is-info"></b-icon>
