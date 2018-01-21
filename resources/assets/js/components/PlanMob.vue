@@ -1,20 +1,24 @@
 <template>
 	<section class="section">
 
+		<nav class="breadcrumb" aria-label="breadcrumbs">
+			<ul>
+				<li><router-link to="/">O Plano</router-link></li>
+				<li v-for="breadcrumb of breadcrumbs" class="is-capitalized">
+					<router-link :to="breadcrumb.href">{{breadcrumb.nome}}</router-link>
+					<!-- <a :href="breadcrumb.href"></a> -->
+				</li>
+			</ul>
+		</nav>
 	<div class="columns">
 		<div class="column is-one-fifth">
 			<menu-filtros :filtros="filtros" :tags="tags"></menu-filtros>
 		</div>
 		<div class="column">
-			<nav class="breadcrumb" aria-label="breadcrumbs">
-				<ul>
-					<li><router-link to="/">Eixos</router-link></li>
-					<li v-for="breadcrumb of breadcrumbs" class="is-capitalized">
-						<router-link :to="breadcrumb.href">{{breadcrumb.nome}}</router-link>
-						<!-- <a :href="breadcrumb.href"></a> -->
-					</li>
-				</ul>
-			</nav>
+			<h1 v-if="visao === 'eixos'" class="subtitle">Eixos</h1>
+			<h1 v-if="visao === 'programas'" class="subtitle">Programas</h1>
+			<h1 v-if="visao === 'acoes'" class="subtitle">Ações</h1>
+
 
 			<cartao v-for="item of shownItems" :key="item.id" :item="item" @click="onSelect(item)"></cartao>
 			<div v-if="shownItems.length === 0">Nenhum item corresponde aos filtros.</div>
@@ -36,7 +40,7 @@
     export default {
 
 		data() {
-			return { 
+			return {
 				acoes: [],
 				eixos: [],
 				filtros: {},
