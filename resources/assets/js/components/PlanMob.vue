@@ -108,10 +108,10 @@
 
 			axios.all([this.getActions(), this.getAxes(), this.getIndicators(), this.getPrograms()])
 				.then(axios.spread((actions, axes, indicators, programs) => {
-					for (let acao of actions.data) {
-						acao.tags = acao.tags.split('|');
-						acao.modals = acao.modals.split('|');
-						this.actions.push(acao);
+					for (let action of actions.data) {
+						action.tags = action.tags.split('|');
+						action.modals = action.modals.split('|');
+						this.actions.push(action);
 					}
 					for (let axis of axes.data) {
 						axis.tags = axis.tags.split('|');
@@ -137,23 +137,23 @@
 		methods: {
 
 			filterActions() {
-				return this.actions.filter(acao => {
+				return this.actions.filter(action => {
 					let matchSearch = true;
 					let matchProgramas = true;
 					let matchModais = true;
 					if(this.filters['search']) {
-						let objeto = JSON.stringify(acao).toLowerCase();
+						let objeto = JSON.stringify(action).toLowerCase();
 						let search = this.filters['search'].toLowerCase().trim();
 						if(objeto.indexOf(search) < 0) {
 							matchSearch = false;
 						}
 					}
 					if (this.filters['programs']) {
-						matchProgramas = (this.filters['programs'].indexOf(acao.program_id) >= 0);
+						matchProgramas = (this.filters['programs'].indexOf(action.program_id) >= 0);
 					}
 					if(this.filters['modals']) {
 						this.filters['modals'].forEach(modal => {
-							if(acao.modals.indexOf(modal) < 0) {
+							if(action.modals.indexOf(modal) < 0) {
 								matchModais = false;
 							}
 						});

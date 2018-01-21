@@ -5,7 +5,7 @@
 		</p>
 		<div class="panel-block">
 			<p class="control has-icons-left">
-				<input v-model="filters['busca']" class="input is-small" type="text" placeholder="buscar">
+				<input v-model="filters['search']" class="input is-small" type="text" placeholder="searchr">
 				<span class="icon is-small is-left">
 					<i class="fa fa-search"></i>
 				</span>
@@ -89,7 +89,7 @@
 		},
 
 		mounted() {
-			this.filters['busca'] = '';
+			this.filters['search'] = '';
 		},
 
 		methods: {
@@ -136,7 +136,11 @@
 
 			onCleanFilters() {
 				for (let key in this.filters) {
-					this.filters[key] = [];
+					if (key === 'search') {
+						this.filters[key] = '';
+					} else {
+						this.filters[key] = [];
+					}
 				}
 				this.$router.push('/');
 			}

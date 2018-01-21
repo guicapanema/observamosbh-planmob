@@ -35,10 +35,10 @@
 				</div>
 			</nav>
 		</div>
-		<div class="media-right">
+		<!-- <div class="media-right">
 			<small>8 <i class="fas fa-cogs"></i></small> <br />
 			<small>3 <i class="fas fa-chart-line"></i></small>
-		</div>
+		</div> -->
 	</article>
 </template>
 

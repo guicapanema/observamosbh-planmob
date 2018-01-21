@@ -33477,11 +33477,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			try {
 				for (var _iterator = actions.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-					var acao = _step.value;
+					var action = _step.value;
 
-					acao.tags = acao.tags.split('|');
-					acao.modals = acao.modals.split('|');
-					_this.actions.push(acao);
+					action.tags = action.tags.split('|');
+					action.modals = action.modals.split('|');
+					_this.actions.push(action);
 				}
 			} catch (err) {
 				_didIteratorError = true;
@@ -33589,23 +33589,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		filterActions: function filterActions() {
 			var _this2 = this;
 
-			return this.actions.filter(function (acao) {
+			return this.actions.filter(function (action) {
 				var matchSearch = true;
 				var matchProgramas = true;
 				var matchModais = true;
 				if (_this2.filters['search']) {
-					var objeto = JSON.stringify(acao).toLowerCase();
+					var objeto = JSON.stringify(action).toLowerCase();
 					var search = _this2.filters['search'].toLowerCase().trim();
 					if (objeto.indexOf(search) < 0) {
 						matchSearch = false;
 					}
 				}
 				if (_this2.filters['programs']) {
-					matchProgramas = _this2.filters['programs'].indexOf(acao.program_id) >= 0;
+					matchProgramas = _this2.filters['programs'].indexOf(action.program_id) >= 0;
 				}
 				if (_this2.filters['modals']) {
 					_this2.filters['modals'].forEach(function (modal) {
-						if (acao.modals.indexOf(modal) < 0) {
+						if (action.modals.indexOf(modal) < 0) {
 							matchModais = false;
 						}
 					});
@@ -34068,7 +34068,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 	mounted: function mounted() {
-		this.filters['busca'] = '';
+		this.filters['search'] = '';
 	},
 
 
@@ -34111,7 +34111,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		onCleanFilters: function onCleanFilters() {
 			for (var key in this.filters) {
-				this.filters[key] = [];
+				if (key === 'search') {
+					this.filters[key] = '';
+				} else {
+					this.filters[key] = [];
+				}
 			}
 			this.$router.push('/');
 		}
@@ -34139,19 +34143,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.filters["busca"],
-                expression: "filters['busca']"
+                value: _vm.filters["search"],
+                expression: "filters['search']"
               }
             ],
             staticClass: "input is-small",
-            attrs: { type: "text", placeholder: "buscar" },
-            domProps: { value: _vm.filters["busca"] },
+            attrs: { type: "text", placeholder: "searchr" },
+            domProps: { value: _vm.filters["search"] },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.filters, "busca", $event.target.value)
+                _vm.$set(_vm.filters, "search", $event.target.value)
               }
             }
           }),
@@ -34630,26 +34634,11 @@ var render = function() {
             )
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _vm._m(0)
+      ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "media-right" }, [
-      _c("small", [_vm._v("8 "), _c("i", { staticClass: "fas fa-cogs" })]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("small", [_vm._v("3 "), _c("i", { staticClass: "fas fa-chart-line" })])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

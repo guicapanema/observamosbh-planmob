@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AxisController extends Controller
 {
 	public function list() {
-		$axes = Axis::all();
+		$axes = Axis::with('programs')->get();
 		return $axes;
 	}
 }
