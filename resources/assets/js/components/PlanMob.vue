@@ -1,38 +1,74 @@
 <template>
 	<section class="section">
 
-		<nav class="breadcrumb" aria-label="breadcrumbs">
-			<ul>
-				<li><router-link to="/">O Plano</router-link></li>
-				<li v-for="breadcrumb of breadcrumbs" class="is-capitalized">
-					<router-link :to="breadcrumb.href">{{breadcrumb.name}}</router-link>
-					<!-- <a :href="breadcrumb.href"></a> -->
-				</li>
-			</ul>
-		</nav>
+	<div class="columns">
+		<div class="column is-three-quarters">
+			<nav v-if="!listView" class="breadcrumb" aria-label="breadcrumbs">
+				<ul>
+					<li><router-link to="/">O Plano</router-link></li>
+					<li v-for="breadcrumb of breadcrumbs" class="is-capitalized">
+						<router-link :to="breadcrumb.href">{{breadcrumb.name}}</router-link>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="column is-one-quarter">
+			<div class="is-pulled-right">
+				<b-tooltip label="Visão em colunas" type="is-light" position="is-left">
+					<div class="view-button margin-right-100" @click="onChangeView('column')">
+						<b-icon icon="columns" :type="listView ? 'is-dark' : 'is-info'"></b-icon>
+					</div>
+				</b-tooltip>
+				<b-tooltip label="Visão em lista" type="is-light" position="is-left">
+					<div class="view-button" @click="onChangeView('list')">
+						<b-icon icon="list-ul" :type="listView ? 'is-info' : 'is-dark'" ></b-icon>
+					</div>
+				</b-tooltip>
+			</div>
+		</div>
+	</div>
+
 	<div class="columns">
 		<div class="column is-one-fifth">
 			<filters-menu :filters="filters" :tags="tags"></filters-menu>
 		</div>
-		<div class="column">
-			<h1 v-if="view === 'axes'" class="subtitle">Eixos</h1>
-			<h1 v-if="view === 'programs'" class="subtitle">Programas</h1>
-			<h1 v-if="view === 'actions'" class="subtitle">Ações</h1>
 
-
-			<card v-for="item of shownItems" :key="item.id" :item="item" @click="onSelect(item)"></card>
-			<div v-if="shownItems.length === 0">Nenhum item corresponde aos filtros.</div>
-		</div>
 		<div class="column">
-			<h1 class="subtitle">Indicadores</h1>
-				<div v-for="indicator of shownIndicators" class="box">
+			<template v-if="listView || view === 'axes'">
+				<h1  class="subtitle">Eixos</h1>
+				<card v-for="item of filteredAxes" :key="'axis' + item.id" :item="item" @click="onSelect(item, 'axis')"></card>
+				<div v-if="!filteredAxes || filteredAxes.length === 0">Nenhum item corresponde aos filtros.</div>
+			</template>
+			<template v-if="listView || view === 'programs'">
+				<h1 class="subtitle">Programas</h1>
+				<card v-for="item of filteredPrograms" :key="'program' + item.id" :item="item" @click="onSelect(item, 'program')"></card>
+				<div v-if="!filteredPrograms || filteredPrograms.length === 0">Nenhum item corresponde aos filtros.</div>
+			</template>
+			<template v-if="listView || view === 'actions'">
+				<h1 class="subtitle">Ações</h1>
+				<card v-for="item of filteredActions" :key="'action' + item.id" :item="item" @click="onSelect(item, 'action')"></card>
+				<div v-if="!filteredActions || filteredActions.length === 0">Nenhum item corresponde aos filtros.</div>
+			</template>
+			<template v-if="listView">
+				<h1 class="subtitle">Indicadores</h1>
+				<div v-for="indicator of filteredIndicators" class="box">
 					<b-tooltip :label="indicator.formula" type="is-light" multilined>
 						{{indicator.name}}
 					</b-tooltip>
 				</div>
-				<div v-if="shownIndicators.length === 0">Nenhum item corresponde aos filtros.</div>
-
+				<div v-if="!filteredIndicators || filteredIndicators.length === 0">Nenhum item corresponde aos filtros.</div>
+			</template>
 		</div>
+		<div v-if="!listView" class="column">
+			<h1 class="subtitle">Indicadores</h1>
+			<div v-for="indicator of filteredIndicators" class="box">
+				<b-tooltip :label="indicator.formula" type="is-light" multilined>
+					{{indicator.name}}
+				</b-tooltip>
+			</div>
+			<div v-if="!filteredIndicators || filteredIndicators.length === 0">Nenhum item corresponde aos filtros.</div>
+		</div>
+
 		<b-loading :active.sync="loading"></b-loading>
 	</div>
 </section>
@@ -45,11 +81,12 @@
 			return {
 				actions: [],
 				axes: [],
+				view: '',
 				filters: {},
 				indicators: [],
+				listView: false,
 				loading: false,
-				programs: [],
-				view: ''
+				programs: []
 			};
 		},
 
@@ -66,19 +103,120 @@
 				return breadcrumbs;
 			},
 
-			shownItems() {
-				if (this.view === 'axes') {
-					return this.filterAxes();
-				} else if (this.view === 'programs') {
-					return this.filterPrograms();
-				} else if (this.view === 'actions') {
-					return this.filterActions();
-				}
-				return [];
+			filteredActions() {
+				return this.actions.filter(action => {
+					let matchSearch = true;
+					let matchProgramas = true;
+					let matchModais = true;
+					if(this.filters['search']) {
+						let objeto = JSON.stringify(action).toLowerCase();
+						let search = this.filters['search'].toLowerCase().trim();
+						if(objeto.indexOf(search) < 0) {
+							matchSearch = false;
+						}
+					}
+					if (this.filters['programs']) {
+						matchProgramas = (this.filters['programs'].indexOf(action.program_id) >= 0);
+					}
+					if(this.filters['modals']) {
+						this.filters['modals'].forEach(modal => {
+							if(action.modals.indexOf(modal) < 0) {
+								matchModais = false;
+							}
+						});
+					}
+					return matchSearch && matchProgramas && matchModais;
+				});
 			},
 
-			shownIndicators() {
-				return this.filterIndicators();
+			filteredAxes() {
+				return this.axes.filter(axis => {
+					let matchSearch = true;
+					let matchModais = true;
+					let matchTags = true;
+					if(this.filters['search']) {
+						let objeto = JSON.stringify(axis).toLowerCase();
+						let search = this.filters['search'].toLowerCase().trim();
+						if(objeto.indexOf(search) < 0) {
+							matchSearch = false;
+						}
+					}
+					if(this.filters['modals']) {
+						this.filters['modals'].forEach(modal => {
+							if(axis.modals.indexOf(modal) < 0) {
+								matchModais = false;
+							}
+						});
+					}
+					if(this.filters['tags']) {
+						this.filters['tags'].forEach(tag => {
+							if(axis.tags.indexOf(tag) < 0) {
+								matchTags = false;
+							}
+						});
+					}
+					return matchSearch && matchModais && matchTags;
+				});
+			},
+
+			filteredIndicators() {
+
+				return this.indicators.filter(indicator => {
+					let matchSearch = true;
+					if(this.filters['search']) {
+						let objeto = JSON.stringify(indicator).toLowerCase();
+						let search = this.filters['search'].toLowerCase().trim();
+						if(objeto.indexOf(search) < 0) {
+							matchSearch = false;
+						}
+					}
+					if(this.listView) {
+						return matchSearch;
+					}
+					if (this.view === 'axes') {
+						return matchSearch && (indicator.parent_type === 'global');
+					}
+					if(this.view === 'programs') {
+						let matchEixos = true;
+						if (this.filters['axes']) {
+							matchEixos = (this.filters['axes'].indexOf(indicator.parent_id) >= 0);
+						}
+						return matchSearch && matchEixos && (indicator.parent_type === 'axis');
+					}
+					if(this.view === 'actions') {
+						let matchPrograma = true;
+						if (this.filters['programs']) {
+							matchPrograma = (this.filters['programs'].indexOf(indicator.parent_id) >= 0);
+						}
+						return matchSearch && matchPrograma && (indicator.parent_type === 'program');
+					}
+				});
+			},
+
+			filteredPrograms() {
+				return this.programs.filter(program => {
+					let matchSearch = true;
+					let matchEixos = true;
+					let matchModais = true;
+					if(this.filters['search']) {
+						let objeto = JSON.stringify(program).toLowerCase();
+						let search = this.filters['search'].toLowerCase().trim();
+						if(objeto.indexOf(search) < 0) {
+							matchSearch = false;
+						}
+					}
+					if (this.filters['axes']) {
+						matchEixos = (this.filters['axes'].indexOf(program.axis_id) >= 0);
+					}
+					if(this.filters['modals']) {
+						this.filters['modals'].forEach(modal => {
+							if(program.modals.indexOf(modal) < 0) {
+								matchModais = false;
+							}
+						});
+					}
+					return matchSearch && matchEixos && matchModais;
+				});
 			},
 
 			tags() {
@@ -136,119 +274,6 @@
 
 		methods: {
 
-			filterActions() {
-				return this.actions.filter(action => {
-					let matchSearch = true;
-					let matchProgramas = true;
-					let matchModais = true;
-					if(this.filters['search']) {
-						let objeto = JSON.stringify(action).toLowerCase();
-						let search = this.filters['search'].toLowerCase().trim();
-						if(objeto.indexOf(search) < 0) {
-							matchSearch = false;
-						}
-					}
-					if (this.filters['programs']) {
-						matchProgramas = (this.filters['programs'].indexOf(action.program_id) >= 0);
-					}
-					if(this.filters['modals']) {
-						this.filters['modals'].forEach(modal => {
-							if(action.modals.indexOf(modal) < 0) {
-								matchModais = false;
-							}
-						});
-					}
-					return matchSearch && matchProgramas && matchModais;
-				});
-			},
-
-			filterAxes() {
-				return this.axes.filter(axis => {
-					let matchSearch = true;
-					let matchModais = true;
-					let matchTags = true;
-					if(this.filters['search']) {
-						let objeto = JSON.stringify(axis).toLowerCase();
-						let search = this.filters['search'].toLowerCase().trim();
-						if(objeto.indexOf(search) < 0) {
-							matchSearch = false;
-						}
-					}
-					if(this.filters['modals']) {
-						this.filters['modals'].forEach(modal => {
-							if(axis.modals.indexOf(modal) < 0) {
-								matchModais = false;
-							}
-						});
-					}
-					if(this.filters['tags']) {
-						this.filters['tags'].forEach(tag => {
-							if(axis.tags.indexOf(tag) < 0) {
-								matchTags = false;
-							}
-						});
-					}
-					return matchSearch && matchModais && matchTags;
-				});
-			},
-
-			filterIndicators() {
-
-				return this.indicators.filter(indicator => {
-					let matchSearch = true;
-					if(this.filters['search']) {
-						let objeto = JSON.stringify(indicator).toLowerCase();
-						let search = this.filters['search'].toLowerCase().trim();
-						if(objeto.indexOf(search) < 0) {
-							matchSearch = false;
-						}
-					}
-					if (this.view === 'axes') {
-						return matchSearch && (indicator.parent_type === 'global');
-					}
-					else if(this.view === 'programs') {
-						let matchEixos = true;
-						if (this.filters['axes']) {
-							matchEixos = (this.filters['axes'].indexOf(indicator.parent_id) >= 0);
-						}
-						return matchSearch && matchEixos && (indicator.parent_type === 'axis');
-					}
-					else if(this.view === 'actions') {
-						let matchPrograma = true;
-						if (this.filters['programs']) {
-							matchPrograma = (this.filters['programs'].indexOf(indicator.parent_id) >= 0);
-						}
-						return matchSearch && matchPrograma && (indicator.parent_type === 'program');
-					}
-				});
-			},
-
-			filterPrograms() {
-				return this.programs.filter(program => {
-					let matchSearch = true;
-					let matchEixos = true;
-					let matchModais = true;
-					if(this.filters['search']) {
-						let objeto = JSON.stringify(program).toLowerCase();
-						let search = this.filters['search'].toLowerCase().trim();
-						if(objeto.indexOf(search) < 0) {
-							matchSearch = false;
-						}
-					}
-					if (this.filters['axes']) {
-						matchEixos = (this.filters['axes'].indexOf(program.axis_id) >= 0);
-					}
-					if(this.filters['modals']) {
-						this.filters['modals'].forEach(modal => {
-							if(program.modals.indexOf(modal) < 0) {
-								matchModais = false;
-							}
-						});
-					}
-					return matchSearch && matchEixos && matchModais;
-				});
-			},
-
 			getActions() {
 				return axios.get('/acoes');
 			},
@@ -265,14 +290,26 @@
 				return axios.get('/programas');
 			},
 
-			onSelect(item) {
-				if(this.view === 'axes') {
+			onSelect(item, type) {
+				if(this.listView) {
+					return;
+				}
+				if(type === 'axis') {
 					this.$router.push('/eixo/' + item.alias);
-				} else if (this.view === 'programs') {
-					let axisAlias = this.$route.params['eixo'];
+				} else if (type === 'program') {
+					let axisAlias = this.axes.find(axis => {
+						return axis.id === item.axis_id;
+					}).alias;
 					let programAlias = item.alias;
 					this.$router.push({ path: `/eixo/${axisAlias}/programa/${programAlias}` });
+				}
+			},
 
+			onChangeView(view) {
+				if(view === 'list') {
+					this.listView = true;
+				} else {
+					this.listView = false
 				}
 			},
 
@@ -316,5 +353,14 @@
 .capitalize {
 	text-transform:capitalize;
 }
+
+.view-button {
+	cursor: pointer;
+}
+
+.margin-right-100 {
+	margin-right: 1em;
+}
+
 
 </style>
