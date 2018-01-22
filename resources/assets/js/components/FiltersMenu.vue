@@ -5,14 +5,14 @@
 		</p>
 		<div class="panel-block">
 			<p class="control has-icons-left">
-				<input v-model="filters['search']" class="input is-small" type="text" placeholder="searchr">
+				<input v-model="filters['search']" class="input is-small" type="text" placeholder="buscar">
 				<span class="icon is-small is-left">
 					<i class="fa fa-search"></i>
 				</span>
 			</p>
 		</div>
 		<p class="panel-tabs">
-			<a :class="{'is-active': view === 'modals'}" @click="view = 'modals'">modals</a>
+			<a :class="{'is-active': view === 'modals'}" @click="view = 'modals'">modais</a>
 			<a :class="{'is-active': view === 'tags'}" @click="view = 'tags'">tags</a>
 			<!-- <a>public</a>
 			<a>private</a> -->
