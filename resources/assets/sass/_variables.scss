@@ -1,6 +1,7 @@
 // 1. Import the initial variables
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 // 2. Set your own initial variables
 // Update blue
@@ -11,7 +12,7 @@ $danger: rgb(230, 68, 97);
 $success: rgb(106, 176, 35);
 $info: rgb(82, 161, 212);
 
-
+$family-primary: 'Raleway', sans-serif;
 
 // 4. Setup your Custom Colors
 $linkedin: #0077b5;
