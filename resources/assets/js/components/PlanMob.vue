@@ -1,8 +1,8 @@
 <template>
 	<section class="section">
 
-	<div class="columns">
-		<div class="column is-three-quarters">
+	<div class="columns is-mobile">
+		<div class="column is-two-thirds">
 			<nav v-if="!listView" class="breadcrumb" aria-label="breadcrumbs">
 				<ul>
 					<li><router-link to="/">O Plano</router-link></li>
@@ -12,7 +12,7 @@
 				</ul>
 			</nav>
 		</div>
-		<div class="column is-one-quarter">
+		<div class="column is-one-third">
 			<div class="is-pulled-right">
 				<b-tooltip label="Visão em colunas" type="is-light" position="is-left">
 					<div class="view-button margin-right-100" @click="onChangeView('column')">
