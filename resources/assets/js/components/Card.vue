@@ -35,10 +35,17 @@
 				</div>
 			</nav>
 		</div>
-		<!-- <div class="media-right">
-			<small>8 <i class="fas fa-cogs"></i></small> <br />
-			<small>3 <i class="fas fa-chart-line"></i></small>
-		</div> -->
+		<div class="media-right">
+			<b-tooltip label="8 programas" type="is-light">
+				<small>8 <i class="fas fa-cogs"></i></small>
+			</b-tooltip><br />
+			<b-tooltip label="10 ações" type="is-light">
+				<small>10 <i class="fas fa-check-square"></i></small>
+			</b-tooltip><br />
+			<b-tooltip label="11 indicadores" type="is-light">
+				<small>11 <i class="fas fa-chart-line"></i></small>
+			</b-tooltip><br />
+		</div>
 	</article>
 </template>
 
