@@ -36,17 +36,17 @@
 		<div class="column">
 			<template v-if="listView || view === 'axes'">
 				<h1  class="subtitle">Eixos</h1>
-				<card v-for="item of filteredAxes" :key="'axis' + item.id" :item="item" @click="onSelect(item, 'axis')"></card>
+				<item-card v-for="item of filteredAxes" :key="'axis' + item.id" :item="item" @click="onSelect(item, 'axis')"></item-card>
 				<div v-if="!filteredAxes || filteredAxes.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 			<template v-if="listView || view === 'programs'">
 				<h1 class="subtitle">Programas</h1>
-				<card v-for="item of filteredPrograms" :key="'program' + item.id" :item="item" @click="onSelect(item, 'program')"></card>
+				<item-card v-for="item of filteredPrograms" :key="'program' + item.id" :item="item" @click="onSelect(item, 'program')"></item-card>
 				<div v-if="!filteredPrograms || filteredPrograms.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 			<template v-if="listView || view === 'actions'">
 				<h1 class="subtitle">Ações</h1>
-				<card v-for="item of filteredActions" :key="'action' + item.id" :item="item" @click="onSelect(item, 'action')"></card>
+				<item-card v-for="item of filteredActions" :key="'action' + item.id" :item="item" @click="onSelect(item, 'action')"></item-card>
 				<div v-if="!filteredActions || filteredActions.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 			<template v-if="listView">
@@ -63,7 +63,25 @@
 			<h1 class="subtitle">Indicadores</h1>
 			<div v-for="indicator of filteredIndicators" class="box">
 				<b-tooltip :label="indicator.formula" type="is-light" multilined>
-					{{indicator.name}}
+					<div>
+						<div class="columns">
+							<div class="column">
+								<strong>{{indicator.name}}</strong><br />
+								{{indicator.description}}
+							</div>
+						</div>
+						<div class="columns is-size-7">
+							<div class="column">
+								Curto prazo: metaX
+							</div>
+							<div class="column">
+								Médio prazo: metaX
+							</div>
+							<div class="column">
+								Longo prazo: metaX
+							</div>
+						</div>
+					</div>
 				</b-tooltip>
 			</div>
 			<div v-if="!filteredIndicators || filteredIndicators.length === 0">Nenhum item corresponde aos filtros.</div>
