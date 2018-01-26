@@ -18,8 +18,7 @@
 		<div class="content">
 			<div class="columns">
 				<div class="column is-8 is-offset-2">
-
-					<h1 class="has-text-centered">O que é o PlanMob?</h1>
+					<h1 class="has-text-centered">O que é um plano de mobilidade?</h1>
 					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
 					<h2>Second level</h2>
 					<p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
@@ -29,7 +28,6 @@
 						<li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
 						<li>Ut non enim metus.</li>
 					</ul>
-
 				</div>
 			</div>
 		</div>
@@ -37,7 +35,12 @@
 
 	<section class="section notification">
 		<div class="content">
-			<h1 class="title has-text-centered">Conheça a estrutura do plano</h1>
+			<div class="columns">
+				<div class="column is-8 is-offset-2">
+					<h1 class="title has-text-centered">O PlanMob-BH</h1>
+					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
+				</div>
+			</div>
 			<div class="columns is-vcentered">
 				<div class="column is-one-third">
 					<div class="notification is-primary has-text-centered">
@@ -58,7 +61,7 @@
 		</div>
 	</section>
 
-	<section>
+	<section class="section">
 		<div class="container">
 			<div class="columns is-vcentered">
 				<div class="column is-3 is-offset-1">
@@ -70,4 +73,46 @@
 			</div>
 		</div>
 	</section>
+
+	<section class="section notification">
+		<div class="content">
+			<div class="columns">
+				<div class="column is-8 is-offset-2">
+					<h1 class="title has-text-centered">A Plataforma</h1>
+					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="content">
+				<div class="columns is-vcentered">
+					<div class="column is-3 is-offset-1">
+						<h1 class="title">Quem idealizou</h1>
+					</div>
+					<div class="column is-6 is-offset-1">
+						<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-one-quarter is-offset-one-quarter has-text-centered">
+					<h5>Realização:</h5>
+					<img src="/img/nossabh-logo.svg" class="nossabh-logo"></img>
+				</div>
+				<div class="column is-one-quarter has-text-centered">
+					<h5>Apoio:</h5><br />
+					<img src="/img/ics-logo.png" class="ics-logo"></img>
+				</div>
+
+			</div>
+		</div>
+	</footer>
 @endsection

@@ -30,7 +30,49 @@
 
 	<div class="columns">
 		<div class="column is-one-fifth">
-			<filters-menu :filters="filters" :tags="tags"></filters-menu>
+			<filters-menu v-if="listView" :filters="filters" :tags="tags"></filters-menu>
+
+			<nav v-if="!listView" class="panel">
+				<p class="panel-heading">
+					Navegação
+				</p>
+				<a class="panel-block">
+					<span class="panel-icon">
+						<i class="fa fa-caret-down"></i>
+					</span>
+					Mobilidade Ativa
+				</a>
+				<a class="panel-block">
+					Pedala BH
+				</a>
+				<a class="panel-block">
+					BH a Pé
+				</a>
+				<a class="panel-block">
+					<span class="panel-icon">
+						<i class="fa fa-caret-right"></i>
+					</span>
+					Circulação Calma
+				</a>
+				<a class="panel-block">
+					<span class="panel-icon">
+						<i class="fa fa-caret-right"></i>
+					</span>
+					Mobilidade Coletiva
+				</a>
+				<a class="panel-block">
+					<span class="panel-icon">
+						<i class="fa fa-caret-right"></i>
+					</span>
+					Logística Urbana
+				</a>
+				<a class="panel-block">
+					<span class="panel-icon">
+						<i class="fa fa-caret-right"></i>
+					</span>
+					Mobilidade Individual Motorizada
+				</a>
+			</nav>
 		</div>
 
 		<div class="column">
@@ -293,19 +335,19 @@
 		methods: {
 
 			getActions() {
-				return axios.get('/acoes');
+				return axios.get('/api/acoes');
 			},
 
 			getAxes() {
-				return axios.get('/eixos');
+				return axios.get('/api/eixos');
 			},
 
 			getIndicators() {
-				return axios.get('/indicadores');
+				return axios.get('/api/indicadores');
 			},
 
 			getPrograms() {
-				return axios.get('/programas');
+				return axios.get('/api/programas');
 			},
 
 			onSelect(item, type) {
@@ -379,6 +421,5 @@
 .margin-right-100 {
 	margin-right: 1em;
 }
-
 
 </style>

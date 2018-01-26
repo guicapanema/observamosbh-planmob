@@ -14,8 +14,6 @@
 		<p class="panel-tabs">
 			<a :class="{'is-active': view === 'modals'}" @click="view = 'modals'">modais</a>
 			<a :class="{'is-active': view === 'tags'}" @click="view = 'tags'">tags</a>
-			<!-- <a>public</a>
-			<a>private</a> -->
 		</p>
 		<template v-if="view === 'modals'">
 			<a :class="{'panel-block': true,

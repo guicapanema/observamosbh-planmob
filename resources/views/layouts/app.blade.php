@@ -18,7 +18,7 @@
 <body>
 	<nav class="navbar is-light" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="http://bhtrans.pbh.gov.br">
+			<a class="navbar-item" href="/">
 				<img src="/img/logo-planmob.png" alt="Bulma: a modern CSS framework based on Flexbox">
 			</a>
 			<button class="button navbar-burger" data-target="navMenu">
@@ -34,13 +34,13 @@
 			<a class="navbar-item" href="/plano">
 				O PlanMob
 			</a>
-			<a class="navbar-item" href="https://bulma.io">
+			<a class="navbar-item" href="/indicadores">
+				Indicadores
+			</a>
+			<a class="navbar-item" href="/participe">
 				Participe
 			</a>
-			<a class="navbar-item" href="https://bulma.io">
-				Notícias
-			</a>
-			<a class="navbar-item" href="https://bulma.io">
+			<a class="navbar-item" href="/contato">
 				Contato
 			</a>
 		</div>

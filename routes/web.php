@@ -23,9 +23,22 @@ Route::get('/plano/{vue_capture?}', function () {
     return view('plano');
 })->where('vue_capture', '[\/\w\.-]*');
 
+Route::get('/indicadores', function () {
+    return view('indicadores');
+});
+
+Route::get('/participe', function () {
+    return view('participe');
+});
+
+Route::get('/contato', function () {
+    return view('contato');
+});
+
 
 // API
-Route::get('/acoes', 'ActionController@list');
-Route::get('/eixos', 'AxisController@list');
-Route::get('/indicadores', 'IndicatorController@list');
-Route::get('/programas', 'ProgramController@list');
+
+Route::get('/api/acoes', 'ActionController@list');
+Route::get('/api/eixos', 'AxisController@list');
+Route::get('/api/indicadores', 'IndicatorController@list');
+Route::get('/api/programas', 'ProgramController@list');
