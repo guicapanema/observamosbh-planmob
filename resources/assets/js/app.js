@@ -24,8 +24,11 @@ Vue.use(Buefy, {
  */
 
 const planmob = Vue.component('planmob', require('./components/PlanMob.vue'));
+Vue.component('planmob-columns', require('./components/PlanMobColumns.vue'));
+Vue.component('planmob-list', require('./components/PlanMobList.vue'));
 Vue.component('item-card', require('./components/ItemCard.vue'));
 Vue.component('filters-menu', require('./components/FiltersMenu.vue'));
+Vue.component('nav-menu', require('./components/NavMenu.vue'));
 
 const routes = [
 	{

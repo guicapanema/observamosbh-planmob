@@ -87,7 +87,7 @@
 		},
 
 		mounted() {
-			this.filters['search'] = '';
+			Vue.set(this.filters, 'search', '');
 		},
 
 		methods: {
