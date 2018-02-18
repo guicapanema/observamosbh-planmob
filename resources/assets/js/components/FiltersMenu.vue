@@ -2,6 +2,11 @@
 	<nav class="panel">
 		<p class="panel-heading">
 			Filtros
+			<b-tooltip label="Visão em colunas" type="is-light" position="is-bottom" class="is-pulled-right">
+				<div class="view-button" @click="onColumn()">
+					<b-icon icon="columns" type="is-info" size="is-small"></b-icon>
+				</div>
+			</b-tooltip>
 		</p>
 		<div class="panel-block">
 			<p class="control has-icons-left">
@@ -106,6 +111,10 @@
 				return false;
 			},
 
+			onColumn() {
+				this.$emit('column');
+			},
+
 			onSetModal(modal) {
 				if(this.filters['modals']) {
 					let index = this.filters['modals'].indexOf(modal);
@@ -147,3 +156,12 @@
     }
 
 </script>
+
+
+<style scoped>
+
+.view-button {
+	cursor: pointer;
+}
+
+</style>

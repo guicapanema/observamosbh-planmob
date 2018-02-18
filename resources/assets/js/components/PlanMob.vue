@@ -44,16 +44,17 @@
 			@search="onChangeView('list')">
 		</planmob-columns>
 
-		<!-- <planmob-list v-if="listView"
+		<planmob-list v-if="listView"
 			:actions="actions"
 			:axes="axes"
 			:filters="filters"
 			:indicators="indicators"
-			:programs="programs">
+			:programs="programs"
+			@column="onChangeView('axes')">
 		</planmob-list>
 
 		<b-loading :active.sync="loading"></b-loading>
-	</div> -->
+	<!-- </div> -->
 </section>
 </template>
 
@@ -176,6 +177,8 @@
 						this.view = 'actions';
 					}
 				}
+
+				this.onChangeView(this.view);
 
 			}
 

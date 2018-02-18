@@ -2,7 +2,7 @@
 	<nav class="panel">
 		<p class="panel-heading">
 			Navegação
-			<b-tooltip label="Busca e filtros" type="is-light" position="is-left" class="is-pulled-right">
+			<b-tooltip label="Busca e filtros" type="is-light" position="is-bottom" class="is-pulled-right">
 				<div class="view-button" @click="onSearch()">
 					<b-icon icon="search" type="is-info" size="is-small"></b-icon>
 				</div>

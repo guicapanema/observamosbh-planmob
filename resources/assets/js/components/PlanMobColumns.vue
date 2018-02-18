@@ -11,12 +11,12 @@
 				<div v-if="!filteredAxes || filteredAxes.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 			<template v-if="view === 'programs'">
-				<h1 class="subtitle">{{ axes.find(axis => axis.id === filters['axis']).name }}</h1>
+				<h1 class="subtitle"><router-link to="/">Eixos</router-link> / {{ axes.find(axis => axis.id === filters['axis']).name }}</h1>
 				<item-card v-for="item of filteredPrograms" :key="'program' + item.id" :item="item" @click="onSelect(item, 'program')"></item-card>
 				<div v-if="!filteredPrograms || filteredPrograms.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 			<template v-if="view === 'actions'">
-				<h1 class="subtitle">{{ programs.find(program => program.id === filters['program']).name }}</h1>
+				<h1 class="subtitle"><router-link to="/">Eixos</router-link> / <router-link :to="'/eixo/' + axes.find(axis => axis.id === filters['axis']).alias">{{ axes.find(axis => axis.id === filters['axis']).name }}</router-link> / {{ programs.find(program => program.id === filters['program']).name }}</h1>
 				<item-card v-for="item of filteredActions" :key="'action' + item.id" :item="item" @click="onSelect(item, 'action')"></item-card>
 				<div v-if="!filteredActions || filteredActions.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
@@ -178,16 +178,8 @@
 
 <style scoped>
 
-.capitalize {
-	text-transform:capitalize;
-}
-
 .view-button {
 	cursor: pointer;
-}
-
-.margin-right-100 {
-	margin-right: 1em;
 }
 
 </style>
