@@ -1,27 +1,27 @@
 <template>
-	<div class="column columns">
+	<div class="columns">
+		<div class="column is-one-fifth">
+			<nav-menu :axes="axes" :filters="filters" :programs="programs" @search="onSearch()"></nav-menu>
+		</div>
+
 		<div class="column">
-			<nav class="breadcrumb" aria-label="breadcrumbs">
-				<ul>
-					<li><router-link to="/">Eixos</router-link></li>
-					<li v-for="breadcrumb of breadcrumbs" class="is-capitalized">
-						<router-link :to="breadcrumb.href">{{breadcrumb.name}}</router-link>
-					</li>
-				</ul>
-			</nav>
 			<template v-if="view === 'axes'">
+				<h1 class="subtitle">Eixos</h1>
 				<item-card v-for="item of filteredAxes" :key="'axis' + item.id" :item="item" @click="onSelect(item, 'axis')"></item-card>
 				<div v-if="!filteredAxes || filteredAxes.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 			<template v-if="view === 'programs'">
+				<h1 class="subtitle">{{ axes.find(axis => axis.id === filters['axis']).name }}</h1>
 				<item-card v-for="item of filteredPrograms" :key="'program' + item.id" :item="item" @click="onSelect(item, 'program')"></item-card>
 				<div v-if="!filteredPrograms || filteredPrograms.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 			<template v-if="view === 'actions'">
+				<h1 class="subtitle">{{ programs.find(program => program.id === filters['program']).name }}</h1>
 				<item-card v-for="item of filteredActions" :key="'action' + item.id" :item="item" @click="onSelect(item, 'action')"></item-card>
 				<div v-if="!filteredActions || filteredActions.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 		</div>
+
 		<div class="column">
 			<h1 class="subtitle">Indicadores</h1>
 			<div v-for="indicator of filteredIndicators" class="box">
@@ -64,24 +64,20 @@
 
 		computed: {
 
-			breadcrumbs() {
-				let breadcrumbs = [];
-				let path = '';
-				for (let param in this.$route.params) {
-					let name = this.$route.params[param].replace(/-/g, ' ');
-					path = path.concat('/' + param + '/' + this.$route.params[param]);
-					breadcrumbs.push({name: name, href: path})
-				}
-				return breadcrumbs;
-			},
+			// breadcrumbs() {
+			// 	let breadcrumbs = [];
+			// 	let path = '';
+			// 	for (let param in this.$route.params) {
+			// 		let name = this.$route.params[param].replace(/-/g, ' ');
+			// 		path = path.concat('/' + param + '/' + this.$route.params[param]);
+			// 		breadcrumbs.push({name: name, href: path})
+			// 	}
+			// 	return breadcrumbs;
+			// },
 
 			filteredActions() {
 				return this.actions.filter(action => {
-					let matchPrograms = true;
-					if (this.filters['programs']) {
-						matchPrograms = (this.filters['programs'].indexOf(action.program_id) >= 0);
-					}
-					return matchPrograms;
+					return this.filters['programs'] === action.program_id;
 				});
 			},
 
@@ -108,17 +104,11 @@
 						return (indicator.parent_type === 'global');
 					}
 					if(this.view === 'programs') {
-						let matchAxis = true;
-						if (this.filters['axes']) {
-							matchAxis = (this.filters['axes'].indexOf(indicator.parent_id) >= 0);
-						}
+						let matchAxis = this.filters['axis'] === indicator.parent_id;
 						return matchAxis && (indicator.parent_type === 'axis');
 					}
 					if(this.view === 'actions') {
-						let matchProgram = true;
-						if (this.filters['programs']) {
-							matchProgram = (this.filters['programs'].indexOf(indicator.parent_id) >= 0);
-						}
+						let matchProgram = this.filters['program'] === indicator.parent_id;
 						return matchProgram && (indicator.parent_type === 'program');
 					}
 				});
@@ -126,11 +116,8 @@
 
 			filteredPrograms() {
 				return this.programs.filter(program => {
-					let matchAxis = true;
+					let matchAxis = this.filters['axis'] === program.axis_id;;
 					let matchModals = true;
-					if (this.filters['axes']) {
-						matchAxis = (this.filters['axes'].indexOf(program.axis_id) >= 0);
-					}
 					if(this.filters['modals']) {
 						this.filters['modals'].forEach(modal => {
 							if(program.modals.indexOf(modal) < 0) {
@@ -168,6 +155,10 @@
         },
 
 		methods: {
+
+			onSearch() {
+				this.$emit('search');
+			},
 
 			onSelect(item, type) {
 				if(type === 'axis') {

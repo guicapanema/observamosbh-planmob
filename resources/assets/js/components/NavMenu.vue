@@ -2,10 +2,18 @@
 	<nav class="panel">
 		<p class="panel-heading">
 			Navegação
+			<b-tooltip label="Busca e filtros" type="is-light" position="is-left" class="is-pulled-right">
+				<div class="view-button" @click="onSearch()">
+					<b-icon icon="search" type="is-info" size="is-small"></b-icon>
+				</div>
+			</b-tooltip>
 		</p>
 
 		<template v-for="axis of axes">
-			<a class="panel-block" @click="onToggle(axis)">
+			<a :class="{'panel-block': true,
+						'is-active': isActive(axis, 'axis')}"
+				@click="onToggle(axis)">
+
 				<span class="panel-icon">
 					<i :class="{'fa': true,
 								'fa-caret-right': !isExpanded(axis),
@@ -14,7 +22,10 @@
 				{{ axis.name }}
 			</a>
 			<template v-if="isExpanded(axis)">
-				<a v-for="program of getAxisPrograms(axis)" class="panel-block">
+				<a v-for="program of getAxisPrograms(axis)"
+					:class="{'panel-block': true,
+							'is-active': isActive(program, 'program') }"
+					@click="onSelect(program)">
 					{{ program.name }}
 				</a>
 			</template>
@@ -26,7 +37,7 @@
 
     export default {
 
-		props: ['axes', 'programs'],
+		props: ['axes', 'filters', 'programs'],
 
 		data() {
 			return {
@@ -44,6 +55,18 @@
 				});
 			},
 
+			onSearch() {
+				this.$emit('search');
+			},
+
+			onSelect(program) {
+				let axisAlias = this.axes.find(axis => {
+					return axis.id === program.axis_id;
+				}).alias;
+				let programAlias = program.alias;
+				this.$router.push({ path: `/eixo/${axisAlias}/programa/${programAlias}` });
+			},
+
 			onToggle(axis) {
 				let index = this.expandedAxes.indexOf(axis.name);
 				if (index >= 0) {
@@ -55,9 +78,26 @@
 
 			isExpanded(axis) {
 				let index = this.expandedAxes.indexOf(axis.name);
-				return index >= 0;
+				return (index >= 0) || this.isActive(axis, 'axis');
+			},
+
+			isActive(item, type) {
+				if (type === 'axis') {
+					return (this.filters['axis'] === item.id);
+				} else if (type === 'program') {
+					return (this.filters['program'] === item.id);
+				}
+				return false;
 			}
 		},
     }
 
 </script>
+
+<style scoped>
+
+.view-button {
+	cursor: pointer;
+}
+
+</style>

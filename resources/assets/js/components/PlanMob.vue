@@ -28,11 +28,11 @@
 		</div>
 	</div> -->
 
-	<div class="columns">
+	<!-- <div class="columns">
 		<div class="column is-one-fifth">
+			<nav-menu v-if="!listView" :axes="axes" :filters="filters" :programs="programs"></nav-menu>
 			<filters-menu v-if="listView" :filters="filters" :tags="tags"></filters-menu>
-			<nav-menu v-if="!listView" :axes="axes" :programs="programs"></nav-menu>
-		</div>
+		</div> -->
 
 		<planmob-columns v-if="!listView"
 			:actions="actions"
@@ -40,10 +40,11 @@
 			:filters="filters"
 			:indicators="indicators"
 			:programs="programs"
-			:view="view">
+			:view="view"
+			@search="onChangeView('list')">
 		</planmob-columns>
 
-		<planmob-list v-if="listView"
+		<!-- <planmob-list v-if="listView"
 			:actions="actions"
 			:axes="axes"
 			:filters="filters"
@@ -52,7 +53,7 @@
 		</planmob-list>
 
 		<b-loading :active.sync="loading"></b-loading>
-	</div>
+	</div> -->
 </section>
 </template>
 
@@ -122,7 +123,7 @@
 						this.programs.push(program);
 					}
 					this.loading = false;
-					this.parseFilters();
+					this.parsePath();
 				}));
 
         },
@@ -153,7 +154,7 @@
 				}
 			},
 
-			parseFilters() {
+			parsePath() {
 				this.filters = {};
 				this.view = 'axes';
 
@@ -162,7 +163,7 @@
 						return axis.alias === this.$route.params['eixo'];
 					});
 					if(index >= 0) {
-						Vue.set(this.filters, 'axes', [this.axes[index].id]);
+						Vue.set(this.filters, 'axis', this.axes[index].id);
 						this.view = 'programs';
 					}
 				}
@@ -171,7 +172,7 @@
 						return program.alias === this.$route.params['programa'];
 					});
 					if(index >= 0) {
-						Vue.set(this.filters, 'programs', [this.programs[index].id]);
+						Vue.set(this.filters, 'program', this.programs[index].id);
 						this.view = 'actions';
 					}
 				}
@@ -182,24 +183,8 @@
 
 		watch: {
 			'$route' (to, from) {
-				this.parseFilters();
+				this.parsePath();
 			}
 		}
     }
 </script>
-
-<style scoped>
-
-.capitalize {
-	text-transform:capitalize;
-}
-
-.view-button {
-	cursor: pointer;
-}
-
-.margin-right-100 {
-	margin-right: 1em;
-}
-
-</style>
