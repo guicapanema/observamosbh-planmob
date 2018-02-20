@@ -15,7 +15,7 @@
 			</div>
 			<nav class="level is-mobile">
 				<div class="level-left">
-					<span v-for="modal of item.modals">
+					<span v-for="modal of item.modals" @click.capture.stop="onModalSelect(modal)">
 						<b-tooltip :label="modal" type="is-light">
 							<b-icon v-if="modal === 'pedestre'" icon="female" type="is-info"></b-icon>
 							<b-icon v-if="modal === 'bicicleta'" icon="bicycle" type="is-info"></b-icon>
@@ -30,7 +30,7 @@
 			<nav class="level is-mobile">
 				<div class="level-left">
 					<div class="tags">
-						<span v-for="tag of item.tags" class="tag is-info">{{tag}}</span>
+						<span v-for="tag of item.tags" class="tag is-info" @click.capture.stop="onTagSelect(tag)">{{tag}}</span>
 					</div>
 				</div>
 			</nav>
@@ -68,6 +68,14 @@
 
 			onClick() {
 				this.$emit('click');
+			},
+
+			onModalSelect(modal) {
+				this.$router.push({ path: '/busca', query: { modal: modal }});
+			},
+
+			onTagSelect(tag) {
+				this.$router.push({ path: '/busca', query: { tag: tag }});
 			}
 
 		},

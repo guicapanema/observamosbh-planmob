@@ -36,6 +36,10 @@ const routes = [
 		component: planmob,
 		children: [
 			{
+				path: 'busca',
+				component: planmob,
+			},
+			{
 				path: 'eixo/:eixo',
 				component: planmob,
 				children: [

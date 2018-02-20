@@ -149,36 +149,56 @@
 
 			onChangeView(view) {
 				if(view === 'list') {
-					this.listView = true;
+					this.$router.push('/busca');
 				} else {
-					this.listView = false
+					this.$router.push('/');
 				}
+				this.parsePath();
 			},
 
 			parsePath() {
 				this.filters = {};
 				this.view = 'axes';
+				this.listView = false;
 
-				if(this.$route.params['eixo']) {
-					let index = this.axes.findIndex(axis => {
-						return axis.alias === this.$route.params['eixo'];
-					});
-					if(index >= 0) {
-						Vue.set(this.filters, 'axis', this.axes[index].id);
-						this.view = 'programs';
+				if(this.$route.path === '/busca') {
+					this.listView = true;
+					console.debug(this.$route);
+					if(this.$route.query['tag']) {
+						if(typeof this.$route.query['tag'] === 'string') {
+							Vue.set(this.filters, 'tags', [this.$route.query['tag']]);
+						} else {
+							Vue.set(this.filters, 'tags', this.$route.query['tag']);
+						}
+					}
+					if(this.$route.query['modal']) {
+						if(typeof this.$route.query['modal'] === 'string') {
+							Vue.set(this.filters, 'modals', [this.$route.query['modal']]);
+						} else {
+							Vue.set(this.filters, 'modals', this.$route.query['modal']);
+						}
+					}
+
+				} else {
+					if(this.$route.params['eixo']) {
+						let index = this.axes.findIndex(axis => {
+							return axis.alias === this.$route.params['eixo'];
+						});
+						if(index >= 0) {
+							Vue.set(this.filters, 'axis', this.axes[index].id);
+							this.view = 'programs';
+						}
+					}
+					if (this.$route.params['programa']) {
+						let index = this.programs.findIndex(program => {
+							return program.alias === this.$route.params['programa'];
+						});
+						if(index >= 0) {
+							Vue.set(this.filters, 'program', this.programs[index].id);
+							this.view = 'actions';
+						}
 					}
 				}
-				if (this.$route.params['programa']) {
-					let index = this.programs.findIndex(program => {
-						return program.alias === this.$route.params['programa'];
-					});
-					if(index >= 0) {
-						Vue.set(this.filters, 'program', this.programs[index].id);
-						this.view = 'actions';
-					}
-				}
-
-				this.onChangeView(this.view);
 
 			}
 

@@ -46,6 +46,7 @@
 					let matchSearch = true;
 					let matchProgram = this.filters['program'] ? this.filters['program'] === action.program_id : true;
 					let matchModals = true;
+					let matchTags = true;
 					if(this.filters['search']) {
 						let objeto = JSON.stringify(action).toLowerCase();
 						let search = this.filters['search'].toLowerCase().trim();
@@ -60,7 +61,14 @@
 							}
 						});
 					}
-					return matchSearch && matchProgram && matchModals;
+					if(this.filters['tags']) {
+						this.filters['tags'].forEach(tag => {
+							if(action.tags.indexOf(tag) < 0) {
+								matchTags = false;
+							}
+						});
+					}
+					return matchSearch && matchProgram && matchModals && matchTags;
 				});
 			},
 
@@ -114,6 +122,7 @@
 					let matchSearch = true;
 					let matchAxis = this.filters['axis'] ? this.filters['axis'] === program.axis_id : true;
 					let matchModais = true;
+					let matchTags = true;
 					if(this.filters['search']) {
 						let objeto = JSON.stringify(program).toLowerCase();
 						let search = this.filters['search'].toLowerCase().trim();
@@ -128,7 +137,14 @@
 							}
 						});
 					}
-					return matchSearch && matchAxis && matchModais;
+					if(this.filters['tags']) {
+						this.filters['tags'].forEach(tag => {
+							if(program.tags.indexOf(tag) < 0) {
+								matchTags = false;
+							}
+						});
+					}
+					return matchSearch && matchAxis && matchModais && matchTags;
 				});
 			},
 

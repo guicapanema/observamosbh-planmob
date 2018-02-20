@@ -116,40 +116,51 @@
 			},
 
 			onSetModal(modal) {
-				if(this.filters['modals']) {
-					let index = this.filters['modals'].indexOf(modal);
-					if(index >= 0) {
-						this.filters['modals'].splice(index, 1);
+				let queryModals = this.$route.query['modal'];
+				if(!queryModals) {
+					queryModals = modal;
+				} else if(typeof queryModals === 'string') {
+					if (queryModals === modal) {
+						queryModals = null;
 					} else {
-						this.filters['modals'].push(modal);
+						queryModals = [queryModals, modal];
 					}
 				} else {
-					Vue.set(this.filters, 'modals', [modal]);
+					let index = queryModals.indexOf(modal);
+					if(index >= 0) {
+						queryModals.splice(index, 1);
+					} else {
+						queryModals.push(modal);
+					}
 				}
+
+				this.$router.push({ path: '/busca', query: {...this.$route.query, modal: queryModals} });
+
 			},
 
 			onSetTag(tag) {
-				if(this.filters['tags']) {
-					let index = this.filters['tags'].indexOf(tag);
-					if(index >= 0) {
-						this.filters['tags'].splice(index, 1);
+				let queryTags = this.$route.query['tag'];
+				if(!queryTags) {
+					queryTags = tag;
+				} else if(typeof queryTags === 'string') {
+					if (queryTags === tag) {
+						queryTags = null;
 					} else {
-						this.filters['tags'].push(tag);
+						queryTags = [queryTags, tag];
 					}
 				} else {
-					Vue.set(this.filters, 'tags', [tag]);
+					let index = queryTags.indexOf(tag);
+					if(index >= 0) {
+						queryTags.splice(index, 1);
+					} else {
+						queryTags.push(tag);
+					}
 				}
+				this.$router.push({ path: '/busca', query: {...this.$route.query, tag: queryTags} });
 			},
 
 			onCleanFilters() {
-				for (let key in this.filters) {
-					if (key === 'search') {
-						this.filters[key] = '';
-					} else {
-						this.filters[key] = [];
-					}
-				}
-				this.$router.push('/');
+				this.$router.push('/busca');
 			}
 
 		},
