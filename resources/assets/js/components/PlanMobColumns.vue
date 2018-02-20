@@ -16,8 +16,10 @@
 				<div v-if="!filteredPrograms || filteredPrograms.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 			<template v-if="view === 'actions'">
-				<h1 class="subtitle"><router-link to="/">Eixos</router-link> / <router-link :to="'/eixo/' + axes.find(axis => axis.id === filters['axis']).alias">{{ axes.find(axis => axis.id === filters['axis']).name }}</router-link> / {{ programs.find(program => program.id === filters['program']).name }}</h1>
-				<item-card v-for="item of filteredActions" :key="'action' + item.id" :item="item" @click="onSelect(item, 'action')"></item-card>
+				<h1 class="subtitle">
+					<router-link to="/">Eixos</router-link> / <router-link :to="'/eixo/' + axes.find(axis => axis.id === filters['axis']).alias">{{ axes.find(axis => axis.id === filters['axis']).name }}</router-link> / {{ programs.find(program => program.id === filters['program']).name }}
+				</h1>
+				<item-card v-for="item of filteredActions" :key="'action' + item.id" :item="item"></item-card>
 				<div v-if="!filteredActions || filteredActions.length === 0">Nenhum item corresponde aos filtros.</div>
 			</template>
 		</div>
@@ -64,20 +66,9 @@
 
 		computed: {
 
-			// breadcrumbs() {
-			// 	let breadcrumbs = [];
-			// 	let path = '';
-			// 	for (let param in this.$route.params) {
-			// 		let name = this.$route.params[param].replace(/-/g, ' ');
-			// 		path = path.concat('/' + param + '/' + this.$route.params[param]);
-			// 		breadcrumbs.push({name: name, href: path})
-			// 	}
-			// 	return breadcrumbs;
-			// },
-
 			filteredActions() {
 				return this.actions.filter(action => {
-					return this.filters['programs'] === action.program_id;
+					return this.filters['program'] === action.program_id;
 				});
 			},
 
@@ -105,11 +96,11 @@
 					}
 					if(this.view === 'programs') {
 						let matchAxis = this.filters['axis'] === indicator.parent_id;
-						return matchAxis && (indicator.parent_type === 'axis');
+						return matchAxis && (indicator.parent_type === 'App\\Axis');
 					}
 					if(this.view === 'actions') {
 						let matchProgram = this.filters['program'] === indicator.parent_id;
-						return matchProgram && (indicator.parent_type === 'program');
+						return matchProgram && (indicator.parent_type === 'App\\Program');
 					}
 				});
 			},

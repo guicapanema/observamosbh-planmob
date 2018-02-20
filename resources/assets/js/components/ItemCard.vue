@@ -35,16 +35,25 @@
 				</div>
 			</nav>
 		</div>
-		<div class="media-right">
-			<b-tooltip label="8 programas" type="is-light">
-				<small>8 <i class="fas fa-cogs"></i></small>
-			</b-tooltip><br />
-			<b-tooltip label="10 ações" type="is-light">
-				<small>10 <i class="fas fa-check-square"></i></small>
-			</b-tooltip><br />
-			<b-tooltip label="11 indicadores" type="is-light">
-				<small>11 <i class="fas fa-chart-line"></i></small>
-			</b-tooltip><br />
+		<div v-if="item.programs || item.actions || item.indicators" class="media-right">
+			<template v-if="item.programs">
+				<b-tooltip :label="item.programs.length + ' programas'" type="is-light" class="is-pulled-right">
+					<small>{{item.programs.length}} <i class="fas fa-cogs"></i></small>
+				</b-tooltip>
+				<br />
+			</template>
+			<template v-if="item.actions">
+				<b-tooltip :label="item.actions.length + ' ações'" type="is-light" class="is-pulled-right">
+					<small>{{item.actions.length}} <i class="fas fa-check-square"></i></small>
+				</b-tooltip>
+				<br />
+			</template>
+			<template v-if="item.indicators">
+				<b-tooltip :label="item.indicators.length + ' indicadores'" type="is-light" class="is-pulled-right">
+					<small>{{item.indicators.length}} <i class="fas fa-chart-line"></i></small>
+				</b-tooltip>
+				<br />
+			</template>
 		</div>
 	</article>
 </template>
