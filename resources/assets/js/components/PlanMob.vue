@@ -163,7 +163,6 @@
 
 				if(this.$route.path === '/busca') {
 					this.listView = true;
-					console.debug(this.$route);
 					if(this.$route.query['tag']) {
 						if(typeof this.$route.query['tag'] === 'string') {
 							Vue.set(this.filters, 'tags', [this.$route.query['tag']]);

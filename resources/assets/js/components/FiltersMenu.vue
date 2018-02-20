@@ -126,6 +126,7 @@
 						queryModals = [queryModals, modal];
 					}
 				} else {
+					queryModals = queryModals.slice();
 					let index = queryModals.indexOf(modal);
 					if(index >= 0) {
 						queryModals.splice(index, 1);
@@ -149,6 +150,7 @@
 						queryTags = [queryTags, tag];
 					}
 				} else {
+					queryTags = queryTags.slice();
 					let index = queryTags.indexOf(tag);
 					if(index >= 0) {
 						queryTags.splice(index, 1);
