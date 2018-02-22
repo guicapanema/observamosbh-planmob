@@ -114,8 +114,8 @@
 						this.axes.push(axis);
 					}
 					for (let indicator of indicators.data) {
-						indicator.tags = indicator.tags.split('|');
-						indicator.modals = indicator.modals.split('|');
+						// indicator.tags = indicator.tags.split('|');
+						// indicator.modals = indicator.modals.split('|');
 						this.indicators.push(indicator);
 					}
 					for (let program of programs.data) {

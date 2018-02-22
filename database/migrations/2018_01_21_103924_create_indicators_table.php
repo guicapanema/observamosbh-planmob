@@ -19,10 +19,10 @@ class CreateIndicatorsTable extends Migration
 			$table->string('parent_type');
 			$table->string('name');
 			$table->string('alias');
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->text('formula')->nullable();
-			$table->string('modals', 256);
-			$table->string('tags', 256);
+			$table->string('modals', 256)->nullable();
+			$table->string('tags', 256)->nullable();
             $table->timestamps();
         });
     }

@@ -8,12 +8,21 @@
 		<div class="media-content">
 			<div class="content">
 				<p>
-					<strong>{{item.name}}</strong>
+					<template v-if="path" >
+						<span class="item-path is-size-7 has-text-weight-light">
+							{{ path }}
+						</span>
+						<br>
+					</template>
+					<strong>
+
+						{{item.name}}
+					</strong>
 					<br>
 					{{item.description}}
 				</p>
 			</div>
-			<nav class="level is-mobile">
+			<nav v-if="item.modals" class="level is-mobile">
 				<div class="level-left">
 					<span v-for="modal of item.modals" @click.capture.stop="onModalSelect(modal)">
 						<b-tooltip :label="modal" type="is-light">
@@ -27,7 +36,7 @@
 					</span>
 				</div>
 			</nav>
-			<nav class="level is-mobile">
+			<nav v-if="item.tags" class="level is-mobile">
 				<div class="level-left">
 					<div class="tags">
 						<span v-for="tag of item.tags" class="tag is-info" @click.capture.stop="onTagSelect(tag)">{{tag}}</span>
@@ -62,7 +71,7 @@
 <script>
 
     export default {
-		props: ['item'],
+		props: ['item', 'path'],
 
 		methods: {
 
@@ -89,6 +98,14 @@
 article:hover {
 	cursor: pointer;
 	background-color: rgb(249, 249, 249);
+}
+
+.item-path {
+	color: grey;
+}
+
+span.icon {
+	margin-right: 0.7em;
 }
 
 </style>

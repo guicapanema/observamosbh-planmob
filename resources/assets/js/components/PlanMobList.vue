@@ -11,20 +11,35 @@
 			</template>
 			<template v-if="filteredPrograms.length > 0">
 				<h1 class="subtitle">Programas</h1>
-				<item-card v-for="item of filteredPrograms" :key="'program' + item.id" :item="item" @click="onSelect(item, 'program')"></item-card>
+				<item-card v-for="item of filteredPrograms"
+					:key="'program' + item.id"
+					:item="item"
+					:path="getPath(item, 'program')"
+					@click="onSelect(item, 'program')"></item-card>
 			</template>
 			<template v-if="filteredActions.length > 0">
 				<h1 class="subtitle">Ações</h1>
-				<item-card v-for="item of filteredActions" :key="'action' + item.id" :item="item" @click="onSelect(item, 'action')"></item-card>
+				<item-card v-for="item of filteredActions"
+				:key="'action' + item.id"
+				:item="item"
+				:path="getPath(item, 'action')"
+				@click="onSelect(item, 'action')"></item-card>
 			</template>
 			<template v-if="filteredIndicators.length > 0">
+				<h1 class="subtitle">Indicadores</h1>
+				<item-card v-for="item of filteredIndicators"
+				:key="'indicator' + item.id"
+				:item="item"
+				:path="getPath(item, 'indicator')"></item-card>
+			</template>
+			<!-- <template v-if="filteredIndicators.length > 0">
 				<h1 class="subtitle">Indicadores</h1>
 				<div v-for="indicator of filteredIndicators" class="box">
 					<b-tooltip :label="indicator.formula" type="is-light" multilined>
 						{{indicator.name}}
 					</b-tooltip>
 				</div>
-			</template>
+			</template> -->
 		</div>
 	</div>
 </template>
@@ -175,6 +190,33 @@
         },
 
 		methods: {
+
+			getPath(item, type) {
+				let path = '';
+				if(type === 'program') {
+					let axis = this.axes.find(axis => axis.id === item.axis_id);
+					path = axis.name;
+				}
+				if(type === 'action') {
+					let program = this.programs.find(program => program.id === item.program_id);
+					let axis = this.axes.find(axis => axis.id === program.axis_id);
+
+					path = axis.name + ' > ' + program.name;
+				}
+				if(type === 'indicator') {
+					if(item.parent_type === 'global') {
+						return null;
+					} else if(item.parent_type === 'App\\Axis') {
+						let axis = this.axes.find(axis => axis.id === item.parent_id);
+						path = axis.name;
+					} else if(item.parent_type === 'App\\Program') {
+						let program = this.programs.find(program => program.id === item.parent_id);
+						let axis = this.axes.find(axis => axis.id === program.axis_id);
+						path = axis.name + ' > ' + program.name;
+					}
+				}
+				return path;
+			},
 
 			onColumn() {
 				this.$emit('column');
