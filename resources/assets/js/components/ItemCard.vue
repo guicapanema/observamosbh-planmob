@@ -80,11 +80,48 @@
 			},
 
 			onModalSelect(modal) {
-				this.$router.push({ path: '/busca', query: { modal: modal }});
+				let queryModals = this.$route.query['modal'];
+				if(!queryModals) {
+					queryModals = modal;
+				} else if(typeof queryModals === 'string') {
+					if (queryModals === modal) {
+						queryModals = null;
+					} else {
+						queryModals = [queryModals, modal];
+					}
+				} else {
+					queryModals = queryModals.slice();
+					let index = queryModals.indexOf(modal);
+					if(index >= 0) {
+						queryModals.splice(index, 1);
+					} else {
+						queryModals.push(modal);
+					}
+				}
+
+				this.$router.push({ path: '/busca', query: {...this.$route.query, modal: queryModals} });
 			},
 
 			onTagSelect(tag) {
-				this.$router.push({ path: '/busca', query: { tag: tag }});
+				let queryTags = this.$route.query['tag'];
+				if(!queryTags) {
+					queryTags = tag;
+				} else if(typeof queryTags === 'string') {
+					if (queryTags === tag) {
+						queryTags = null;
+					} else {
+						queryTags = [queryTags, tag];
+					}
+				} else {
+					queryTags = queryTags.slice();
+					let index = queryTags.indexOf(tag);
+					if(index >= 0) {
+						queryTags.splice(index, 1);
+					} else {
+						queryTags.push(tag);
+					}
+				}
+				this.$router.push({ path: '/busca', query: {...this.$route.query, tag: queryTags} });
 			}
 
 		},
