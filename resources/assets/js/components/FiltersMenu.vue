@@ -81,8 +81,17 @@
 				<div class="field is-grouped is-grouped-multiline">
 					<div v-for="(filter, filterName) in filters" v-if="filter.length > 0" class="control">
 						<div class="tags has-addons">
-							<span class="tag">{{filterName}}</span>
-							<span v-for="value in filter" class="tag is-info">{{value}}</span>
+							<span class="tag">
+								<template v-if="filterName === 'search'">busca</template>
+								<template v-if="filterName === 'tags'">tags</template>
+								<template v-if="filterName === 'modals'">modais</template>
+							</span>
+							<template v-if="filterName === 'search'">
+								<span class="tag is-info">{{filter}}</span>
+							</template>
+							<template v-if="filterName !== 'search'">
+								<span v-for="value in filter" class="tag is-info">{{value}}</span>
+							</template>
 						</div>
 					</div>
 				</div>
