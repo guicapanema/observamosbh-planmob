@@ -12,7 +12,7 @@
 		<template v-for="axis of axes">
 			<a :class="{'panel-block': true,
 						'is-active': isActive(axis, 'axis')}"
-				@click="onToggle(axis)">
+				@click="onSelect(axis, 'axis')">
 
 				<span class="panel-icon">
 					<i :class="{'fa': true,
@@ -25,7 +25,7 @@
 				<a v-for="program of getAxisPrograms(axis)"
 					:class="{'panel-block': true,
 							'is-active': isActive(program, 'program') }"
-					@click="onSelect(program)">
+					@click="onSelect(program, 'program')">
 					{{ program.name }}
 				</a>
 			</template>
@@ -59,22 +59,31 @@
 				this.$emit('search');
 			},
 
-			onSelect(program) {
-				let axisAlias = this.axes.find(axis => {
-					return axis.id === program.axis_id;
-				}).alias;
-				let programAlias = program.alias;
-				this.$router.push({ path: `/eixo/${axisAlias}/programa/${programAlias}` });
-			},
-
-			onToggle(axis) {
-				let index = this.expandedAxes.indexOf(axis.name);
-				if (index >= 0) {
-					this.expandedAxes.splice(index, 1);
-				} else {
-					this.expandedAxes.push(axis.name);
+			onSelect(item, type) {
+				if(type === 'axis') {
+					let path = '/eixo/' + item.alias;
+					if (path === this.$route.path) {
+						this.$router.push('/');
+					} else {
+						this.$router.push(path);
+					}
+				} else if (type === 'program') {
+					let axisAlias = this.axes.find(axis => {
+						return axis.id === item.axis_id;
+					}).alias;
+					let programAlias = item.alias;
+					this.$router.push({ path: `/eixo/${axisAlias}/programa/${programAlias}` });
 				}
 			},
+
+			// onToggle(axis) {
+			// 	let index = this.expandedAxes.indexOf(axis.name);
+			// 	if (index >= 0) {
+			// 		this.expandedAxes.splice(index, 1);
+			// 	} else {
+			// 		this.expandedAxes.push(axis.name);
+			// 	}
+			// },
 
 			isExpanded(axis) {
 				let index = this.expandedAxes.indexOf(axis.name);
