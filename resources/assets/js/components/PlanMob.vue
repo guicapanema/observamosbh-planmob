@@ -177,6 +177,9 @@
 							Vue.set(this.filters, 'modals', this.$route.query['modal']);
 						}
 					}
+					if(this.$route.query['search']) {
+						Vue.set(this.filters, 'search', this.$route.query['search']);
+					}
 
 				} else {
 					if(this.$route.params['eixo']) {

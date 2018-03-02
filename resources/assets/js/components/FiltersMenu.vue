@@ -11,7 +11,7 @@
 			</p>
 			<div class="panel-block">
 				<p class="control has-icons-left">
-					<input v-model="filters['search']" class="input is-small" type="text" placeholder="buscar">
+					<input v-model="filters['search']" @keyup="onSetSearch()" class="input is-small" type="text" placeholder="buscar">
 					<span class="icon is-small is-left">
 						<i class="fa fa-search"></i>
 					</span>
@@ -132,7 +132,9 @@
 		},
 
 		mounted() {
-			Vue.set(this.filters, 'search', '');
+			if(!this.filters['search']) {
+				Vue.set(this.filters, 'search', '');
+			}
 		},
 
 		methods: {
@@ -177,6 +179,12 @@
 
 				this.$router.push({ path: '/busca', query: {...this.$route.query, modal: queryModals} });
 
+			},
+
+			onSetSearch() {
+				let querySearch = this.$route.query['search'];
+				querySearch = this.filters['search'];
+				this.$router.push({ path: '/busca', query: {...this.$route.query, search: querySearch} });
 			},
 
 			onSetTag(tag) {
