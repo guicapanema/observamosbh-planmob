@@ -2,8 +2,8 @@
 	<div>
 		<nav class="panel">
 			<p class="panel-heading">
-				Filtros
-				<b-tooltip label="Visão em colunas" type="is-light" position="is-bottom" class="is-pulled-right">
+				Busca e Filtros
+				<b-tooltip label="Navegação em colunas" type="is-light" position="is-bottom" class="is-pulled-right">
 					<div class="view-button" @click="onColumn()">
 						<b-icon icon="columns" type="is-info" size="is-small"></b-icon>
 					</div>

@@ -5,12 +5,30 @@
 		</div>
 
 		<div class="column">
+`			<!-- Main container -->
+			<nav class="level">
+				<!-- Left side -->
+				<div class="level-left">
+					<p class="level-item"><strong>
+						Tudo ( {{filteredAxes.length + filteredPrograms.length + filteredActions.length + filteredIndicators.length}} )
+					</strong></p>
+					<p class="level-item"><a href="#eixos">Eixos ( {{filteredAxes.length}} )</a></p>
+					<p class="level-item"><a href="#programas">Programas ( {{filteredPrograms.length}} )</a></p>
+					<p class="level-item"><a href="#acoes">Ações ( {{filteredActions.length}} )</a></p>
+					<p class="level-item"><a href="#indicadores">Indicadores ( {{filteredIndicators.length}} )</a></p>
+				</div>
+
+				<!-- Right side -->
+				<div class="level-right">
+
+				</div>
+			</nav>`
 			<template v-if="filteredAxes.length > 0">
-				<h1  class="subtitle">Eixos</h1>
+				<h1 id="eixos" class="subtitle">Eixos</h1>
 				<item-card v-for="item of filteredAxes" :key="'axis' + item.id" :item="item" @click="onSelect(item, 'axis')"></item-card>
 			</template>
 			<template v-if="filteredPrograms.length > 0">
-				<h1 class="subtitle">Programas</h1>
+				<h1 id="programas" class="subtitle">Programas</h1>
 				<item-card v-for="item of filteredPrograms"
 					:key="'program' + item.id"
 					:item="item"
@@ -18,7 +36,7 @@
 					@click="onSelect(item, 'program')"></item-card>
 			</template>
 			<template v-if="filteredActions.length > 0">
-				<h1 class="subtitle">Ações</h1>
+				<h1 id="acoes" class="subtitle">Ações</h1>
 				<item-card v-for="item of filteredActions"
 				:key="'action' + item.id"
 				:item="item"
@@ -26,7 +44,7 @@
 				@click="onSelect(item, 'action')"></item-card>
 			</template>
 			<template v-if="filteredIndicators.length > 0">
-				<h1 class="subtitle">Indicadores</h1>
+				<h1 id="indicadores" class="subtitle">Indicadores</h1>
 				<item-card v-for="item of filteredIndicators"
 				:key="'indicator' + item.id"
 				:item="item"
