@@ -36,16 +36,46 @@
 	}
 }
 
-.has-underline-dashed {
-	padding-bottom: 0.5rem;
+.has-underline-dashed-danger {
+	padding: 0.5rem;
+	border-bottom: 2px $danger dashed;
+}
+
+.has-underline-dashed-success {
+	padding: 0.5rem;
 	border-bottom: 2px $success dashed;
+}
+
+.has-underline-dashed-info {
+	padding: 0.5rem;
+	border-bottom: 2px $info dashed;
 }
 
 .has-padding-top-200 {
 	padding-top: 2rem;
 }
 
-.has-background-striped {
+.has-background-striped-danger {
+	background: repeating-linear-gradient(
+		-45deg,
+		$danger,
+		$danger 2px,
+		white 2px,
+		white 13px
+	);
+}
+
+.has-background-striped-info {
+	background: repeating-linear-gradient(
+		-45deg,
+		$info,
+		$info 2px,
+		white 2px,
+		white 13px
+	);
+}
+
+.has-background-striped-success {
 	background: repeating-linear-gradient(
 		-45deg,
 		$success,

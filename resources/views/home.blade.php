@@ -37,7 +37,7 @@
 		<div class="container content">
 			<div class="columns">
 				<div class="column is-8 is-offset-2">
-					<h1 class="title has-text-weight-bold has-text-centered"><span class="has-underline-dashed">O PlanMob-BH</span></h1>
+					<h1 class="title has-text-weight-bold has-text-centered"><span class="has-underline-dashed-success">O PlanMob-BH</span></h1>
 					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
 				</div>
 			</div>
@@ -68,7 +68,7 @@
 		</div>
 	</section>
 
-	<section class="section notification is-success">
+	<section class="section notification is-success is-marginless">
 		<div class="content has-padding-top-200">
 			<div class="columns">
 				<div class="column is-8 is-offset-2">
@@ -79,7 +79,7 @@
 		</div>
 	</section>
 
-	<section class="section has-background-striped">
+	<section class="section has-background-striped-success">
 		<div class="container">
 			<div class="content">
 				<div class="columns">

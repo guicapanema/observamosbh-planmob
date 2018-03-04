@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" class="has-navbar-fixed-top">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,11 +16,11 @@
 	<link href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+	<nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="/">
+			{{-- <a class="navbar-item" href="/">
 				<img src="/img/logo-planmob.png" alt="Bulma: a modern CSS framework based on Flexbox">
-			</a>
+			</a> --}}
 			<button class="button navbar-burger" data-target="navMenu">
 				<span></span>
 				<span></span>
