@@ -24,9 +24,9 @@
 		{{ Request::is('participe*') ? "is-danger" : "" }}
 		{{ Request::is('contato*') ? "is-warning" : "" }}">
 		<div class="navbar-brand">
-				{{-- <a class="navbar-item" href="https://bulma.io">
-				<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-			</a> --}}
+			<a class="navbar-item" href="/">
+				PlanMob-BH
+			</a>
 			<div class="navbar-burger burger" data-target="navMenu">
 				<span></span>
 				<span></span>
