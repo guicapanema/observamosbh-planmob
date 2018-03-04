@@ -1,17 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	<section class="hero is-info is-large home-hero">
-		<div class="hero-body">
-			<div class="container has-text-centered">
-				{{-- <h1 class="title">
-					Conheça o PlanMob-BH
-				</h1>
-				<h2 class="subtitle">
-					Lorem ipsum dolor sit amet
-				</h2> --}}
-			</div>
-		</div>
+	<section class="has-text-centered">
+		<img src="/img/header.png"></img>
 	</section>
 
 	<section class="section notification is-success has-border-ripped">
@@ -83,7 +74,7 @@
 		<div class="container">
 			<div class="content">
 				<div class="columns">
-					<div class="column is-8 is-offset-2 notification is-white">
+					<div class="column is-8 is-offset-2 notification is-white has-padding-200">
 						<h1 class="title has-text-weight-bold has-text-centered">Quem idealizou</h1>
 						<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
 					</div>

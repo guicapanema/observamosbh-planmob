@@ -16,33 +16,74 @@
 	<link href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+
+	<nav class="navbar is-fixed-top
+		{{ Request::is('/') ? "is-success" : "" }}
+		{{ Request::is('plano*') ? "is-light" : "" }}
+		{{ Request::is('indicadores*') ? "is-info" : "" }}
+		{{ Request::is('participe*') ? "is-danger" : "" }}
+		{{ Request::is('contato*') ? "is-warning" : "" }}">
 		<div class="navbar-brand">
-			{{-- <a class="navbar-item" href="/">
-				<img src="/img/logo-planmob.png" alt="Bulma: a modern CSS framework based on Flexbox">
+				{{-- <a class="navbar-item" href="https://bulma.io">
+				<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
 			</a> --}}
-			<button class="button navbar-burger" data-target="navMenu">
+			<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
 				<span></span>
 				<span></span>
 				<span></span>
-			</button>
+			</div>
 		</div>
-		<div class="navbar-menu" id="navMenu">
-			<a class="navbar-item" href="/">
-				Início
-			</a>
-			<a class="navbar-item" href="/plano">
-				O PlanMob
-			</a>
-			<a class="navbar-item" href="/indicadores">
-				Indicadores
-			</a>
-			<a class="navbar-item" href="/participe">
-				Participe
-			</a>
-			<a class="navbar-item" href="/contato">
-				Contato
-			</a>
+
+		<div id="navMenu" class="navbar-menu">
+			<div class="navbar-start">
+				<a class="navbar-item {{ Request::is('/') ? "is-active" : "" }}" href="/">
+					Início
+				</a>
+				<a class="navbar-item {{ Request::is('plano*') ? "is-active" : "" }}" href="/plano">
+					O PlanMob
+				</a>
+				<a class="navbar-item {{ Request::is('indicadores*') ? "is-active" : "" }}" href="/indicadores">
+					Indicadores
+				</a>
+				<a class="navbar-item {{ Request::is('participe*') ? "is-active" : "" }}" href="/participe">
+					Participe
+				</a>
+				<a class="navbar-item {{ Request::is('contato*') ? "is-active" : "" }}" href="/contato">
+					Contato
+				</a>
+			</div>
+
+			<div class="navbar-end">
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">
+						<span class="icon">
+							<i class="fas fa-share-alt"></i>
+						</span>
+						Compartilhe!
+					</a>
+
+					<div class="navbar-dropdown is-right">
+						<a class="navbar-item" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH!">
+							<span class="icon">
+								<i class="fab fa-twitter"></i>
+							</span>
+							Twitter
+						</a>
+						<a class="navbar-item">
+							<span class="icon">
+								<i class="fab fa-facebook"></i>
+							</span>
+							Facebook
+						</a>
+						<a class="navbar-item">
+							<span class="icon">
+								<i class="fas fa-envelope-open"></i>
+							</span>
+							E-mail
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</nav>
 

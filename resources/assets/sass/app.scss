@@ -19,7 +19,8 @@
 
 .has-border-ripped {
 	&:before, &:after {
-		content: ""; height: 40px;
+		content: "";
+		height: 40px;
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -32,22 +33,34 @@
 	}
 	&:after {
 		background-color: inherit;
-		bottom: -40px;
+		bottom: -39px;
+	}
+
+	@media (max-width: 600px) {
+		:before, &:after {
+			height: 20px;
+		}
+		&:after {
+			bottom: -20px;
+		}
 	}
 }
 
 .has-underline-dashed-danger {
 	padding: 0.5rem;
+	line-height: 3rem;
 	border-bottom: 2px $danger dashed;
 }
 
 .has-underline-dashed-success {
 	padding: 0.5rem;
+	line-height: 3rem;
 	border-bottom: 2px $success dashed;
 }
 
 .has-underline-dashed-info {
 	padding: 0.5rem;
+	line-height: 3rem;
 	border-bottom: 2px $info dashed;
 }
 
@@ -55,13 +68,17 @@
 	padding-top: 2rem;
 }
 
+.has-padding-200 {
+	padding: 2rem;
+}
+
 .has-background-striped-danger {
 	background: repeating-linear-gradient(
 		-45deg,
 		$danger,
-		$danger 2px,
-		white 2px,
-		white 13px
+		$danger 3px,
+		white 3px,
+		white 15px
 	);
 }
 
@@ -69,9 +86,9 @@
 	background: repeating-linear-gradient(
 		-45deg,
 		$info,
-		$info 2px,
-		white 2px,
-		white 13px
+		$info 3px,
+		white 3px,
+		white 15px
 	);
 }
 
@@ -79,8 +96,8 @@
 	background: repeating-linear-gradient(
 		-45deg,
 		$success,
-		$success 2px,
-		white 2px,
-		white 13px
+		$success 3px,
+		white 3px,
+		white 15px
 	);
 }

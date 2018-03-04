@@ -39,7 +39,7 @@
 	<section class="section has-background-striped-info">
 		<div class="content">
 			<div class="columns">
-				<div class="column is-8 is-offset-2 notification is-white">
+				<div class="column is-8 is-offset-2 notification is-white has-padding-200">
 					<h1 class="has-text-centered">Indicadores apurados pela BHTrans</h1>
 					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
 				</div>

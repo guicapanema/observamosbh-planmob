@@ -51,7 +51,7 @@
 	<section class="section has-background-striped-danger">
 		<div class="container">
 			<div class="columns content">
-				<div class="column is-8 is-offset-2 notification is-white">
+				<div class="column is-8 is-offset-2 notification is-white has-padding-200">
 					<h1 class="has-text-centered">Baixe as fichas-resumo</h1>
 					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
 					<div class="has-text-centered"><a class="button is-danger">Baixar</a></div>
