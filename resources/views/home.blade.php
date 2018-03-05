@@ -55,7 +55,20 @@
 	<section class="section notification is-white is-marginless has-border-ripped">
 		<div class="container content">
 			<h1 class="title has-text-weight-bold has-text-centered">Os eixos da mobilidade em Belo Horizonte</h1>
-			<img src="/img/eixos.png"></img>
+			<div id="eixos" onmouseover="ImageMap('img[usemap]')">
+				<img id="eixos-pb" src="/img/eixos.png"></img>
+				<img id="eixos-cor" src="/img/eixos-cor.png" usemap="#mapa-eixos"></img>
+				<map name="mapa-eixos">
+					<area shape="rect" coords="114,50,393,205" href="/plano/eixo/cidade-sustentavel" alt="Cidade Sustentável">
+					<area shape="rect" coords="400,60,660,250" href="/plano/eixo/mobilidade-coletiva" alt="Mobilidade Coletiva">
+					<area shape="rect" coords="0,220,200,470" href="/plano/eixo/individual-motorizada" alt="Mobilidade Individual Motorizada">
+					<area shape="rect" coords="240,250,420,450" href="/plano/eixo/logistica-urbana" alt="Logística Urbana">
+					<area shape="rect" coords="660,250,815,460" href="/plano/eixo/mobilidade-ativa" alt="Mobilidade Ativa">
+					<area shape="rect" coords="770,10,950,210" href="/plano/eixo/fiscalizacao-operacao" alt="Fiscalização e Operação">
+					<area shape="rect" coords="830,300,1010,460" href="/plano/eixo/acessibilidade-universal" alt="Acessibilidade Universal">
+					<area shape="rect" coords="960,70,1140,340" href="/plano/eixo/circulacao-calma" alt="Circulação Calma">
+				</map>
+			</div>
 		</div>
 	</section>
 

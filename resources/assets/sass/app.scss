@@ -101,3 +101,22 @@
 		white 15px
 	);
 }
+
+@media (max-width: 599px) {
+	#eixos-pb{
+		display: none;
+	}
+}
+
+@media (min-width: 600px) {
+	#eixos-cor, #eixos:hover #eixos-pb{
+		transition: opacity .25s ease-in-out;
+		opacity: 0;
+		display: none;
+	}
+	#eixos-pb, #eixos:hover #eixos-cor{
+		transition: opacity .25s ease-in-out;
+		opacity: 1;
+		display: block;
+	}
+}

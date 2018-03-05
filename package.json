@@ -20,5 +20,7 @@
         "vue": "^2.5.7",
         "vue-router": "^3.0.1"
     },
-    "dependencies": {}
+    "dependencies": {
+        "image-map": "^1.0.8",
+    }
 }

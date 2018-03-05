@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 require('./removeAccents');
+window.ImageMap = require('image-map/image-map.js');
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router';
