@@ -63,19 +63,19 @@
 					</a>
 
 					<div class="navbar-dropdown is-right">
-						<a class="navbar-item" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH!">
+						<a class="navbar-item" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH!">
 							<span class="icon">
 								<i class="fab fa-twitter"></i>
 							</span>
 							Twitter
 						</a>
-						<a class="navbar-item">
+						<a class="navbar-item" onclick="shareFacebook(event)" href="https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=&redirect_uri=">
 							<span class="icon">
 								<i class="fab fa-facebook"></i>
 							</span>
 							Facebook
 						</a>
-						<a class="navbar-item">
+						<a class="navbar-item" onclick="shareEmail(event)" href="mailto:?subject=Conheça o PlanMob-BH!&body=É só abrir o site!">
 							<span class="icon">
 								<i class="fas fa-envelope-open"></i>
 							</span>
@@ -118,6 +118,23 @@
 			}
 
 		});
+
+		var shareEmail = function(event) {
+			event.preventDefault();
+			window.location.href = 'mailto:?subject=Conheça o PlanMob-BH!&body=É só abrir o site! ' + encodeURIComponent(window.location.href);
+		};
+
+		var shareFacebook = function(event) {
+			event.preventDefault();
+			var win = window.open('https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=' + encodeURIComponent(window.location.href) + '&redirect_uri=' + encodeURIComponent(window.location.href), '_self');
+			win.focus();
+		};
+
+		var shareTwitter = function(event) {
+			event.preventDefault();
+			var win = window.open('https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH! ' + encodeURIComponent(window.location.href), '_blank');
+			win.focus();
+		};
 	</script>
 
 </body>
