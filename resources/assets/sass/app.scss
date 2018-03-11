@@ -9,8 +9,20 @@
 	background-size: cover;
 }
 
-.nossabh-logo {
-	max-width: 180px;
+.navbar-brand-primary {
+	background-color: $primary !important;
+	color: white !important;
+	& strong {
+		color: white !important;
+	}
+}
+
+.navbar-brand-danger {
+	background-color: $danger !important;
+	color: white !important;
+	& strong {
+		color: white !important;
+	}
 }
 
 .ics-logo {

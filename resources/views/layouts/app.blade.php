@@ -24,8 +24,25 @@
 		{{ Request::is('participe*') ? "is-danger" : "" }}
 		{{ Request::is('contato*') ? "is-warning" : "" }}">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="/">
-				PlanMob-BH
+			<span class="navbar-item
+						{{ Request::is('/') || Request::is('participe*') || Request::is('contato*') ? "navbar-brand-primary" : "" }}
+						{{ Request::is('plano*') || Request::is('indicadores*') ? "navbar-brand-danger" : "" }}" href="/">
+				<strong>#</strong>OBSERVAMOS<strong>BH</strong>
+			</span>
+			<a class="navbar-item is-hidden-desktop" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH!">
+				<span class="icon">
+					<i class="fab fa-twitter"></i>
+				</span>
+			</a>
+			<a class="navbar-item is-hidden-desktop" onclick="shareFacebook(event)" href="https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=&redirect_uri=">
+				<span class="icon">
+					<i class="fab fa-facebook"></i>
+				</span>
+			</a>
+			<a class="navbar-item is-hidden-desktop share-link">
+				<span class="icon">
+					<i class="fas fa-link"></i>
+				</span>
 			</a>
 			<div class="navbar-burger burger" data-target="navMenu">
 				<span></span>
@@ -54,7 +71,23 @@
 			</div>
 
 			<div class="navbar-end">
-				<div class="navbar-item has-dropdown is-hoverable">
+				<a class="navbar-item" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH!">
+					<span class="icon">
+						<i class="fab fa-twitter"></i>
+					</span>
+				</a>
+				<a class="navbar-item" onclick="shareFacebook(event)" href="https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=&redirect_uri=">
+					<span class="icon">
+						<i class="fab fa-facebook"></i>
+					</span>
+				</a>
+				<a class="navbar-item share-link">
+					<span class="icon">
+						<i class="fas fa-link"></i>
+					</span>
+				</a>
+
+				{{-- <div class="navbar-item has-dropdown is-hoverable">
 					<a class="navbar-link">
 						<span class="icon">
 							<i class="fas fa-share-alt"></i>
@@ -82,7 +115,7 @@
 							E-mail
 						</a>
 					</div>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 	</nav>
@@ -119,16 +152,19 @@
 
 		});
 
-		var shareEmail = function(event) {
-			event.preventDefault();
-			window.location.href = 'mailto:?subject=Conheça o PlanMob-BH!&body=É só abrir o site! ' + encodeURIComponent(window.location.href);
-		};
-
 		var shareFacebook = function(event) {
 			event.preventDefault();
 			var win = window.open('https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=' + encodeURIComponent(window.location.href) + '&redirect_uri=' + encodeURIComponent(window.location.href), '_self');
 			win.focus();
 		};
+
+		var shareLink = new ClipboardJS('.share-link', {
+			text: function(trigger) {
+				return window.location.href;
+			}
+		}).on('success', function(e) {
+			window.alert('Link copiado!');
+		});;
 
 		var shareTwitter = function(event) {
 			event.preventDefault();
