@@ -21,7 +21,9 @@
         "vue-router": "^3.0.1"
     },
     "dependencies": {
+        "chart.js": "^2.7.2",
         "clipboard": "^2.0.0",
-        "image-map": "^1.0.8"
+        "image-map": "^1.0.8",
+        "vue-chartjs": "^3.2.1"
     }
 }

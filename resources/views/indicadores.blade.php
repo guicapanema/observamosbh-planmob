@@ -23,6 +23,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="content" id="app">
+			<chart class="grafico-indicadores"></chart>
+		</div>
 	</section>
 
 	<section class="section notification is-info is-marginless">

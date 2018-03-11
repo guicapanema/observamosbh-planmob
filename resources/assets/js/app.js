@@ -26,6 +26,7 @@ Vue.use(Buefy, {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('chart', require('./components/Chart.vue'));
 const planmob = Vue.component('planmob', require('./components/PlanMob.vue'));
 Vue.component('planmob-columns', require('./components/PlanMobColumns.vue'));
 Vue.component('planmob-list', require('./components/PlanMobList.vue'));
