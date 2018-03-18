@@ -32,7 +32,7 @@
 
 					newDataset.label = dataset.label;
 					newDataset.borderColor = 'rgb(' + dataset.color.join(',') + ')';
-					newDataset.backgroundColor = 'rgb(' + dataset.color.join(',') + ',0.1)';
+					newDataset.backgroundColor = 'transparent';
 					newDataset.data = dataset.data;
 
 					let matchedAxis = yAxes.find(axis => axis.unit === dataset.unit);
