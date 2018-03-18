@@ -27,6 +27,7 @@ Vue.use(Buefy, {
  */
 
 Vue.component('chart', require('./components/Chart.vue'));
+Vue.component('chart-wrapper', require('./components/ChartWrapper.vue'));
 const planmob = Vue.component('planmob', require('./components/PlanMob.vue'));
 Vue.component('planmob-columns', require('./components/PlanMobColumns.vue'));
 Vue.component('planmob-list', require('./components/PlanMobList.vue'));

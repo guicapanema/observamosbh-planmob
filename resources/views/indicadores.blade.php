@@ -22,10 +22,15 @@
 					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
 				</div>
 			</div>
+			<div class="columns">
+				<div class="column is-8 is-offset-2">
+					<div id="app">
+						<chart-wrapper></chart-wrapper>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="content" id="app">
-			<chart class="grafico-indicadores"></chart>
-		</div>
+
 	</section>
 
 	<section class="section notification is-info is-marginless">
