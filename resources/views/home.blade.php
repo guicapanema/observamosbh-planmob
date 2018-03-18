@@ -96,7 +96,7 @@
 		</div>
 	</section>
 
-	<footer class="footer">
+	<section class="section notification is-marginless">
 		<div class="container">
 			<div class="columns">
 				<div class="column is-one-quarter is-offset-one-quarter has-text-centered">
@@ -110,5 +110,5 @@
 
 			</div>
 		</div>
-	</footer>
+	</section>
 @endsection

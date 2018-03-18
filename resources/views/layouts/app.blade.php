@@ -122,6 +122,22 @@
 
 	@yield('content')
 
+	<footer class="footer">
+		<div class="container">
+			<div class="content has-text-centered">
+				<p>
+					Código fonte sob licença <a rel="license" href="https://www.gnu.org/licenses/agpl-3.0.html">AGPLv3</a>.
+					<a href="https://github.com/guicapanema/observamosbh-planmob"><span class="icon">
+						<i class="fab fa-github"></i>
+					</span></a>
+				</p>
+				<p>
+					Conteúdo sob licença <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Atribuição 4.0 Internacional</a>.
+				</p>
+			</div>
+		</div>
+	</footer>
+
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"></script>
 
