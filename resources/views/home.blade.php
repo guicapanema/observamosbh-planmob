@@ -10,15 +10,7 @@
 			<div class="columns">
 				<div class="column is-8 is-offset-2">
 					<h1 class="title has-text-white has-text-weight-bold has-text-centered">O que é um plano de mobilidade?</h1>
-					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
-					<h2 class="has-text-white">Second level</h2>
-					<p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
-					<ul>
-						<li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
-						<li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
-						<li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
-						<li>Ut non enim metus.</li>
-					</ul>
+					<p>O Plano de Mobilidade é um instrumento de planejamento, obrigatório às cidades com mais de 20.000 habitantes e com outras características, que tem por objetivo efetivar os princípios, diretrizes e objetivos da Política Nacional de Mobilidade Urbana (Lei 12.576/2012). O conteúdo do Plano deve conter, por exemplo, os serviços de transporte público coletivo, a acessibilidade para pessoas com deficiência e restrição de mobilidade, a integração modal e outros tantos elementos.</p>
 				</div>
 			</div>
 		</div>
@@ -29,7 +21,7 @@
 			<div class="columns">
 				<div class="column is-8 is-offset-2">
 					<h1 class="title has-text-weight-bold has-text-centered"><span class="has-underline-dashed-success">O PlanMob-BH</span></h1>
-					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
+					<p>O PlanMob-BH, foi desenvolvido entre 2007 e 2010. Ele trouxe o desafio de mudança de paradigma em direção à mobilidade urbana sustentável. O PlanMob-BH foi finalizado em agosto de 2010 e apresentado à sociedade em julho de 2011. Com objetivo de melhorar seu conteúdo e conectá-lo ao Plano Diretor, ele foi revisto na IV Conferência de Política Urbana. Com as diretrizes estabelecidas nesse processo, o Plano passou por uma revisão técnica em 2016, no âmbito do Observatório da Mobilidade Urbana. A partir daí, o Plano passou a ter  oito eixos, 23 programas, 175 medidas, metas claras para melhoria da mobilidade e diversos indicadores para acompanhar sua execução para a gestão da demanda e melhoria da oferta, distribuídos em três horizontes temporais (2020, 2025 e 2030).</p>
 				</div>
 			</div>
 			<div class="columns is-vcentered">
@@ -77,7 +69,7 @@
 			<div class="columns">
 				<div class="column is-8 is-offset-2">
 					<h1 class="title has-text-weight-bold has-text-centered">A Plataforma</h1>
-					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
+					<p>Esse processo longo e complexo de elaboração e revisões do PlanMob-BH gerou diversos documentos, desde o diagnóstico à lista de ações e seus respectivos valores, tornando difícil a compreensão, apropriação e envolvimento de atores dos mais diversos segmentos sociais com a execução e monitoramento do Plano. A Plataforma tem, então, o objetivo de facilitar o entendimento destes atores sobre o PlanMob-BH, despertar a curiosidade da sociedade sobre seu conteúdo e engajar pessoas, em especial, no monitoramento da implantação do Plano.</p>
 				</div>
 			</div>
 		</div>
@@ -89,7 +81,7 @@
 				<div class="columns">
 					<div class="column is-8 is-offset-2 notification is-white has-padding-200">
 						<h1 class="title has-text-weight-bold has-text-centered">Quem idealizou</h1>
-						<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
+						<p>Desde que foi criado, em 2008, o Movimento Nossa BH tem se envolvido e tentado dar difusão às discussões, debates e diálogos sobre mobilidade urbana na capital mineira e, mais recentemente, na Região Metropolitana de Belo Horizonte. Nesse sentido, a idealização dessa plataforma tem por fim dar insumos para que mais atores sociais possam se envolver no que diz respeito à mobilidade em Belo Horizonte.</p>
 					</div>
 				</div>
 			</div>

@@ -137,3 +137,15 @@
 	max-height: 400px;
 	margin: 0 auto;
 }
+
+img.grafismo {
+	width: 90%;
+}
+
+img.is-rotated-180 {
+	transform: rotate(180deg);
+}
+
+.has-margin-top-100 {
+	margin-top: 1rem !important;
+}

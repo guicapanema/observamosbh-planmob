@@ -64,8 +64,10 @@
 		<div class="container">
 			<div class="columns is-vcentered content">
 				<div class="column is-one-third">
-					<h1>Receba atualizações sobre o PlanMob-BH</h1>
+					<img src="/img/grafismo-rosa.png" class="grafismo is-rotated-180"></img>
+					<h2 class="has-text-weight-bold has-margin-top-100">Receba atualizações sobre o PlanMob-BH</h2>
 					<p>São enviados no máximo 4 e-mails por ano</p>
+					<img src="/img/grafismo-rosa.png" class="grafismo"></img>
 				</div>
 				<div class="column is-two-thirds">
 					<div class="field">

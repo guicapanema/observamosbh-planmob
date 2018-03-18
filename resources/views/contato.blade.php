@@ -18,8 +18,10 @@
 		<div class="container">
 			<div class="columns is-vcentered content">
 				<div class="column is-one-third">
-					<h2 class="has-text-weight-bold">Entre em contato</h2>
+					<img src="/img/grafismo-amarelo.png" class="grafismo is-rotated-180"></img>
+					<h2 class="has-text-weight-bold has-margin-top-100">Entre em contato</h2>
 					<p>Qualquer dúvida, envie e-mail para [várias entidades] ou preencha o formulário:</p>
+					<img src="/img/grafismo-amarelo.png" class="grafismo"></img>
 				</div>
 				<div class="column is-two-thirds">
 					<div class="field">

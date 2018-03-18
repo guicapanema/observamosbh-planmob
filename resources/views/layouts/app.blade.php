@@ -86,36 +86,6 @@
 						<i class="fas fa-link"></i>
 					</span>
 				</a>
-
-				{{-- <div class="navbar-item has-dropdown is-hoverable">
-					<a class="navbar-link">
-						<span class="icon">
-							<i class="fas fa-share-alt"></i>
-						</span>
-						Compartilhe!
-					</a>
-
-					<div class="navbar-dropdown is-right">
-						<a class="navbar-item" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH!">
-							<span class="icon">
-								<i class="fab fa-twitter"></i>
-							</span>
-							Twitter
-						</a>
-						<a class="navbar-item" onclick="shareFacebook(event)" href="https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=&redirect_uri=">
-							<span class="icon">
-								<i class="fab fa-facebook"></i>
-							</span>
-							Facebook
-						</a>
-						<a class="navbar-item" onclick="shareEmail(event)" href="mailto:?subject=Conheça o PlanMob-BH!&body=É só abrir o site!">
-							<span class="icon">
-								<i class="fas fa-envelope-open"></i>
-							</span>
-							E-mail
-						</a>
-					</div>
-				</div> --}}
 			</div>
 		</div>
 	</nav>
