@@ -1,18 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<section class="hero is-info is-medium home-hero">
-		<div class="hero-body">
-			<div class="container has-text-centered">
-				{{-- <h1 class="title">
-					Conheça o PlanMob-BH
-				</h1>
-				<h2 class="subtitle">
-					Lorem ipsum dolor sit amet
-				</h2> --}}
-			</div>
-		</div>
-	</section>
+	<img src="/img/contato.jpg" style="margin-bottom: -10px"></img>
 
 	<section class="section notification is-light is-marginless has-border-ripped">
 		<div class="container">
