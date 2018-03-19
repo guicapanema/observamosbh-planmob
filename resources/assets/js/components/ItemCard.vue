@@ -1,5 +1,9 @@
 <template>
-	<article class="media box" @click="onClick()">
+	<article :class="{
+				'media': true,
+				'box': true,
+				'hoverable': !isAction
+				}" @click="onClick()">
 		<figure v-if="item.image" class="media-left">
 			<p class="image is-64x64">
 				<img :src="item.image">
@@ -73,6 +77,12 @@
     export default {
 		props: ['item', 'path'],
 
+		computed: {
+			isAction() {
+				return (this.item.program_id !== null) && (this.item.program_id !== undefined);
+			}
+		},
+
 		methods: {
 
 			onClick() {
@@ -132,7 +142,7 @@
 
 <style scoped>
 
-article:hover {
+article.hoverable:hover {
 	cursor: pointer;
 	background-color: rgb(249, 249, 249);
 }
