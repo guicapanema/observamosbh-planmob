@@ -139,9 +139,11 @@
 		});
 
 		var shareFacebook = function(event) {
-			event.preventDefault();
 			var win = window.open('https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=' + encodeURIComponent(window.location.href) + '&redirect_uri=' + encodeURIComponent(window.location.href), '_self');
-			win.focus();
+			if(win !== null && typeof(win) !== 'undefined') {
+				event.preventDefault();
+				win.focus();
+			}
 		};
 
 		var shareLink = new ClipboardJS('.share-link', {
@@ -153,9 +155,12 @@
 		});;
 
 		var shareTwitter = function(event) {
-			event.preventDefault();
+
 			var win = window.open('https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH! ' + encodeURIComponent(window.location.href), '_blank');
-			win.focus();
+			if(win !== null && typeof(win) !== 'undefined') {
+				event.preventDefault();
+				win.focus();
+			}
 		};
 	</script>
 

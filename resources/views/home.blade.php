@@ -2,7 +2,7 @@
 
 @section('content')
 	<section class="has-text-centered">
-		<img src="/img/header.png"></img>
+		<img src="/img/home.jpg"></img>
 	</section>
 
 	<section class="section notification is-success has-border-ripped">
