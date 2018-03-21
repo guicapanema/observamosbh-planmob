@@ -9,13 +9,13 @@
 			<nav class="level">
 				<!-- Left side -->
 				<div class="level-left">
-					<p class="level-item"><strong>
-						Tudo ( {{filteredAxes.length + filteredPrograms.length + filteredActions.length + filteredIndicators.length}} )
-					</strong></p>
-					<p class="level-item"><a href="#eixos">Eixos ( {{filteredAxes.length}} )</a></p>
-					<p class="level-item"><a href="#programas">Programas ( {{filteredPrograms.length}} )</a></p>
-					<p class="level-item"><a href="#acoes">Ações ( {{filteredActions.length}} )</a></p>
-					<p class="level-item"><a href="#indicadores">Indicadores ( {{filteredIndicators.length}} )</a></p>
+					<a class="level-item button is-white">
+						Todos ( {{filteredAxes.length + filteredPrograms.length + filteredActions.length + filteredIndicators.length}} )
+					</a>
+					<a href="#eixos" class="level-item button is-success">Eixos ( {{filteredAxes.length}} )</a>
+					<a href="#programas" class="level-item button is-warning">Programas ( {{filteredPrograms.length}} )</a>
+					<a href="#acoes" class="level-item button is-danger">Ações ( {{filteredActions.length}} )</a>
+					<a href="#indicadores" class="level-item button is-info">Indicadores ( {{filteredIndicators.length}} )</a>
 				</div>
 
 				<!-- Right side -->

@@ -5,51 +5,78 @@
 		</div>
 
 		<div class="column">
-			<template v-if="view === 'axes'">
-				<h1 class="subtitle">Eixos</h1>
-				<item-card v-for="item of filteredAxes" :key="'axis' + item.id" :item="item" @click="onSelect(item, 'axis')"></item-card>
-				<div v-if="!filteredAxes || filteredAxes.length === 0">Nenhum item corresponde aos filtros.</div>
-			</template>
-			<template v-if="view === 'programs'">
-				<h1 class="subtitle"><router-link to="/">Eixos</router-link> / {{ axes.find(axis => axis.id === filters['axis']).name }}</h1>
-				<item-card v-for="item of filteredPrograms" :key="'program' + item.id" :item="item" @click="onSelect(item, 'program')"></item-card>
-				<div v-if="!filteredPrograms || filteredPrograms.length === 0">Nenhum item corresponde aos filtros.</div>
-			</template>
-			<template v-if="view === 'actions'">
-				<h1 class="subtitle">
-					<router-link to="/">Eixos</router-link> / <router-link :to="'/eixo/' + axes.find(axis => axis.id === filters['axis']).alias">{{ axes.find(axis => axis.id === filters['axis']).name }}</router-link> / {{ programs.find(program => program.id === filters['program']).name }}
-				</h1>
-				<item-card v-for="item of filteredActions" :key="'action' + item.id" :item="item"></item-card>
-				<div v-if="!filteredActions || filteredActions.length === 0">Nenhum item corresponde aos filtros.</div>
-			</template>
-		</div>
-
-		<div class="column">
-			<h1 class="subtitle">Indicadores</h1>
-			<div v-for="indicator of filteredIndicators" class="box">
-				<b-tooltip :label="indicator.formula" type="is-light" multilined>
-					<div>
-						<div class="columns">
-							<div class="column">
-								<strong>{{indicator.name}}</strong><br />
-								{{indicator.description}}
+			<div class="columns">
+				<div class="column">
+					<template v-if="view === 'axes'">
+						<h1 class="subtitle has-text-grey">Eixos</h1>
+					</template>
+					<template v-if="view === 'programs'">
+						<div class="is-flex">
+							<figure class="image is-128x128"><img :src="axes.find(axis => axis.id === filters['axis']).image"></img></figure>
+							<div style="align-self: flex-end; padding-bottom: 1rem;">
+								<router-link to="/">Eixos</router-link><br />
+								<h1 class="subtitle"><span class="has-text-success">{{ axes.find(axis => axis.id === filters['axis']).name }}</span></h1>
 							</div>
 						</div>
-						<div class="columns is-size-7">
-							<div class="column">
-								Curto prazo: metaX
-							</div>
-							<div class="column">
-								Médio prazo: metaX
-							</div>
-							<div class="column">
-								Longo prazo: metaX
+					</template>
+					<template v-if="view === 'actions'">
+						<div class="is-flex">
+							<figure class="image is-128x128"><img :src="axes.find(axis => axis.id === filters['axis']).image"></img></figure>
+							<div style="align-self: flex-end; padding-bottom: 1rem;">
+								<router-link to="/">Eixos</router-link> / <router-link :to="'/eixo/' + axes.find(axis => axis.id === filters['axis']).alias" class="has-text-success">{{ axes.find(axis => axis.id === filters['axis']).name }}</router-link><br />
+								<h1 class="subtitle"><span class="has-text-warning">{{ programs.find(program => program.id === filters['program']).name }}</span></h1>
 							</div>
 						</div>
-					</div>
-				</b-tooltip>
+					</template>
+				</div>
+				<div class="column is-flex is-hidden-mobile">
+					<h1 class="subtitle" style="align-self: flex-end; padding-bottom: 1rem;">Indicadores</h1>
+				</div>
 			</div>
-			<div v-if="!filteredIndicators || filteredIndicators.length === 0">Nenhum item corresponde aos filtros.</div>
+			<div class="columns">
+				<div class="column">
+					<template v-if="view === 'axes'">
+						<item-card v-for="item of filteredAxes" :key="'axis' + item.id" :item="item" @click="onSelect(item, 'axis')"></item-card>
+						<div v-if="!filteredAxes || filteredAxes.length === 0">Nenhum item corresponde aos filtros.</div>
+					</template>
+					<template v-if="view === 'programs'">
+						<item-card v-for="item of filteredPrograms" :key="'program' + item.id" :item="item" @click="onSelect(item, 'program')"></item-card>
+						<div v-if="!filteredPrograms || filteredPrograms.length === 0">Nenhum item corresponde aos filtros.</div>
+					</template>
+					<template v-if="view === 'actions'">
+						<item-card v-for="item of filteredActions" :key="'action' + item.id" :item="item"></item-card>
+						<div v-if="!filteredActions || filteredActions.length === 0">Nenhum item corresponde aos filtros.</div>
+					</template>
+				</div>
+				<div class="column">
+					<h1 class="subtitle is-hidden-tablet">Indicadores</h1>
+
+					<article v-for="indicator of filteredIndicators" class="box is-bordered-info">
+						<b-tooltip :label="indicator.formula" type="is-light" multilined>
+							<div>
+								<div class="columns">
+									<div class="column">
+										<div class="item-title">{{indicator.name}}</div>
+										{{indicator.description}}
+									</div>
+								</div>
+								<div class="columns is-size-7">
+									<div class="column">
+										Curto prazo: metaX
+									</div>
+									<div class="column">
+										Médio prazo: metaX
+									</div>
+									<div class="column">
+										Longo prazo: metaX
+									</div>
+								</div>
+							</div>
+						</b-tooltip>
+					</article>
+					<div v-if="!filteredIndicators || filteredIndicators.length === 0">Nenhum item corresponde aos filtros.</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>

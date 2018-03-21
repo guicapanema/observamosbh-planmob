@@ -157,3 +157,43 @@ img.is-rotated-180 {
 img.ficha {
 	width: 80%;
 }
+
+article.is-bordered-danger {
+	border: 2px solid $danger !important;
+	box-shadow: none;
+
+	& div.item-title {
+		font-weight: bold;
+		color: $danger;
+	}
+}
+
+article.is-bordered-info {
+	border: 2px solid $info !important;
+	box-shadow: none;
+
+	& div.item-title {
+		font-weight: bold;
+		color: $info;
+	}
+}
+
+article.is-bordered-success {
+	border: 2px solid $success !important;
+	box-shadow: none;
+
+	& div.item-title {
+		font-weight: bold;
+		color: $success;
+	}
+}
+
+article.is-bordered-warning {
+	border: 2px solid $warning !important;
+	box-shadow: none;
+
+	& div.item-title {
+		font-weight: bold;
+		color: $warning;
+	}
+}

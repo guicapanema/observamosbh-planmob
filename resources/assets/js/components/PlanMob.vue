@@ -213,3 +213,9 @@
 		}
     }
 </script>
+
+<style scoped>
+	section {
+		padding-top: 1.5rem;
+	}
+</style>

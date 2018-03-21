@@ -2,10 +2,14 @@
 	<article :class="{
 				'media': true,
 				'box': true,
-				'hoverable': !isAction
+				'hoverable': !isAction,
+				'is-bordered-success': isAxis,
+				'is-bordered-warning': isProgram,
+				'is-bordered-danger': isAction,
+				'is-bordered-info': isIndicator
 				}" @click="onClick()">
 		<figure v-if="item.image" class="media-left">
-			<p class="image is-64x64">
+			<p class="image is-96x96">
 				<img :src="item.image">
 			</p>
 		</figure>
@@ -18,12 +22,12 @@
 						</span>
 						<br>
 					</template>
-					<strong>
-
+					<div class="item-title">
 						{{item.name}}
-					</strong>
-					<br>
-					{{item.description}}
+					</div>
+					<p class="item-description">
+						{{item.description}}
+					</p>
 				</p>
 			</div>
 			<nav v-if="item.modals" class="level is-mobile">
@@ -80,6 +84,15 @@
 		computed: {
 			isAction() {
 				return (this.item.program_id !== null) && (this.item.program_id !== undefined);
+			},
+			isAxis() {
+				return (!this.item.program_id && !this.item.parent_id && !this.item.axis_id);
+			},
+			isIndicator() {
+				return (this.item.parent_type !== null) && (this.item.parent_type !== undefined);
+			},
+			isProgram() {
+				return (this.item.axis_id !== null) && (this.item.axis_id !== undefined);
 			}
 		},
 
