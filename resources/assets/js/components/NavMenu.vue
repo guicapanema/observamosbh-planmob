@@ -24,7 +24,8 @@
 			<template v-if="isExpanded(axis)">
 				<a v-for="program of getAxisPrograms(axis)"
 					:class="{'panel-block': true,
-							'is-active': isActive(program, 'program') }"
+							 'is-active': isActive(program, 'program'),
+							 'is-size-7': true}"
 					@click="onSelect(program, 'program')">
 					{{ program.name }}
 				</a>
