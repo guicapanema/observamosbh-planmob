@@ -23,6 +23,9 @@ class CreateIndicatorsTable extends Migration
 			$table->text('formula')->nullable();
 			$table->string('modals', 256)->nullable();
 			$table->string('tags', 256)->nullable();
+			$table->string('target_short')->nullable();
+			$table->string('target_medium')->nullable();
+			$table->string('target_long')->nullable();
             $table->timestamps();
         });
     }

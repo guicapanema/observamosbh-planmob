@@ -24,7 +24,7 @@
 					<p>O PlanMob-BH, foi desenvolvido entre 2007 e 2010. Ele trouxe o desafio de mudança de paradigma em direção à mobilidade urbana sustentável. O PlanMob-BH foi finalizado em agosto de 2010 e apresentado à sociedade em julho de 2011. Com objetivo de melhorar seu conteúdo e conectá-lo ao Plano Diretor, ele foi revisto na IV Conferência de Política Urbana. Com as diretrizes estabelecidas nesse processo, o Plano passou por uma revisão técnica em 2016, no âmbito do Observatório da Mobilidade Urbana. A partir daí, o Plano passou a ter  oito eixos, 23 programas, 175 medidas, metas claras para melhoria da mobilidade e diversos indicadores para acompanhar sua execução para a gestão da demanda e melhoria da oferta, distribuídos em três horizontes temporais (2020, 2025 e 2030).</p>
 				</div>
 			</div>
-			<div class="columns is-vcentered">
+			{{-- <div class="columns is-vcentered">
 				<div class="column is-one-fifth is-offset-one-fifth">
 					<div class="notification is-success has-text-centered">
 						<span class="subtitle has-text-weight-bold">Eixos</span>
@@ -40,7 +40,7 @@
 						<span class="subtitle has-text-weight-bold">Ações</span>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</section>
 

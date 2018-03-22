@@ -52,7 +52,7 @@
 					<h1 class="subtitle is-hidden-tablet">Indicadores</h1>
 
 					<article v-for="indicator of filteredIndicators" class="box is-bordered-info">
-						<b-tooltip :label="indicator.formula" type="is-light" multilined>
+						<!-- <b-tooltip :label="indicator.formula" type="is-light" multilined> -->
 							<div>
 								<div class="columns">
 									<div class="column">
@@ -61,18 +61,18 @@
 									</div>
 								</div>
 								<div class="columns is-size-7">
-									<div class="column">
-										Curto prazo: metaX
+									<div v-if="indicator.target_short" class="column">
+										Curto prazo: {{indicator.target_short}}
 									</div>
-									<div class="column">
-										Médio prazo: metaX
+									<div v-if="indicator.target_medium" class="column">
+										Médio prazo: {{indicator.target_medium}}
 									</div>
-									<div class="column">
-										Longo prazo: metaX
+									<div v-if="indicator.target_long" class="column">
+										Longo prazo: {{indicator.target_long}}
 									</div>
 								</div>
 							</div>
-						</b-tooltip>
+						<!-- </b-tooltip> -->
 					</article>
 					<div v-if="!filteredIndicators || filteredIndicators.length === 0">Nenhum item corresponde aos filtros.</div>
 				</div>
