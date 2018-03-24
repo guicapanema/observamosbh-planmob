@@ -9,7 +9,7 @@
 				<div class="column is-one-third">
 					<img src="/img/grafismo-amarelo.png" class="grafismo is-rotated-180"></img>
 					<h2 class="has-text-weight-bold has-margin-top-100">Entre em contato</h2>
-					<p>Qualquer dúvida, envie e-mail para [várias entidades] ou preencha o formulário:</p>
+					<p>Qualquer dúvida, envie e-mail para a Nossa BH ou preencha o formulário:</p>
 					<img src="/img/grafismo-amarelo.png" class="grafismo"></img>
 				</div>
 				<form class="column is-two-thirds" method="POST" action="/contato">
@@ -79,10 +79,10 @@
 					</p>
 				</div>
 				<div class="column is-half">
-					<p>
+					{{-- <p>
 						<h4>Gases de efeito estufa e poluentes locais são a mesma coisa?</h4>
 						<p>Dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus.</p>
-					</p>
+					</p> --}}
 					<p>
 						<h4>Mitigação, adaptação e resiliência… o que é isso?</h4>
 						<p>A mitigação é a capacidade de reduzir as emissões de maneira significativa e até mesmo de remover, ou “sequestrar”, os GEE da atmosfera, sendo então o foco principal das ações de mudança climática. No entanto, as medidas de mitigação já são insuficientes para impedir uma mudança do clima no futuro. Nesse contexto, apresentam-se as ações de adaptação, que são ajustes de diversos tipos para a convivência com uma nova realidade, mais quente. Uma das grandes preocupações está ligada às alterações no regime das chuvas, causando impacto em cidades como Belo Horizonte.</p>
