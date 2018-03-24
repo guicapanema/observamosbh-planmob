@@ -28,14 +28,14 @@
 					<p>As Comissões Regionais de Transportes e Trânsito - CRTTs - foram criadas na década de 1990 como um espaço de discussão de problemas locais da mobilidade urbana: redutores de velocidade, sentido do fluxo das vias, condição dos equipamentos públicos, quadro de horário e itinerário dos ônibus, etc.</p>
 					<p>Hoje, existe uma CRTT para cada uma das nove regionais da cidade. Os representantes são eleitos por território de gestão compartilhada e cada regional possui de 4 a 5 territórios, totalizando de 12 a 15 titulares e o mesmo número de suplentes. As requisições de demanda feitas por membros de CRTTs têm prioridade frente às demais, justamente por possuir mais representatividade do território, conferida por eleição. As reuniões das CRTTs são mensais e abertas.</p>
 				</div>
-				<div class="column is-half">
+				{{-- <div class="column is-half">
 					<h1 class="has-text-white has-text-weight-bold has-text-centered">Informe-se</h1>
 					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
 				</div>
 				<div class="column is-half">
 					<h1 class="has-text-white has-text-weight-bold has-text-centered">Dê um rolé</h1>
 					<p>Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub> works as well!</p>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 	</section>
@@ -65,7 +65,7 @@
 		</div>
 	</section>
 
-	{{-- <section class="section notification is-marginless">
+	<section class="section notification is-marginless">
 		<div class="container">
 			<div class="columns is-vcentered content">
 				<div class="column is-one-third">
@@ -112,5 +112,5 @@
 				</div>
 			</div>
 		</div>
-	</section> --}}
+	</section>
 @endsection
