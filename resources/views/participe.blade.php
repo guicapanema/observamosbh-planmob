@@ -65,7 +65,7 @@
 		</div>
 	</section>
 
-	<section class="section notification is-marginless">
+	{{-- <section class="section notification is-marginless">
 		<div class="container">
 			<div class="columns is-vcentered content">
 				<div class="column is-one-third">
@@ -112,5 +112,5 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 @endsection

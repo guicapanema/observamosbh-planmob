@@ -35,6 +35,8 @@ Route::get('/contato', function () {
     return view('contato');
 });
 
+Route::post('/contato', 'ContactController@contact');
+
 
 // API
 

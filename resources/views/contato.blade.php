@@ -12,11 +12,12 @@
 					<p>Qualquer dúvida, envie e-mail para [várias entidades] ou preencha o formulário:</p>
 					<img src="/img/grafismo-amarelo.png" class="grafismo"></img>
 				</div>
-				<div class="column is-two-thirds">
+				<form class="column is-two-thirds" method="POST" action="/contato">
+					{{ csrf_field() }}
 					<div class="field">
 						<label class="label">Nome</label>
 						<div class="control has-icons-left">
-							<input class="input" type="text" placeholder="Digite seu nome">
+							<input class="input" type="text" id="nome" name="nome" placeholder="Digite seu nome">
 							<span class="icon is-small is-left">
 								<i class="fas fa-user"></i>
 							</span>
@@ -26,7 +27,7 @@
 					<div class="field">
 						<label class="label">Email</label>
 						<div class="control has-icons-left">
-							<input class="input" type="email" placeholder="Digite seu email">
+							<input class="input" type="email" id="email" name="email" placeholder="Digite seu email">
 							<span class="icon is-small is-left">
 								<i class="fas fa-envelope"></i>
 							</span>
@@ -36,16 +37,16 @@
 					<div class="field">
 						<label class="label">Mensagem</label>
 						<div class="control">
-							<textarea class="textarea" placeholder="Digite sua mensagem"></textarea>
+							<textarea class="textarea" id="mensagem" name="mensagem" placeholder="Digite sua mensagem"></textarea>
 						</div>
 					</div>
 
 					<div class="field is-pulled-right">
 						<div class="control">
-							<button class="button is-warning">Enviar</button>
+							<button type="submit" class="button is-warning">Enviar</button>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</section>
