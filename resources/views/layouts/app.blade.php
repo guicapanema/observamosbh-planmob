@@ -50,7 +50,7 @@
 					<i class="fab fa-twitter"></i>
 				</span>
 			</a>
-			<a class="navbar-item is-hidden-desktop" onclick="shareFacebook(event)" href="https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=&redirect_uri=https://mobilidadebh.org">
+			<a class="navbar-item is-hidden-desktop" onclick="shareFacebook(event)" href="https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=https://mobilidadebh.org&redirect_uri=https://mobilidadebh.org">
 				<span class="icon">
 					<i class="fab fa-facebook"></i>
 				</span>
