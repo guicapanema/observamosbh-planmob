@@ -10,6 +10,20 @@
 
 	<title>{{ config('app.name', 'Laravel') }}</title>
 
+	<meta name="description" content="Conheça, participe e se aproprie do plano de mobilidade de Belo Horizonte!">
+	<meta name="keywords" content="Nossa BH,PlanMob,plano,mobilidade,belo horizonte,onibus,metro,bicicleta,pedestre,carro,logistica,cidade,urbano">
+	<meta name="author" content="Nossa BH - #ObservamosBH">
+
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico"> -->
+	<link rel="home" href="https://www.mobilidadebh.org/">
+
+	<meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}">
+	<meta property="og:title" content="{{ config('app.name', 'Laravel') }}">
+	<meta property="og:description" content="Conheça, participe e se aproprie do plano de mobilidade de Belo Horizonte!">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://www.mobilidadebh.org/">
+	<link rel="canonical" href="https://www.mobilidadebh.org/">
+
 	<!-- Matomo -->
 	<script type="text/javascript">
 		var _paq = _paq || [];
