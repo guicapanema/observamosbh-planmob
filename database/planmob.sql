@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.21)
 # Base de Dados: planmob
-# Tempo de Geração: 2018-03-25 00:42:48 +0000
+# Tempo de Geração: 2018-03-25 01:00:59 +0000
 # ************************************************************
 
 
@@ -28,12 +28,12 @@ DROP TABLE IF EXISTS `actions`;
 CREATE TABLE `actions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `program_id` int(11) NOT NULL,
-  `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alias` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `modals` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tags` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `tags` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -266,15 +266,15 @@ CREATE TABLE `indicators` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL,
   `parent_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alias` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
   `formula` text COLLATE utf8mb4_unicode_ci,
-  `modals` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `tags` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `target_short` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `target_medium` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `target_long` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `modals` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tags` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `target_short` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `target_medium` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `target_long` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -413,12 +413,13 @@ LOCK TABLES `migrations` WRITE;
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`)
 VALUES
-	(1,'2014_10_12_000000_create_users_table',1),
-	(2,'2014_10_12_100000_create_password_resets_table',1),
-	(3,'2018_01_21_103728_create_axes_table',1),
-	(4,'2018_01_21_103820_create_actions_table',1),
-	(5,'2018_01_21_103918_create_programs_table',1),
-	(6,'2018_01_21_103924_create_indicators_table',1);
+	(8,'2014_10_12_000000_create_users_table',1),
+	(9,'2014_10_12_100000_create_password_resets_table',1),
+	(10,'2018_01_21_103728_create_axes_table',1),
+	(11,'2018_01_21_103820_create_actions_table',1),
+	(12,'2018_01_21_103918_create_programs_table',1),
+	(13,'2018_01_21_103924_create_indicators_table',1),
+	(14,'2018_03_25_004502_create_subscriptions_table',1);
 
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -491,6 +492,23 @@ VALUES
 
 /*!40000 ALTER TABLE `programs` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Dump da tabela subscriptions
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `subscriptions`;
+
+CREATE TABLE `subscriptions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `news` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 
 # Dump da tabela users
