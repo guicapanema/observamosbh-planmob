@@ -13,7 +13,7 @@ class SubscriptionController extends Controller
 		$this->validate(request(), [
 			'name' => 'required|string|max:255',
 			'email' => 'required|string|email|max:255|unique:subscriptions',
-			'news' => 'boolean'
+			'news' => 'string'
 		]);
 
 		Subscription::create([
