@@ -17,7 +17,7 @@ class CreateIndicatorsTable extends Migration
             $table->increments('id');
 			$table->integer('parent_id');
 			$table->string('parent_type');
-			$table->string('name');
+			$table->string('name', 512);
 			$table->string('alias');
 			$table->text('description')->nullable();
 			$table->text('formula')->nullable();

@@ -16,12 +16,12 @@ class CreateActionsTable extends Migration
         Schema::create('actions', function (Blueprint $table) {
             $table->increments('id');
 			$table->integer('program_id');
-			$table->string('name');
+			$table->string('name', 512);
 			$table->string('alias');
 			$table->string('image')->nullable();
 			$table->text('description');
 			$table->string('modals', 256);
-			$table->string('tags', 256);
+			$table->string('tags', 256)->nullable();
             $table->timestamps();
         });
     }
