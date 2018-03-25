@@ -9,7 +9,10 @@
 				'is-bordered-info': isIndicator
 				}" @click="onClick()">
 		<figure v-if="item.image" class="media-left">
-			<p class="image is-96x96">
+			<p class="image is-hidden-mobile is-96x96">
+				<img :src="item.image">
+			</p>
+			<p class="image is-hidden-tablet is-48x48">
 				<img :src="item.image">
 			</p>
 		</figure>
@@ -30,8 +33,7 @@
 					</p>
 				</p>
 			</div>
-			<nav v-if="item.modals" class="level is-mobile">
-				<div class="level-left">
+			<div v-if="item.modals">
 					<span v-for="modal of item.modals" @click.capture.stop="onModalSelect(modal)">
 						<b-tooltip :label="modal" type="is-light">
 							<b-icon v-if="modal === 'pedestre'" icon="female" type="is-info"></b-icon>
@@ -42,15 +44,10 @@
 							<b-icon v-if="modal === 'individual motorizado'" icon="car" type="is-info"></b-icon>
 						</b-tooltip>
 					</span>
-				</div>
-			</nav>
-			<nav v-if="item.tags" class="level is-mobile">
-				<div class="level-left">
-					<div class="tags">
-						<span v-for="tag of item.tags" class="tag is-info" @click.capture.stop="onTagSelect(tag)">{{tag}}</span>
-					</div>
-				</div>
-			</nav>
+			</div>
+			<div v-if="item.tags" class="tags has-margin-top-50">
+				<span v-for="tag of item.tags" class="tag is-info" @click.capture.stop="onTagSelect(tag)">{{tag}}</span>
+			</div>
 		</div>
 		<div v-if="item.programs || item.actions || item.indicators" class="media-right">
 			<template v-if="item.programs">
