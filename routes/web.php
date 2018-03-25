@@ -36,6 +36,7 @@ Route::get('/contato', function () {
 });
 
 Route::post('/contato', 'ContactController@contact');
+Route::post('/participe', 'SubscriptionController@store');
 
 
 // API

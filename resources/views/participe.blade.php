@@ -74,11 +74,12 @@
 					<p>São enviados no máximo 4 e-mails por ano</p>
 					<img src="/img/grafismo-rosa.png" class="grafismo"></img>
 				</div>
-				<div class="column is-two-thirds">
+				<form class="column is-two-thirds" method="POST" action="/participe">
+					{{ csrf_field() }}
 					<div class="field">
 						<label class="label">Nome</label>
 						<div class="control has-icons-left">
-							<input class="input" type="text" placeholder="Digite seu nome">
+							<input class="input" type="text" name="name" id="name" placeholder="Digite seu nome">
 							<span class="icon is-small is-left">
 								<i class="fas fa-user"></i>
 							</span>
@@ -88,7 +89,7 @@
 					<div class="field">
 						<label class="label">Email</label>
 						<div class="control has-icons-left ">
-							<input class="input" type="text" placeholder="Digite seu e-mail">
+							<input class="input" type="text" name="email" id="email" placeholder="Digite seu e-mail">
 							<span class="icon is-small is-left">
 								<i class="fas fa-envelope"></i>
 							</span>
@@ -98,7 +99,7 @@
 					<div class="field">
 						<div class="control">
 							<label class="checkbox">
-								<input type="checkbox">
+								<input type="checkbox" name="news" id="news">
 								Gostaria de receber novidades da NossaBH</a>
 							</label>
 						</div>
@@ -106,10 +107,10 @@
 
 					<div class="field is-pulled-right">
 						<div class="control">
-							<button class="button is-danger">Cadastrar</button>
+							<button type="submit" class="button is-danger">Cadastrar</button>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</section>
