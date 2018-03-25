@@ -79,21 +79,24 @@
 					<div class="field">
 						<label class="label">Nome</label>
 						<div class="control has-icons-left">
-							<input class="input" type="text" name="name" id="name" placeholder="Digite seu nome">
+							<input class="input{{ $errors->has('name') ? ' is-danger' : '' }}" type="text" name="name" id="name" placeholder="Digite seu nome">
 							<span class="icon is-small is-left">
 								<i class="fas fa-user"></i>
 							</span>
 						</div>
+						@if ($errors->has('name'))<p class="help is-danger">Por favor, digite seu nome</p>@endif
 					</div>
 
 					<div class="field">
 						<label class="label">Email</label>
 						<div class="control has-icons-left ">
-							<input class="input" type="text" name="email" id="email" placeholder="Digite seu e-mail">
+							<input class="input{{ session('success') ? ' is-success' : '' }}{{ $errors->has('email') ? ' is-danger' : '' }}" type="text" name="email" id="email" placeholder="Digite seu e-mail">
 							<span class="icon is-small is-left">
 								<i class="fas fa-envelope"></i>
 							</span>
 						</div>
+						@if ($errors->has('email'))<p class="help is-danger">Por favor, digite um e-mail válido</p>@endif
+						@if (session('success'))<p class="help is-success">Cadastro realizado com sucesso!</p>@endif
 					</div>
 
 					<div class="field">
