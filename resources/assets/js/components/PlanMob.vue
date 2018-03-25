@@ -104,7 +104,9 @@
 			axios.all([this.getActions(), this.getAxes(), this.getIndicators(), this.getPrograms()])
 				.then(axios.spread((actions, axes, indicators, programs) => {
 					for (let action of actions.data) {
-						action.tags = action.tags.split('|');
+						if(action.tags) {
+							action.tags = action.tags.split('|');
+						}
 						action.modals = action.modals.split('|');
 						this.actions.push(action);
 					}

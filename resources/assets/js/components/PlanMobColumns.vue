@@ -145,26 +145,6 @@
 					}
 					return matchAxis && matchModals;
 				});
-			},
-
-			tags() {
-				let tags = [];
-				this.axes.forEach(axis => {
-					axis.tags.forEach(tag => {
-						if(tags.indexOf(tag) < 0) tags.push(tag);
-					});
-				});
-				this.programs.forEach(program => {
-					program.tags.forEach(tag => {
-						if(tags.indexOf(tag) < 0) tags.push(tag);
-					});
-				});
-				this.actions.forEach(acao => {
-					acao.tags.forEach(tag => {
-						if(tags.indexOf(tag) < 0) tags.push(tag);
-					});
-				});
-				return tags;
 			}
 
 		},

@@ -96,7 +96,7 @@
 					}
 					if(this.filters['tags']) {
 						this.filters['tags'].forEach(tag => {
-							if(action.tags.indexOf(tag) < 0) {
+							if(!action.tags || (action.tags.indexOf(tag) < 0)) {
 								matchTags = false;
 							}
 						});
@@ -193,10 +193,12 @@
 						if(tags.indexOf(tag) < 0) tags.push(tag);
 					});
 				});
-				this.actions.forEach(acao => {
-					acao.tags.forEach(tag => {
-						if(tags.indexOf(tag) < 0) tags.push(tag);
-					});
+				this.actions.forEach(action => {
+					if(action.tags) {
+						action.tags.forEach(tag => {
+							if(tags.indexOf(tag) < 0) tags.push(tag);
+						});
+					}
 				});
 				return tags;
 			}
