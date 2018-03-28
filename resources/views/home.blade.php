@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	<section class="has-text-centered">
+	<section class="has-text-centered topo-home">
+		<div class="titulo-home"><span>Conheça o PlanMob-BH</span></div>
 		<img src="/img/home.jpg"></img>
 	</section>
 

@@ -201,3 +201,37 @@ article.is-bordered-warning {
 		color: $warning;
 	}
 }
+
+.topo-home {
+	height: 68vw;
+}
+
+.titulo-home {
+	z-index: 1;
+	font-size: 2em;
+	font-weight: bolder;
+	color: white;
+	position: absolute;
+	top: calc(34vw - 150px + 52px);
+	left: calc(50% - 150px);
+	width: 300px;
+	height: 300px;
+	background-color: rgba(82, 161, 212, 0.8);
+	border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+	.titulo-home {
+		font-size: 1.5em;
+		width: 200px;
+		height: 200px;
+		top: calc(34vw - 100px + 52px);
+		left: calc(50% - 100px);
+	}
+}
+
+.titulo-home span {
+	position: relative;
+	top: 30%;
+	transform: translateY(-50%);
+}

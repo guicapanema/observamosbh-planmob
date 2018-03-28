@@ -12,25 +12,25 @@
 					</template>
 					<template v-if="view === 'programs'">
 						<div class="is-flex">
-							<figure class="image is-128x128"><img :src="axes.find(axis => axis.id === filters['axis']).image"></img></figure>
-							<div style="align-self: flex-end; padding-bottom: 1rem;">
-								<router-link to="/">Eixos</router-link><br />
+							<figure class="axis-container is-flex flex-bottom"><img :src="axes.find(axis => axis.id === filters['axis']).image" class="flex-bottom"></img></figure>
+							<div class="flex-bottom">
+								<router-link to="/" class="has-text-grey">Eixos</router-link><br />
 								<h1 class="subtitle"><span class="has-text-success">{{ axes.find(axis => axis.id === filters['axis']).name }}</span></h1>
 							</div>
 						</div>
 					</template>
 					<template v-if="view === 'actions'">
 						<div class="is-flex">
-							<figure class="image is-128x128"><img :src="axes.find(axis => axis.id === filters['axis']).image"></img></figure>
-							<div style="align-self: flex-end; padding-bottom: 1rem;">
-								<router-link to="/">Eixos</router-link> / <router-link :to="'/eixo/' + axes.find(axis => axis.id === filters['axis']).alias" class="has-text-success">{{ axes.find(axis => axis.id === filters['axis']).name }}</router-link><br />
+							<figure class="axis-container is-flex flex-bottom"><img :src="axes.find(axis => axis.id === filters['axis']).image" class="flex-bottom"></img></figure>
+							<div class="flex-bottom">
+								<router-link to="/" class="has-text-grey">Eixos</router-link> / <router-link :to="'/eixo/' + axes.find(axis => axis.id === filters['axis']).alias" class="has-text-success">{{ axes.find(axis => axis.id === filters['axis']).name }}</router-link><br />
 								<h1 class="subtitle"><span class="has-text-warning">{{ programs.find(program => program.id === filters['program']).name }}</span></h1>
 							</div>
 						</div>
 					</template>
 				</div>
 				<div class="column is-flex is-hidden-mobile">
-					<h1 class="subtitle" style="align-self: flex-end; padding-bottom: 1rem;">Indicadores</h1>
+					<h1 class="subtitle flex-bottom">Indicadores</h1>
 				</div>
 			</div>
 			<div class="columns">
@@ -178,6 +178,16 @@
 
 .view-button {
 	cursor: pointer;
+}
+
+.axis-container {
+	max-width: 96px;
+	max-height: 96px;
+	margin-right: 1rem;
+}
+
+.flex-bottom {
+	align-self: flex-end;
 }
 
 </style>
