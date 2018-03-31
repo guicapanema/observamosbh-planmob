@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<img src="/img/contato.jpg" style="margin-bottom: -10px"></img>
+	<img src="/img/contato.jpg" style="margin-bottom: -10px" class="top-image"></img>
 
 	<section class="section notification is-light is-marginless has-border-ripped">
 		<div class="container">

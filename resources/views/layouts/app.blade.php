@@ -59,12 +59,12 @@
 						{{ Request::is('plano*') || Request::is('indicadores*') ? "navbar-brand-danger" : "" }}" href="/">
 				<strong>#</strong>OBSERVAMOS<strong>BH</strong>
 			</span>
-			<a class="navbar-item share-icon is-hidden-desktop" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH! https://mobilidadebh.org">
+			<a class="navbar-item share-icon is-hidden-desktop" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH! https://mobilidadebh.org" target="_blank">
 				<span class="icon">
 					<i class="fab fa-twitter"></i>
 				</span>
 			</a>
-			<a class="navbar-item share-icon is-hidden-desktop" onclick="shareFacebook(event)" href="https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=https://mobilidadebh.org&redirect_uri=https://mobilidadebh.org">
+			<a class="navbar-item share-icon is-hidden-desktop" onclick="shareFacebook(event)" href="https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=https://mobilidadebh.org&redirect_uri=https://mobilidadebh.org" target="_blank">
 				<span class="icon">
 					<i class="fab fa-facebook"></i>
 				</span>
@@ -169,7 +169,7 @@
 		});
 
 		var shareFacebook = function(event) {
-			var win = window.open('https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=' + encodeURIComponent(window.location.href) + '&redirect_uri=' + encodeURIComponent(window.location.href), '_self');
+			var win = window.open('https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=' + encodeURIComponent(window.location.href) + '&redirect_uri=' + encodeURIComponent(window.location.href), '_blank');
 			if(win !== null && typeof(win) !== 'undefined') {
 				event.preventDefault();
 				win.focus();
