@@ -244,3 +244,31 @@ article.is-bordered-warning {
 .top-image {
 	width: 100%;
 }
+
+/* Tooltip styles */
+
+.tippy-tooltip.green-theme {
+  background-color: $success;
+  padding: 1em;
+  opacity: 1;
+  color: white;
+}
+
+.tippy-tooltip.green-theme .tippy-backdrop {
+  background-color: $success;
+  opacity: 1;
+}
+
+.tooltip-content {
+	color: white;
+	text-align: left;
+}
+
+.tooltip-content ul {
+	list-style-type: none;
+	margin-left: 1em;
+	& li:before {
+		padding-right: 8px;
+		content: '>';
+	}
+}

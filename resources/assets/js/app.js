@@ -5,10 +5,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 require('./removeAccents');
+window.$ = require("jquery");
 window.ImageMap = require('image-map/image-map.js');
 window.ClipboardJS = require('clipboard/dist/clipboard.js');
+window.tippy = require('tippy.js');
 
 
 window.Vue = require('vue');
@@ -67,3 +70,13 @@ const router = new VueRouter({
 const app = new Vue({
 	router
 }).$mount('#app')
+
+window.hoverEixo = function(eixo) {
+	console.debug(coords);
+	if(!eixo) {
+		$('#eixos-home').attr('src', '/img/eixos.png');
+	} else {
+		var coords = $('#' + eixo).attr('coords');
+		$('#eixos-home').attr('src', '/img/eixos-' + eixo + '.png');
+	}
+}

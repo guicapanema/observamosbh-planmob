@@ -25,7 +25,7 @@
 					<p>O PlanMob-BH, foi desenvolvido entre 2007 e 2010. Ele trouxe o desafio de mudança de paradigma em direção à mobilidade urbana sustentável. O PlanMob-BH foi finalizado em agosto de 2010 e apresentado à sociedade em julho de 2011. Com objetivo de melhorar seu conteúdo e conectá-lo ao Plano Diretor, ele foi revisto na IV Conferência de Política Urbana. Com as diretrizes estabelecidas nesse processo, o Plano passou por uma revisão técnica em 2016, no âmbito do Observatório da Mobilidade Urbana. A partir daí, o Plano passou a ter  oito eixos, 23 programas, 175 medidas, metas claras para melhoria da mobilidade e diversos indicadores para acompanhar sua execução para a gestão da demanda e melhoria da oferta, distribuídos em três horizontes temporais (2020, 2025 e 2030).</p>
 				</div>
 			</div>
-			{{-- <div class="columns is-vcentered">
+			<div class="columns is-vcentered">
 				<div class="column is-one-fifth is-offset-one-fifth">
 					<div class="notification is-success has-text-centered">
 						<span class="subtitle has-text-weight-bold">Eixos</span>
@@ -41,25 +41,24 @@
 						<span class="subtitle has-text-weight-bold">Ações</span>
 					</div>
 				</div>
-			</div> --}}
+			</div>
 		</div>
 	</section>
 
 	<section class="section notification is-white is-marginless has-border-ripped">
 		<div class="container content">
 			<h1 class="title has-text-weight-bold has-text-centered">Os eixos da mobilidade em Belo Horizonte</h1>
-			<div id="eixos" onmouseover="ImageMap('img[usemap]')">
-				<img id="eixos-pb" src="/img/eixos.png"></img>
-				<img id="eixos-cor" src="/img/eixos-cor.png" usemap="#mapa-eixos"></img>
+			<div id="eixos">
+				<img id="eixos-home" src="/img/eixos.png" usemap="#mapa-eixos"></img>
 				<map name="mapa-eixos">
-					<area shape="rect" coords="114,50,393,205" href="/plano/eixo/cidade-sustentavel" alt="Cidade Sustentável">
-					<area shape="rect" coords="400,60,660,250" href="/plano/eixo/mobilidade-coletiva" alt="Mobilidade Coletiva">
-					<area shape="rect" coords="0,220,200,470" href="/plano/eixo/individual-motorizada" alt="Mobilidade Individual Motorizada">
-					<area shape="rect" coords="240,250,420,450" href="/plano/eixo/logistica-urbana" alt="Logística Urbana">
-					<area shape="rect" coords="660,250,815,460" href="/plano/eixo/mobilidade-ativa" alt="Mobilidade Ativa">
-					<area shape="rect" coords="770,10,950,210" href="/plano/eixo/fiscalizacao-operacao" alt="Fiscalização e Operação">
-					<area shape="rect" coords="830,300,1010,460" href="/plano/eixo/acessibilidade-universal" alt="Acessibilidade Universal">
-					<area shape="rect" coords="960,70,1140,340" href="/plano/eixo/circulacao-calma" alt="Circulação Calma">
+					<area id="cidade-sustentavel" title="CIDADE SUSTENTÁVEL" shape="rect" coords="285,53,430,204" href="/plano/eixo/cidade-sustentavel" alt="Cidade Sustentável" onmouseover="hoverEixo('cidade-sustentavel')" onmouseout="hoverEixo()">
+					<area id="mobilidade-coletiva" title="MOBILIDADE COLETIVA" shape="rect" coords="430,133,697,249" href="/plano/eixo/mobilidade-coletiva" alt="Mobilidade Coletiva" onmouseover="hoverEixo('mobilidade-coletiva')" onmouseout="hoverEixo()">
+					<area id="individual-motorizada" title="INDIVIDUAL MOTORIZADA" shape="rect" coords="16,220,216,301" href="/plano/eixo/individual-motorizada" alt="Mobilidade Individual Motorizada" onmouseover="hoverEixo('individual-motorizada')" onmouseout="hoverEixo()">
+					<area id="logistica-urbana" title="LOGÍSTICA URBANA" shape="rect" coords="252,259,450,375" href="/plano/eixo/logistica-urbana" alt="Logística Urbana" onmouseover="hoverEixo('logistica-urbana')" onmouseout="hoverEixo()">
+					<area id="mobilidade-ativa" title="MOBILIDADE ATIVA" shape="rect" coords="715,220,844,355" href="/plano/eixo/mobilidade-ativa" alt="Mobilidade Ativa" onmouseover="hoverEixo('mobilidade-ativa')" onmouseout="hoverEixo()">
+					<area id="fiscalizacao-operacao" title="FISCALIZAÇÃO E OPERAÇÃO" shape="rect" coords="839,50,936,203" href="/plano/eixo/fiscalizacao-operacao" alt="Fiscalização e Operação" onmouseover="hoverEixo('fiscalizacao-operacao')" onmouseout="hoverEixo()">
+					<area id="acessibilidade-universal" title="ACESSIBILIDADE UNIVERSAL" shape="rect" coords="915,300,1015,415" href="/plano/eixo/acessibilidade-universal" alt="Acessibilidade Universal" onmouseover="hoverEixo('acessibilidade-universal')" onmouseout="hoverEixo()">
+					<area id="circulacao-calma" title="CIRCULAÇÃO CALMA" shape="rect" coords="1008,111,1185,333" href="/plano/eixo/circulacao-calma" alt="Circulação Calma" onmouseover="hoverEixo('circulacao-calma')" onmouseout="hoverEixo()">
 				</map>
 			</div>
 		</div>
@@ -104,4 +103,37 @@
 			</div>
 		</div>
 	</section>
+
+	<div id="tooltip-cidade-sustentavel-eixo" style="display: none">
+
+	</div>
+
+	<div id="tooltip-cidade-sustentavel-programas" style="display: none">
+		<div class="content tooltip-content">
+			<h4 class="has-text-white has-text-weight-bold">CIDADE SUSTENTÁVEL</h4>
+			<h6 class="has-text-white has-text-weight-bold">Programas:</h6>
+			<ul>
+				<li><a href="/plano/eixo/cidade-sustentavel" class="has-text-white">Programa 1</a></li>
+				<li><a href="/plano/eixo/cidade-sustentavel" class="has-text-white">Programa 2</a></li>
+			</ul>
+		</div>
+	</div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+	ImageMap('img[usemap]');
+
+	tippy('area', {
+		theme: 'green',
+		placement: 'top-start',
+		onShow(instance) {
+			var offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
+			offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
+			var offset = offsetArray.join(',');
+			instance.options.offset = offset;
+		}
+	});
+
+</script>
 @endsection
