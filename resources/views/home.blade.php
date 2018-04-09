@@ -86,39 +86,26 @@
 
 @section('scripts')
 <script type="text/javascript">
-	// ImageMap('img[usemap]');
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+        $('<img/>')[0].src = this;
+        // Alternatively you could use:
+        // (new Image()).src = this;
+    });
+}
 
+// Usage:
 
-
-	// const eixosTippy = tippy('area', {
-	// 	theme: 'success',
-	// 	placement: 'top-start',
-	// 	onShow(instance) {
-	// 		var offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-	// 		offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
-	// 		var offset = offsetArray.join(',');
-	// 		instance.options.offset = offset;
-	// 	}
-	// });
-
-	// var originalTitle = '';
-	// const programasTippy = tippy('area', {
-	// 	theme: 'warning',
-	// 	placement: 'top-start',
-	// 	interactive: true,
-	// 	dynamicTitle: true,
-	// 	onShow(instance) {
-	// 		var offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-	// 		offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
-	// 		var offset = offsetArray.join(',');
-	// 		instance.options.offset = offset;
-	// 		originalTitle = instance.reference.getAttribute('data-original-title');
-	// 		instance.reference.setAttribute('title', '<div class="content tooltip-content"><h4 class="has-text-white has-text-weight-bold">CIDADE SUSTENTÁVEL</h4><h6 class="has-text-white has-text-weight-bold">Programas:</h6><ul><li><a href="/plano/eixo/cidade-sustentavel" class="has-text-white">Programa 1</a></li><li><a href="/plano/eixo/cidade-sustentavel" class="has-text-white">Programa 2</a></li></ul></div>');
-	// 	},
-	// 	onHide(instance) {
-	// 		instance.reference.setAttribute('title', originalTitle);
-	// 	}
-	// });
+preload([
+	'/img/eixos-acessibilidade-universal.png',
+	'/img/eixos-cidade-sustentavel.png',
+	'/img/eixos-circulacao-calma.png',
+	'/img/eixos-fiscalizacao-operacao.png',
+	'/img/eixos-individual-motorizada.png',
+	'/img/eixos-logistica-urbana.png',
+	'/img/eixos-mobilidade-ativa.png',
+	'/img/eixos-mobilidade-coletiva.png',
+]);
 
 </script>
 @endsection
