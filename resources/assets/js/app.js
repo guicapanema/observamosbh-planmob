@@ -37,6 +37,7 @@ Vue.component('planmob-list', require('./components/PlanMobList.vue'));
 Vue.component('item-card', require('./components/ItemCard.vue'));
 Vue.component('filters-menu', require('./components/FiltersMenu.vue'));
 Vue.component('nav-menu', require('./components/NavMenu.vue'));
+Vue.component('home-axes', require('./components/HomeAxes.vue'));
 
 const routes = [
 	{
@@ -70,13 +71,3 @@ const router = new VueRouter({
 const app = new Vue({
 	router
 }).$mount('#app')
-
-window.hoverEixo = function(eixo) {
-	console.debug(coords);
-	if(!eixo) {
-		$('#eixos-home').attr('src', '/img/eixos.png');
-	} else {
-		var coords = $('#' + eixo).attr('coords');
-		$('#eixos-home').attr('src', '/img/eixos-' + eixo + '.png');
-	}
-}

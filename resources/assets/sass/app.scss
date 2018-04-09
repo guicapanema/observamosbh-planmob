@@ -158,6 +158,11 @@ img.is-rotated-180 {
 	margin-top: 1rem !important;
 }
 
+.has-margin-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 img.ficha {
 	width: 80%;
 }
@@ -247,15 +252,39 @@ article.is-bordered-warning {
 
 /* Tooltip styles */
 
-.tippy-tooltip.green-theme {
+.tippy-tooltip.success-theme {
   background-color: $success;
   padding: 1em;
   opacity: 1;
   color: white;
 }
 
-.tippy-tooltip.green-theme .tippy-backdrop {
+.tippy-tooltip.success-theme .tippy-backdrop {
   background-color: $success;
+  opacity: 1;
+}
+
+.tippy-tooltip.warning-theme {
+  background-color: $warning;
+  padding: 1em;
+  opacity: 1;
+  color: white;
+}
+
+.tippy-tooltip.warning-theme .tippy-backdrop {
+  background-color: $warning;
+  opacity: 1;
+}
+
+.tippy-tooltip.danger-theme {
+  background-color: $danger;
+  padding: 1em;
+  opacity: 1;
+  color: white;
+}
+
+.tippy-tooltip.danger-theme .tippy-backdrop {
+  background-color: $danger;
   opacity: 1;
 }
 
