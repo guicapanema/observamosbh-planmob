@@ -59,7 +59,7 @@
 						{{ Request::is('plano*') || Request::is('indicadores*') ? "navbar-brand-danger" : "" }}" href="/">
 				<strong>#</strong>OBSERVAMOS<strong>BH</strong>
 			</span>
-			<a class="navbar-item share-icon is-hidden-desktop" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH! https://mobilidadebh.org" target="_blank">
+			<a class="navbar-item share-icon is-hidden-desktop" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça%2C compreenda e avalie o Plano de Mobilidade Urbana de BH - %E2%80%8B%23PlanMobBH!%20%0Ahttps%3A%2F%2Fmobilidadebh.org%2F%0AVia %40nossabh" target="_blank">
 				<span class="icon">
 					<i class="fab fa-twitter"></i>
 				</span>
@@ -101,7 +101,7 @@
 			</div>
 
 			<div class="navbar-end">
-				<a class="navbar-item" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH!">
+				<a class="navbar-item" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça%2C compreenda e avalie o Plano de Mobilidade Urbana de BH - %E2%80%8B%23PlanMobBH!%20%0Ahttps%3A%2F%2Fmobilidadebh.org%2F%0AVia %40nossabh">
 					<span class="icon">
 						<i class="fab fa-twitter"></i>
 					</span>
@@ -187,8 +187,8 @@
 		});;
 
 		var shareTwitter = function(event) {
-
-			var win = window.open('https://twitter.com/intent/tweet?text=Conheça o PlanMob-BH! ' + encodeURIComponent(window.location.href), '_blank');
+			var text = 'Conheça, compreenda e avalie o Plano de Mobilidade Urbana de BH - ​#PlanMobBH! \n' + window.location.href + '\nVia @nossabh'
+			var win = window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank');
 			if(win !== null && typeof(win) !== 'undefined') {
 				event.preventDefault();
 				win.focus();
