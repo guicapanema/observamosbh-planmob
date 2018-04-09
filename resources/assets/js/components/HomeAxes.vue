@@ -333,15 +333,16 @@
 
 		mounted() {
 			ImageMap('img[usemap]');
-
 			this.axesTippy = tippy('area', {
 				theme: 'success',
 				placement: 'top-start',
 				onShow(instance) {
 					var offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-					offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
-					var offset = offsetArray.join(',');
-					instance.options.offset = offset;
+					if (navigator.userAgent.indexOf("Firefox") > 0) {
+						offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
+						var offset = offsetArray.join(',');
+						instance.options.offset = offset;
+					}
 				}
 			});
 		},
@@ -368,9 +369,11 @@
 						touchHold: true,
 						onShow(instance) {
 							let offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-							offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
-							let offset = offsetArray.join(',');
-							instance.options.offset = offset;
+							if (navigator.userAgent.indexOf("Firefox") > 0) {
+								offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
+								let offset = offsetArray.join(',');
+								instance.options.offset = offset;
+							}
 						}
 					});
 				} else if (view === 'programs') {
@@ -381,9 +384,11 @@
 						dynamicTitle: true,
 						onShow(instance) {
 							let offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-							offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 150;
-							let offset = offsetArray.join(',');
-							instance.options.offset = offset;
+							if (navigator.userAgent.indexOf("Firefox") > 0) {
+								offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 150;
+								let offset = offsetArray.join(',');
+								instance.options.offset = offset;
+							}
 							instance.reference.setAttribute('previousTitle', instance.reference.getAttribute('data-original-title'));
 							let tooltipHtml = document.getElementById('tooltip-' + instance.reference.id + '-programas').innerHTML;
 							instance.reference.setAttribute('title', tooltipHtml);
@@ -399,9 +404,11 @@
 							dynamicTitle: true,
 							onShow(instance) {
 								let offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-								offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
-								let offset = offsetArray.join(',');
-								instance.options.offset = offset;
+								if (navigator.userAgent.indexOf("Firefox") > 0) {
+									offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
+									let offset = offsetArray.join(',');
+									instance.options.offset = offset;
+								}
 								instance.reference.setAttribute('previousTitle', instance.reference.getAttribute('data-original-title'));
 								let tooltipHtml = document.getElementById('tooltip-' + instance.reference.id + '-acoes').innerHTML;
 								instance.reference.setAttribute('title', tooltipHtml);
