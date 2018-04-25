@@ -103,7 +103,7 @@
 						<div class="control">
 							<label class="checkbox">
 								<input type="checkbox" name="news" id="news">
-								Gostaria de receber novidades da NossaBH</a>
+								Gostaria de receber novidades do NossaBH</a>
 							</label>
 						</div>
 					</div>

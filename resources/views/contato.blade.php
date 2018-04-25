@@ -9,7 +9,7 @@
 				<div class="column is-one-third">
 					<img src="/img/grafismo-amarelo.png" class="grafismo is-rotated-180"></img>
 					<h2 class="has-text-weight-bold has-margin-top-100">Entre em contato</h2>
-					<p>Qualquer dúvida, envie e-mail para a Nossa BH ou preencha o formulário:</p>
+					<p>Qualquer dúvida, envie e-mail para o Nossa BH ou preencha o formulário:</p>
 					<img src="/img/grafismo-amarelo.png" class="grafismo"></img>
 				</div>
 				<form class="column is-two-thirds" method="POST" action="/contato">
@@ -67,7 +67,7 @@
 					</p>
 					<p>
 						<h4>Gostei da atuação dos movimentos, onde posso encontrar mais informações?</h4>
-						<p>Mande mensagem nos sites e nas páginas de Facebook: <nossabh.org.br>, <bhemciclo.org>, <tarifazerobh.org>, <desvelocidade.red>.</p>
+						<p>Mande mensagem nos sites e nas páginas de Facebook: <a href="http://nossabh.org.br" target="_blank">nossabh.org.br</a>, <a href="http://bhemciclo.org" target="_blank">bhemciclo.org</a>, <a href="http://tarifazerobh.org" target="_blank">tarifazerobh.org</a>, <a href="http://desvelocidades.red" target="_blank">desvelocidades.red</a>.</p>
 					</p>
 					<p>
 						<h4>Tem algo que eu possa fazer sozinho ou tudo depende da Prefeitura?</h4>

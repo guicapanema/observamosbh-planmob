@@ -18,7 +18,7 @@
 				</p>
 			</div>
 			<p class="panel-tabs">
-				<a :class="{'is-active': view === 'modals'}" @click="view = 'modals'">modais</a>
+				<a :class="{'is-active': view === 'modals'}" @click="view = 'modals'">modos</a>
 				<a :class="{'is-active': view === 'tags'}" @click="view = 'tags'">tags</a>
 			</p>
 			<template v-if="view === 'modals'">
@@ -84,7 +84,7 @@
 							<span class="tag">
 								<template v-if="filterName === 'search'">busca</template>
 								<template v-if="filterName === 'tags'">tags</template>
-								<template v-if="filterName === 'modals'">modais</template>
+								<template v-if="filterName === 'modals'">modos</template>
 							</span>
 							<template v-if="filterName === 'search'">
 								<span class="tag is-info">{{filter}}</span>
