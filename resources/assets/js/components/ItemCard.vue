@@ -83,7 +83,7 @@
 				return (this.item.program_id !== null) && (this.item.program_id !== undefined);
 			},
 			isAxis() {
-				return (!this.item.program_id && !this.item.parent_id && !this.item.axis_id);
+				return (!this.item.program_id && !this.item.parent_id && !this.item.axis_id && !this.item.parent_type);
 			},
 			isIndicator() {
 				return (this.item.parent_type !== null) && (this.item.parent_type !== undefined);

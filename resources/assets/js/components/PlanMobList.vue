@@ -77,7 +77,6 @@
 			filteredActions() {
 				return this.actions.filter(action => {
 					let matchSearch = true;
-					let matchProgram = this.filters['program'] ? this.filters['program'] === action.program_id : true;
 					let matchModals = true;
 					let matchTags = true;
 					if(this.filters['search']) {
@@ -101,7 +100,7 @@
 							}
 						});
 					}
-					return matchSearch && matchProgram && matchModals && matchTags;
+					return matchSearch && matchModals && matchTags;
 				});
 			},
 
@@ -139,6 +138,8 @@
 
 				return this.indicators.filter(indicator => {
 					let matchSearch = true;
+					let matchModals = true;
+					let matchTags = true;
 					if(this.filters['search']) {
 						let objeto = JSON.stringify(indicator).toLowerCase();
 						let search = this.filters['search'].toLowerCase().trim();
@@ -146,7 +147,21 @@
 							matchSearch = false;
 						}
 					}
-					return matchSearch;
+					if(this.filters['modals']) {
+						this.filters['modals'].forEach(modal => {
+							if(!indicator.modals || indicator.modals.indexOf(modal) < 0) {
+								matchModals = false;
+							}
+						});
+					}
+					if(this.filters['tags']) {
+						this.filters['tags'].forEach(tag => {
+							if(!indicator.tags || (indicator.tags.indexOf(tag) < 0)) {
+								matchTags = false;
+							}
+						});
+					}
+					return matchSearch && matchModals && matchTags;
 				});
 			},
 

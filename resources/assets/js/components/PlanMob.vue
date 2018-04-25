@@ -1,39 +1,5 @@
 <template>
 	<section class="section">
-
-	<!-- <div class="columns is-mobile">
-		<div class="column is-two-thirds">
-			<nav v-if="!listView" class="breadcrumb" aria-label="breadcrumbs">
-				<ul>
-					<li><router-link to="/">O Plano</router-link></li>
-					<li v-for="breadcrumb of breadcrumbs" class="is-capitalized">
-						<router-link :to="breadcrumb.href">{{breadcrumb.name}}</router-link>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		<div class="column is-one-third">
-			<div class="is-pulled-right">
-				<b-tooltip label="Visão em colunas" type="is-light" position="is-left">
-					<div class="view-button margin-right-100" @click="onChangeView('column')">
-						<b-icon icon="columns" :type="listView ? 'is-dark' : 'is-info'"></b-icon>
-					</div>
-				</b-tooltip>
-				<b-tooltip label="Visão em lista" type="is-light" position="is-left">
-					<div class="view-button" @click="onChangeView('list')">
-						<b-icon icon="list-ul" :type="listView ? 'is-info' : 'is-dark'" ></b-icon>
-					</div>
-				</b-tooltip>
-			</div>
-		</div>
-	</div> -->
-
-	<!-- <div class="columns">
-		<div class="column is-one-fifth">
-			<nav-menu v-if="!listView" :axes="axes" :filters="filters" :programs="programs"></nav-menu>
-			<filters-menu v-if="listView" :filters="filters" :tags="tags"></filters-menu>
-		</div> -->
-
 		<planmob-columns v-if="!listView"
 			:actions="actions"
 			:axes="axes"
@@ -54,8 +20,7 @@
 		</planmob-list>
 
 		<b-loading :active.sync="loading"></b-loading>
-	<!-- </div> -->
-</section>
+	</section>
 </template>
 
 <script>
@@ -107,17 +72,27 @@
 						if(action.tags) {
 							action.tags = action.tags.split('|');
 						}
-						action.modals = action.modals.split('|');
+						if(action.modals) {
+							action.modals = action.modals.split('|');
+						}
 						this.actions.push(action);
 					}
 					for (let axis of axes.data) {
-						axis.tags = axis.tags.split('|');
-						axis.modals = axis.modals.split('|');
+						if(axis.tags) {
+							axis.tags = axis.tags.split('|');
+						}
+						if(axis.modals) {
+							axis.modals = axis.modals.split('|');
+						}
 						this.axes.push(axis);
 					}
 					for (let indicator of indicators.data) {
-						// indicator.tags = indicator.tags.split('|');
-						// indicator.modals = indicator.modals.split('|');
+						if(indicator.tags) {
+							indicator.tags = indicator.tags.split('|');
+						}
+						if(indicator.modals) {
+							indicator.modals = indicator.modals.split('|');
+						}
 						this.indicators.push(indicator);
 					}
 					for (let program of programs.data) {
