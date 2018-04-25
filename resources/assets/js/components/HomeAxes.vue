@@ -4,23 +4,30 @@
 			<a :class="{'button': true,
 						'is-large': true,
 						'is-success': true,
+						'has-text-weight-bold': true,
+						'is-outlined': homeView !== 'axes',
 						'is-focused': homeView === 'axes'}"
 				@click="switchView('axes')">Eixos</a>
 			<a :class="{'button': true,
 						'is-large': true,
 						'is-warning': true,
+						'has-text-weight-bold': true,
+						'is-outlined': homeView !== 'programs',
 						'is-focused': homeView === 'programs'}"
 				@click="switchView('programs')">Programas</a>
 			<a :class="{'button': true,
 						'is-large': true,
 						'is-danger': true,
+						'has-text-weight-bold': true,
+						'is-outlined': homeView !== 'actions',
 						'is-focused': homeView === 'actions'}"
 				@click="switchView('actions')">Ações</a>
 		</div>
 
 		<h1 class="title has-text-weight-bold has-text-centered">Os eixos da mobilidade em Belo Horizonte</h1>
-		<h6 v-if="homeView === 'programs'" class="title has-text-centered">NAVEGUE PELOS EIXOS E DESCUBRA OS PROGRAMAS DE CADA UM</h6>
-		<h6 v-if="homeView === 'actions'" class="title has-text-centered">AÇÕES POR EIXOS</h6>
+		<h6 v-if="homeView === 'axes'" class="title has-text-centered has-text-weight-normal is-uppercase">Passe o cursor pelos desenhos para conhecer os 8 eixos do PlanMob</h6>
+		<h6 v-if="homeView === 'programs'" class="title has-text-centered has-text-weight-normal is-uppercase">Passe o cursor pelos desenhos para conhecer os programas de cada eixo</h6>
+		<h6 v-if="homeView === 'actions'" class="title has-text-centered has-text-weight-normal is-uppercase">Passe o cursor pelos desenhos para conhecer as ações por eixo</h6>
 
 		<div id="eixos">
 			<img id="eixos-home" src="/img/eixos.png" usemap="#mapa-eixos"></img>
@@ -35,38 +42,44 @@
 				<area id="circulacao-calma" title="CIRCULAÇÃO CALMA" shape="rect" coords="1008,111,1185,333" href="/plano/eixo/circulacao-calma" alt="Circulação Calma" @mouseover="hoverAxis('circulacao-calma')" @mouseout="hoverAxis()">
 			</map>
 		</div>
-		<div v-if="homeView === 'actions'" class="columns">
-			<div class="column is-flex has-text-danger action-count">
-				<div class="has-text-centered has-text-weight-bold">
-					<h1 class="is-marginless has-text-danger">65</h1>
-					<small>AÇÕES</small>
-				</div>
-				<img src="/img/grafismo-home.png"></img>
-				<div class="has-text-black">permanentes</div>
+		<div>
+			<!-- The div above stops Vue from redrawing the imagemap when rendering the actions description and screwing up the tooltips / responsive imagemap -->
+			<div v-if="homeView === 'actions'" class="content has-text-centered">
+				<h3>Total de ações do PlanMob</h3>
 			</div>
-			<div class="column is-flex has-text-danger action-count">
-				<div class="has-text-centered has-text-weight-bold">
-					<h1 class="is-marginless has-text-danger">74</h1>
-					<small>AÇÕES</small>
+			<div v-if="homeView === 'actions'" class="columns">
+				<div class="column is-flex has-text-danger action-count">
+					<div class="has-text-centered has-text-weight-bold">
+						<h1 class="is-marginless has-text-danger">65</h1>
+						<small>AÇÕES</small>
+					</div>
+					<img src="/img/grafismo-home.png"></img>
+					<div class="has-text-black">permanentes</div>
 				</div>
-				<img src="/img/grafismo-home.png"></img>
-				<div class="has-text-black">Curto<br />Prazo<br />[2020]</div>
-			</div>
-			<div class="column is-flex has-text-danger action-count">
-				<div class="has-text-centered has-text-weight-bold">
-					<h1 class="is-marginless has-text-danger">28</h1>
-					<small>AÇÕES</small>
+				<div class="column is-flex has-text-danger action-count">
+					<div class="has-text-centered has-text-weight-bold">
+						<h1 class="is-marginless has-text-danger">74</h1>
+						<small>AÇÕES</small>
+					</div>
+					<img src="/img/grafismo-home.png"></img>
+					<div class="has-text-black">Curto<br />Prazo<br />[2020]</div>
 				</div>
-				<img src="/img/grafismo-home.png"></img>
-				<div class="has-text-black">Médio<br />Prazo<br />[2025]</div>
-			</div>
-			<div class="column is-flex has-text-danger action-count">
-				<div class="has-text-centered has-text-weight-bold">
-					<h1 class="is-marginless has-text-danger">08</h1>
-					<small>AÇÕES</small>
+				<div class="column is-flex has-text-danger action-count">
+					<div class="has-text-centered has-text-weight-bold">
+						<h1 class="is-marginless has-text-danger">28</h1>
+						<small>AÇÕES</small>
+					</div>
+					<img src="/img/grafismo-home.png"></img>
+					<div class="has-text-black">Médio<br />Prazo<br />[2025]</div>
 				</div>
-				<img src="/img/grafismo-home.png"></img>
-				<div class="has-text-black">Longo<br />Prazo<br />[2030]</div>
+				<div class="column is-flex has-text-danger action-count">
+					<div class="has-text-centered has-text-weight-bold">
+						<h1 class="is-marginless has-text-danger">08</h1>
+						<small>AÇÕES</small>
+					</div>
+					<img src="/img/grafismo-home.png"></img>
+					<div class="has-text-black">Longo<br />Prazo<br />[2030]</div>
+				</div>
 			</div>
 		</div>
 
@@ -336,14 +349,7 @@
 			this.axesTippy = tippy('area', {
 				theme: 'success',
 				placement: 'top-start',
-				onShow(instance) {
-					var offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-					if (navigator.userAgent.indexOf("Firefox") > 0) {
-						offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
-						var offset = offsetArray.join(',');
-						instance.options.offset = offset;
-					}
-				}
+				followCursor: true
 			});
 		},
 
@@ -358,37 +364,33 @@
 
 			switchView (view) {
 				this.homeView = view;
-				if (this.actionsTippy) this.actionsTippy.destroyAll();
-				if (this.axesTippy) this.axesTippy.destroyAll();
-				if (this.programsTippy) this.programsTippy.destroyAll();
+				if (this.actionsTippy) {
+					this.actionsTippy.destroyAll();
+					this.actionsTippy = null;
+				}
+				if (this.axesTippy) {
+					this.axesTippy.destroyAll();
+					this.axesTippy = null;
+				}
+				if (this.programsTippy) {
+					this.programsTippy.destroyAll();
+					this.programsTippy = null;
+				}
 
-				if(view === 'axes') {
+				if (view === 'axes') {
 					this.axesTippy = tippy('area', {
 						theme: 'success',
 						placement: 'top-start',
-						touchHold: true,
-						onShow(instance) {
-							let offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-							if (navigator.userAgent.indexOf("Firefox") > 0) {
-								offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
-								let offset = offsetArray.join(',');
-								instance.options.offset = offset;
-							}
-						}
+						followCursor: true
 					});
 				} else if (view === 'programs') {
 					this.programsTippy = tippy('area', {
 						theme: 'warning',
 						placement: 'top-start',
 						interactive: true,
+						followCursor: true,
 						dynamicTitle: true,
 						onShow(instance) {
-							let offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-							if (navigator.userAgent.indexOf("Firefox") > 0) {
-								offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 150;
-								let offset = offsetArray.join(',');
-								instance.options.offset = offset;
-							}
 							instance.reference.setAttribute('previousTitle', instance.reference.getAttribute('data-original-title'));
 							let tooltipHtml = document.getElementById('tooltip-' + instance.reference.id + '-programas').innerHTML;
 							instance.reference.setAttribute('title', tooltipHtml);
@@ -398,25 +400,20 @@
 						}
 					});
 				} else if (view === 'actions') {
-						this.actionsTippy = tippy('area', {
-							theme: 'danger',
-							placement: 'top-start',
-							dynamicTitle: true,
-							onShow(instance) {
-								let offsetArray = $('#' + instance.reference.id).attr('coords').split(',').slice(0,2);
-								if (navigator.userAgent.indexOf("Firefox") > 0) {
-									offsetArray[1] = Number(offsetArray[1]) - instance.reference.clientHeight - 80;
-									let offset = offsetArray.join(',');
-									instance.options.offset = offset;
-								}
-								instance.reference.setAttribute('previousTitle', instance.reference.getAttribute('data-original-title'));
-								let tooltipHtml = document.getElementById('tooltip-' + instance.reference.id + '-acoes').innerHTML;
-								instance.reference.setAttribute('title', tooltipHtml);
-							},
-							onHide(instance) {
-								instance.reference.setAttribute('title', instance.reference.getAttribute('previousTitle'));
-							}
-						});
+					this.actionsTippy = tippy('area', {
+						theme: 'danger',
+						placement: 'top-start',
+						followCursor: true,
+						dynamicTitle: true,
+						onShow(instance) {
+							instance.reference.setAttribute('previousTitle', instance.reference.getAttribute('data-original-title'));
+							let tooltipHtml = document.getElementById('tooltip-' + instance.reference.id + '-acoes').innerHTML;
+							instance.reference.setAttribute('title', tooltipHtml);
+						},
+						onHide(instance) {
+							instance.reference.setAttribute('title', instance.reference.getAttribute('previousTitle'));
+						}
+					});
 				}
 			}
 		}
