@@ -123,6 +123,18 @@
 	@yield('content')
 
 	<footer class="footer">
+		<div class="container has-margin-bottom-100">
+			<div class="columns">
+				<div class="column is-one-quarter is-offset-one-quarter has-text-centered">
+					<h5>Realização:</h5>
+					<a href="http://nossabh.org.br/"><img src="/img/nossabh-logo.svg" class="nossabh-logo"></img></a>
+				</div>
+				<div class="column is-one-quarter has-text-centered">
+					<h5>Apoio:</h5><br />
+					<a href="http://climaesociedade.org/"><img src="/img/ics-logo.png" class="ics-logo"></img></a>
+				</div>
+			</div>
+		</div>
 		<div class="container">
 			<div class="content has-text-centered">
 				<p>

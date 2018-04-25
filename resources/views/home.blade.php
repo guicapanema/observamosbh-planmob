@@ -54,34 +54,6 @@
 		</div>
 	</section>
 
-	<section class="section notification is-marginless">
-		<div class="container">
-			<div class="columns">
-				<div class="column is-one-quarter is-offset-one-quarter has-text-centered">
-					<h5>Realização:</h5>
-					<img src="/img/nossabh-logo.svg" class="nossabh-logo"></img>
-				</div>
-				<div class="column is-one-quarter has-text-centered">
-					<h5>Apoio:</h5><br />
-					<img src="/img/ics-logo.png" class="ics-logo"></img>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
-	<div id="tooltip-cidade-sustentavel-programas" style="display: none">
-		<div class="content tooltip-content">
-			<h4 class="has-text-white has-text-weight-bold">CIDADE SUSTENTÁVEL</h4>
-			<h6 class="has-text-white has-text-weight-bold">Programas:</h6>
-			<ul>
-				<li><a href="/plano/eixo/cidade-sustentavel" class="has-text-white">Programa 1</a></li>
-				<li><a href="/plano/eixo/cidade-sustentavel" class="has-text-white">Programa 2</a></li>
-			</ul>
-		</div>
-	</div>
-
-
 @endsection
 
 @section('scripts')
