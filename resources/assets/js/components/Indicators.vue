@@ -10,7 +10,7 @@
 						</h3>
 
 						<p class="control has-icons-left">
-							<input class="input is-small" type="text" placeholder="buscar" v-model="search.indicator">
+							<input class="input is-small" type="text" placeholder="buscar" v-model="search.indicator_left">
 							<span class="icon is-small is-left">
 								<i class="fas fa-search" aria-hidden="true"></i>
 							</span>
@@ -66,7 +66,7 @@
 						</h3>
 
 						<p class="control has-icons-left">
-							<input class="input is-small" type="text" placeholder="buscar" v-model="search.indicator2">
+							<input class="input is-small" type="text" placeholder="buscar" v-model="search.indicator_right">
 							<span class="icon is-small is-left">
 								<i class="fas fa-search" aria-hidden="true"></i>
 							</span>
