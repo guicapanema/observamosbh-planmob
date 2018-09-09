@@ -30,6 +30,7 @@ Vue.use(Buefy, {
  */
 
 Vue.component('chart', require('./components/Chart.vue'));
+Vue.component('chart-new', require('./components/ChartNew.vue'));
 Vue.component('chart-wrapper', require('./components/ChartWrapper.vue'));
 const planmob = Vue.component('planmob', require('./components/PlanMob.vue'));
 Vue.component('planmob-columns', require('./components/PlanMobColumns.vue'));
@@ -38,6 +39,7 @@ Vue.component('item-card', require('./components/ItemCard.vue'));
 Vue.component('filters-menu', require('./components/FiltersMenu.vue'));
 Vue.component('nav-menu', require('./components/NavMenu.vue'));
 Vue.component('home-axes', require('./components/HomeAxes.vue'));
+Vue.component('indicators', require('./components/Indicators.vue'));
 
 const routes = [
 	{

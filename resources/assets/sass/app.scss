@@ -171,7 +171,7 @@ img.ficha {
 	width: 80%;
 }
 
-article.is-bordered-danger {
+.is-bordered-danger {
 	border: 2px solid $danger !important;
 	box-shadow: none;
 
@@ -181,7 +181,7 @@ article.is-bordered-danger {
 	}
 }
 
-article.is-bordered-info {
+.is-bordered-info {
 	border: 2px solid $info !important;
 	box-shadow: none;
 
@@ -191,7 +191,7 @@ article.is-bordered-info {
 	}
 }
 
-article.is-bordered-success {
+.is-bordered-success {
 	border: 2px solid $success !important;
 	box-shadow: none;
 
@@ -201,7 +201,7 @@ article.is-bordered-success {
 	}
 }
 
-article.is-bordered-warning {
+.is-bordered-warning {
 	border: 2px solid $warning !important;
 	box-shadow: none;
 
@@ -303,5 +303,25 @@ article.is-bordered-warning {
 	& li:before {
 		padding-right: 8px;
 		content: '>';
+	}
+}
+
+.indicator-control {
+	& .header {
+		padding: 1.25rem 1.25rem 0.5rem;
+
+		& .title {
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	& .body {
+		height: 250px;
+		overflow-y: auto;
+		padding: 0.5rem 1.25rem;
+
+		& .item {
+			margin: 0.5rem 0;
+		}
 	}
 }

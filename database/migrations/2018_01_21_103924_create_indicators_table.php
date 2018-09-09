@@ -21,6 +21,7 @@ class CreateIndicatorsTable extends Migration
 			$table->string('alias');
 			$table->text('description')->nullable();
 			$table->text('formula')->nullable();
+			$table->string('unit')->nullable();
 			$table->string('modals', 256)->nullable();
 			$table->string('tags', 256)->nullable();
 			$table->string('target_short')->nullable();
