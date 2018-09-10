@@ -92,7 +92,8 @@
 				<chart-new
 					:labels="selected.years"
 					:datasets_left="getDatasetsLeft"
-					:datasets_right="getDatasetsRight">
+					:datasets_right="getDatasetsRight"
+					:display_legend="true">
 				</chart-new>
 			</div>
 		</div>

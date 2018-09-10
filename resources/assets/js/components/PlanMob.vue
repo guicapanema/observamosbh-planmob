@@ -19,6 +19,8 @@
 			@column="onChangeView('axes')">
 		</planmob-list>
 
+		<!-- <indicators></indicators> -->
+
 		<b-loading :active.sync="loading"></b-loading>
 	</section>
 </template>
@@ -136,10 +138,9 @@
 			parsePath() {
 				this.filters = {};
 				this.view = 'axes';
-				this.listView = false;
 
-				if(this.$route.path === '/busca') {
-					this.listView = true;
+				if (this.$route.path === '/busca') {
+					this.view = 'list';
 					if(this.$route.query['tag']) {
 						if(typeof this.$route.query['tag'] === 'string') {
 							Vue.set(this.filters, 'tags', [this.$route.query['tag']]);
@@ -158,8 +159,12 @@
 						Vue.set(this.filters, 'search', this.$route.query['search']);
 					}
 
-				} else {
-					if(this.$route.params['eixo']) {
+				}
+				else  {
+					if (this.$route.params['indicador']) {
+						this.view = 'indicator';
+					}
+					if (this.$route.params['eixo']) {
 						let index = this.axes.findIndex(axis => {
 							return axis.alias === this.$route.params['eixo'];
 						});
@@ -178,7 +183,6 @@
 						}
 					}
 				}
-
 			}
 
 		},

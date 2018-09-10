@@ -40,6 +40,7 @@ Vue.component('filters-menu', require('./components/FiltersMenu.vue'));
 Vue.component('nav-menu', require('./components/NavMenu.vue'));
 Vue.component('home-axes', require('./components/HomeAxes.vue'));
 Vue.component('indicators', require('./components/Indicators.vue'));
+Vue.component('indicator-card', require('./components/IndicatorCard.vue'));
 
 const routes = [
 	{
@@ -59,6 +60,10 @@ const routes = [
 					component: planmob
 					}
 				]
+			},
+			{
+				path: 'indicador/:indicador',
+				component: planmob,
 			}
 		]
   	}

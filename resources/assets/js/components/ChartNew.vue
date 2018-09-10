@@ -4,11 +4,7 @@
 
 		extends: Line,
 
-		props: ['datasets_left', 'datasets_right', 'labels'],
-
-		data: () => ({
-			htmlLegend: null
-		}),
+		props: ['datasets_left', 'datasets_right', 'labels', 'display_legend'],
 
 		mounted () {
 			this.parseInputData();
@@ -90,7 +86,7 @@
 						yAxes: yAxes
 					},
 					legend: {
-						display: true,
+						display: this.display_legend,
 						position: 'bottom',
 						labels: {
 							boxWidth: 20,

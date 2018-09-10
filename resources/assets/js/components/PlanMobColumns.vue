@@ -51,29 +51,12 @@
 				<div class="column">
 					<h1 class="subtitle is-hidden-tablet">Indicadores</h1>
 
-					<article v-for="indicator of filteredIndicators" class="box is-bordered-info">
-						<!-- <b-tooltip :label="indicator.formula" type="is-light" multilined> -->
-							<div>
-								<div class="columns">
-									<div class="column">
-										<div class="item-title">{{indicator.name}}</div>
-										{{indicator.description}}
-									</div>
-								</div>
-								<div class="columns is-size-7">
-									<div v-if="indicator.target_short" class="column">
-										Curto prazo: {{indicator.target_short}}
-									</div>
-									<div v-if="indicator.target_medium" class="column">
-										Médio prazo: {{indicator.target_medium}}
-									</div>
-									<div v-if="indicator.target_long" class="column">
-										Longo prazo: {{indicator.target_long}}
-									</div>
-								</div>
-							</div>
-						<!-- </b-tooltip> -->
-					</article>
+					<indicator-card
+						v-for="indicator of filteredIndicators"
+						:key="'indicator-' + indicator.id"
+						:indicator="indicator">
+					</indicator-card>
+
 					<div v-if="!filteredIndicators || filteredIndicators.length === 0">Nenhum item corresponde aos filtros.</div>
 				</div>
 			</div>
