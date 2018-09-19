@@ -42,8 +42,8 @@
 
 	<section class="section has-background-striped-danger">
 		<div class="container">
-			<div class="columns content">
-				<div class="column is-8 is-offset-2 notification is-white has-padding-200">
+			<div class="columns is-centered content">
+				<div class="column is-10 notification is-white has-padding-200">
 					<h1 class="has-text-centered">Baixe as fichas-resumo</h1>
 					<p>Para contribuir com a discussão sobre cidades, mobilidade urbana, mudanças climáticas e participação social, o Nossa BH produziu três fichas-resumo:</p>
 					<div class="columns is-mobile">
@@ -58,6 +58,10 @@
 						<div class="column has-text-centered">
 							<a href="http://nossabh.org.br/ficha-3/"><img class="ficha" src="/img/ficha3.png"></img></a>
 							<div><a href="http://nossabh.org.br/ficha-3/">O Plano de Mobilidade de BH como Instrumento de Gestão Ambiental</a></div>
+						</div>
+						<div class="column has-text-centered">
+							<a href="http://nossabh.org.br/ficha-4/"><img class="ficha" src="/img/ficha4.png"></img></a>
+							<div><a href="http://nossabh.org.br/ficha-4/">Como ser observador metropolitano da mobilidade</a></div>
 						</div>
 					</div>
 				</div>
@@ -74,29 +78,33 @@
 					<p>São enviados no máximo 4 e-mails por ano</p>
 					<img src="/img/grafismo-rosa.png" class="grafismo"></img>
 				</div>
-				<form class="column is-two-thirds" method="POST" action="/participe">
+
+				<form class="column is-two-thirds" action="https://mailing.horizontes.info/subscribe" method="POST" accept-charset="utf-8">
 					{{ csrf_field() }}
 					<div class="field">
 						<label class="label">Nome</label>
 						<div class="control has-icons-left">
-							<input class="input{{ $errors->has('name') ? ' is-danger' : '' }}" type="text" name="name" id="name" placeholder="Digite seu nome">
+							<input class="input" type="text" name="name" id="name" placeholder="Digite seu nome" required>
 							<span class="icon is-small is-left">
 								<i class="fas fa-user"></i>
 							</span>
 						</div>
-						@if ($errors->has('name'))<p class="help is-danger">Por favor, digite seu nome</p>@endif
 					</div>
 
 					<div class="field">
 						<label class="label">Email</label>
 						<div class="control has-icons-left ">
-							<input class="input{{ session('success') ? ' is-success' : '' }}{{ $errors->has('email') ? ' is-danger' : '' }}" type="text" name="email" id="email" placeholder="Digite seu e-mail">
+							<input class="input{{ Request::query('success') !== null ? ' is-success' : '' }}" type="text" name="email" id="email" placeholder="Digite seu e-mail" required>
 							<span class="icon is-small is-left">
 								<i class="fas fa-envelope"></i>
 							</span>
 						</div>
-						@if ($errors->has('email'))<p class="help is-danger">Por favor, digite um e-mail válido</p>@endif
-						@if (session('success'))<p class="help is-success">Cadastro realizado com sucesso!</p>@endif
+						@if (Request::query('success') !== null)<p class="help is-success">Cadastro realizado com sucesso!</p>@endif
+					</div>
+
+					<div style="display:none;">
+						<label for="hp">HP</label><br/>
+						<input type="text" name="hp" id="hp"/>
 					</div>
 
 					<div class="field">
@@ -107,6 +115,8 @@
 							</label>
 						</div>
 					</div>
+
+					<input type="hidden" name="list" value="81tAUE7okAjuI9muJ3xt892Q"/>
 
 					<div class="field is-pulled-right">
 						<div class="control">
