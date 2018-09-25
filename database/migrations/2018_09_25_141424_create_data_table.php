@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIndicatorDatasTable extends Migration
+class CreateDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateIndicatorDatasTable extends Migration
      */
     public function up()
     {
-        Schema::create('indicator_datas', function (Blueprint $table) {
+        Schema::create('data', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('indicator_id');
+			$table->morphs('datable');
 			$table->date('date');
 			$table->integer('value');
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateIndicatorDatasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indicator_datas');
+        Schema::dropIfExists('data');
     }
 }

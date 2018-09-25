@@ -4,12 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Indicator extends Model
+class Reference extends Model
 {
-    public function parent() {
-		return $this->morphTo();
-	}
-
 	public function data() {
 		return $this->morphMany(Data::class, 'datable');
 	}

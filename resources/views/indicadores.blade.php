@@ -4,10 +4,6 @@
 	<img src="/img/indicadores.jpg" style="margin-bottom: -10px" class="top-image"></img>
 
 	<div id="app">
-		<section class="section">
-			<indicators></indicators>
-		</section>
-
 		<section class="section notification is-marginless has-border-ripped">
 			<div class="content">
 				<div class="columns">
@@ -16,13 +12,10 @@
 						<p>O uso de indicadores contribui no acompanhamento e monitoramento da execução de planos, políticas e medidas. Ao se valer de um conjunto de indicadores, a sociedade tem a possibilidade de compreender melhor a efetividade dos instrumentos de gestão disponíveis a ela: Plano, políticas, medidas. Além disso, eles podem trazer informações sobre uso de  recursos humanos, financeiros e materiais, sobre o cumprimento de normas, ajudam a analisar  tendências e contribuem, também, com a investigação científica sobre assuntos diversos.</p>
 					</div>
 				</div>
-				<div class="columns">
-					<div class="column is-8 is-offset-2">
-						<chart-wrapper></chart-wrapper>
-					</div>
-				</div>
-			</div>
 
+				<indicators></indicators>
+
+			</div>
 		</section>
 
 		<section class="section notification is-info is-marginless">
