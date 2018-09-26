@@ -126,6 +126,20 @@
 			</div>
 		</div>
 
+		<div class="has-text-centered">
+			<a
+				href=""
+				id="download-button"
+				download="mobilidadebh-grafico.png"
+				class="button is-info is-outlined"
+				@click="onChartDownload()">
+
+				<b-icon icon="download" size="is-small"></b-icon>
+				<span>Baixar gráfico</span>
+
+			</a>
+		</div>
+
 	</div>
 </template>
 
@@ -136,7 +150,7 @@
 			return {
 				indicators: [],
 				references: [],
-				right_view: 'indicator',
+				right_view: 'reference',
 				search: {
 					left_column: '',
 					right_column: '',
@@ -342,6 +356,12 @@
 						this.references = response.data;
 						this.parseYears();
 					});
+			},
+
+			onChartDownload()
+			{
+				let url = document.getElementById('line-chart').toDataURL();
+				document.getElementById('download-button').href = url;
 			},
 
 			parseYears()

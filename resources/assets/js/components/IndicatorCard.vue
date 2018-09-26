@@ -19,7 +19,7 @@
 					class="indicator-chart">
 				</chart-new>
 
-				<div class="columns is-size-7">
+				<div v-else class="columns is-size-7">
 					<div v-if="indicator.target_short" class="column">
 						Curto prazo: {{indicator.target_short}} {{ indicator.unit }}
 					</div>
@@ -50,7 +50,9 @@
 		{
 			this.parseYears();
 
-			this.parseData();
+			if (this.years.length) {
+				this.parseData();
+			}
 		},
 
 		methods:
@@ -67,31 +69,43 @@
 				this.datasets.push(dataset);
 
 				if (this.indicator.target_short) {
+					let data = Array(this.years.length - 1).fill(null);
+					data.push(this.indicator.target_short);
+
 					let target_short_dataset = {
 						label: 'Meta de curto prazo',
-						data: Array(this.years.length).fill(this.indicator.target_short),
-						color: 'hsl(0, 0%, 48%)',
+						data: data,
 						unit: this.indicator.unit,
+						pointBackgroundColor: 'hsl(0, 0%, 48%)',
+						pointRadius: 5,
 					};
 
 					this.datasets.push(target_short_dataset);
 				}
 				if (this.indicator.target_medium) {
+					let data = Array(this.years.length - 1).fill(null);
+					data.push(this.indicator.target_medium);
+
 					let target_medium_dataset = {
 						label: 'Meta de médio prazo',
-						data: Array(this.years.length).fill(this.indicator.target_medium),
-						color: 'hsl(0, 0%, 71%)',
+						data: data,
 						unit: this.indicator.unit,
+						pointBackgroundColor: 'hsl(0, 0%, 71%)',
+						pointRadius: 7,
 					};
 
 					this.datasets.push(target_medium_dataset);
 				}
 				if (this.indicator.target_long) {
+					let data = Array(this.years.length - 1).fill(null);
+					data.push(this.indicator.target_long);
+
 					let target_long_dataset = {
-						label: 'Meta de curto prazo',
-						data: Array(this.years.length).fill(this.indicator.target_long),
-						color: 'hsl(0, 0%, 86%)',
+						label: 'Meta de longo prazo',
+						data: data,
 						unit: this.indicator.unit,
+						pointBackgroundColor: 'hsl(0, 0%, 86%)',
+						pointRadius: 9,
 					};
 
 					this.datasets.push(target_long_dataset);

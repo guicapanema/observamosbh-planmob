@@ -39,6 +39,10 @@
 						newDataset.data = dataset.data;
 						newDataset.yAxisID = 'axis-left';
 
+						newDataset.pointRadius = dataset.pointRadius ? dataset.pointRadius : 3;
+						newDataset.pointHoverRadius = newDataset.pointRadius + 1;
+						newDataset.pointBackgroundColor = dataset.pointBackgroundColor ? dataset.pointBackgroundColor : 'transparent';
+
 						innerDatasets.push(newDataset);
 					}
 				}
