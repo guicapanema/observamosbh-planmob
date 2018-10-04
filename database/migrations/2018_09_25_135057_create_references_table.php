@@ -14,7 +14,8 @@ class CreateReferencesTable extends Migration
     public function up()
     {
         Schema::create('references', function (Blueprint $table) {
-            $table->increments('id');
+			$table->increments('id');
+            $table->integer('indicator_id');
 			$table->string('name', 512);
 			$table->string('alias');
 			$table->text('description')->nullable();

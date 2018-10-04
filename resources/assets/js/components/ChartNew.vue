@@ -4,7 +4,7 @@
 
 		extends: Line,
 
-		props: ['datasets_left', 'datasets_right', 'labels', 'display_legend'],
+		props: ['axis_left', 'axis_right', 'axis_bottom', 'datasets_left', 'datasets_right', 'labels', 'display_legend', 'tooltip'],
 
 		mounted () {
 			this.parseInputData();
@@ -14,10 +14,15 @@
 
 			parseInputData() {
 				let innerDatasets = [];
+				let xAxes = [];
 				let yAxes = [];
 
+				if (this.axis_bottom) {
+					xAxes.push(this.axis_bottom);
+				}
+
 				if (this.datasets_left && this.datasets_left.length) {
-					yAxes.push({
+					let default_left = {
 						id: 'axis-left',
 						type: 'linear',
 						unit: this.datasets_left[0].unit,
@@ -28,7 +33,9 @@
 							display: true,
 							labelString: this.datasets_left[0].unit
 						},
-					});
+					};
+
+					yAxes.push( {...default_left, ...this.axis_left} );
 
 					for (let dataset of this.datasets_left) {
 						let newDataset = {};
@@ -42,13 +49,14 @@
 						newDataset.pointRadius = dataset.pointRadius ? dataset.pointRadius : 3;
 						newDataset.pointHoverRadius = newDataset.pointRadius + 1;
 						newDataset.pointBackgroundColor = dataset.pointBackgroundColor ? dataset.pointBackgroundColor : 'transparent';
+						newDataset.is_target = dataset.is_target;
 
 						innerDatasets.push(newDataset);
 					}
 				}
 
 				if (this.datasets_right && this.datasets_right.length) {
-					yAxes.push({
+					let default_right = {
 						id: 'axis-right',
 						type: 'linear',
 						unit: this.datasets_right[0].unit,
@@ -63,7 +71,9 @@
 						gridLines: {
 							drawOnChartArea: false
 						}
-					});
+					};
+
+					yAxes.push( {...default_right, ...this.axis_right} );
 
 					for (let dataset of this.datasets_right) {
 						let newDataset = {};
@@ -87,6 +97,7 @@
 					maintainAspectRatio: false,
 					legend: {display: false},
 					scales: {
+						xAxes: xAxes,
 						yAxes: yAxes
 					},
 					legend: {
@@ -95,6 +106,13 @@
 						labels: {
 							boxWidth: 20,
 						},
+					},
+					tooltips: {
+						callbacks: {
+							title: (tooltips) => {
+								return innerDatasets[tooltips[0].datasetIndex].is_target ?  '' : tooltips[0].xLabel;
+							},
+						}
 					}
 				});
 			}

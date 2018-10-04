@@ -73,11 +73,12 @@
 					data.push(this.indicator.target_short);
 
 					let target_short_dataset = {
-						label: 'Meta de curto prazo',
+						label: 'Meta 2020',
 						data: data,
 						unit: this.indicator.unit,
 						pointBackgroundColor: 'hsl(0, 0%, 48%)',
 						pointRadius: 5,
+						is_target: true,
 					};
 
 					this.datasets.push(target_short_dataset);
@@ -87,11 +88,12 @@
 					data.push(this.indicator.target_medium);
 
 					let target_medium_dataset = {
-						label: 'Meta de médio prazo',
+						label: 'Meta 2025',
 						data: data,
 						unit: this.indicator.unit,
 						pointBackgroundColor: 'hsl(0, 0%, 71%)',
 						pointRadius: 7,
+						is_target: true,
 					};
 
 					this.datasets.push(target_medium_dataset);
@@ -101,11 +103,12 @@
 					data.push(this.indicator.target_long);
 
 					let target_long_dataset = {
-						label: 'Meta de longo prazo',
+						label: 'Meta 2030',
 						data: data,
 						unit: this.indicator.unit,
 						pointBackgroundColor: 'hsl(0, 0%, 86%)',
 						pointRadius: 9,
+						is_target: true,
 					};
 
 					this.datasets.push(target_long_dataset);

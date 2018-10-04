@@ -40,12 +40,15 @@
 							Anos
 						</h3>
 
-						<p class="control has-icons-left">
-							<input class="input is-small" type="text" placeholder="buscar" v-model="search.year">
-							<span class="icon is-small is-left">
-								<i class="fas fa-search" aria-hidden="true"></i>
-							</span>
-						</p>
+						<div>
+							<button class="button is-small is-light" @click="onSelectAllYears()">
+								Selecionar todos
+							</button>
+
+							<button class="button is-small is-light" @click="onSelectNoYears()">
+								Limpar seleção
+							</button>
+						</div>
 					</div>
 					<div class="body">
 						<div v-for="year of displayedYears" class="field is-size-7" >
@@ -67,27 +70,33 @@
 			<div class="column is-one-third">
 				<div class="box is-bordered-warning indicator-control is-paddingless">
 					<div class="header content is-marginless">
-						<b-dropdown class="right-column-switch">
-							<button class="button is-warning is-outlined has-text-weight-bold" slot="trigger">
-								<span v-if="right_view === 'indicator'">Indicadores</span>
-								<span v-else>Referências</span>
-								<b-icon icon="caret-down"></b-icon>
-							</button>
 
-							<b-dropdown-item
-								v-if="right_view === 'indicator'"
-								@click="right_view = 'reference'">
-								Referências
-							</b-dropdown-item>
-							<b-dropdown-item
-								v-else
+						<div class="reference-select has-text-centered">
+							<button :class="{
+									'button': true,
+									'is-small': true,
+									'is-warning': true,
+									'has-text-weight-bold': true,
+									'is-outlined': right_view !== 'indicator',
+								}"
 								@click="right_view = 'indicator'">
+
 								Indicadores
-							</b-dropdown-item>
-						</b-dropdown>
-						<!-- <h3 class="title has-text-warning">
-							Indicadores
-						</h3> -->
+
+							</button>
+							<button :class="{
+									'button': true,
+									'is-small': true,
+									'is-warning': true,
+									'has-text-weight-bold': true,
+									'is-outlined': right_view !== 'reference',
+								}"
+								@click="right_view = 'reference'">
+
+								Referências
+
+							</button>
+						</div>
 
 						<p class="control has-icons-left">
 							<input class="input is-small" type="text" placeholder="buscar" v-model="search.right_column">
@@ -118,7 +127,24 @@
 		<div class="columns is-centered">
 			<div class="column is-8">
 				<chart-new
-					:labels="getSelectedYears"
+					:labels="getSelectedYears.map(year => new Date(Number(year), 0, 1))"
+					:axis_left="{
+						gridLines: {
+							color: 'rgb(82, 161, 212)'
+						},
+					}"
+					:axis_right="{
+						gridLines: {
+							color: 'rgb(223, 174, 57)',
+							drawOnChartArea: getDatasetsLeft.length ? false : true,
+						},
+					}"
+					:axis_bottom="{
+						type: 'time',
+						time: {
+		                    unit: 'year'
+		                }
+					}"
 					:datasets_left="getDatasetsLeft"
 					:datasets_right="getDatasetsRight"
 					:display_legend="true">
@@ -150,11 +176,10 @@
 			return {
 				indicators: [],
 				references: [],
-				right_view: 'reference',
+				right_view: 'indicator',
 				search: {
 					left_column: '',
 					right_column: '',
-					year: '',
 				},
 				selected: {
 					left_column: [],
@@ -287,6 +312,7 @@
 					let matchUnit = true;
 					let hasData = option.data.length > 0;
 					let isSelected = this.right_view === 'indicator' ? this.selected.left_column.findIndex(indicator => option.id === indicator.id) >= 0 : false;
+					let referenceMatch = this.right_view === 'reference' ? this.selected.left_column.findIndex(indicator => option.indicator_id === indicator.id) >= 0 : true;
 
 					let objeto = JSON.stringify(option).toLowerCase();
 					let search = this.search.right_column.toLowerCase().trim();
@@ -299,7 +325,7 @@
 						matchUnit = option.unit === this.selected.right_column[0].unit;
 					}
 
-					return matchSearch && matchUnit && hasData && !isSelected;
+					return matchSearch && matchUnit && hasData && !isSelected && referenceMatch;
 
 				});
 			},
@@ -318,17 +344,7 @@
 				}
 
 				return this.years.filter((year) => {
-
-					let matchSearch = true;
-
-					let search = this.search.year.toLowerCase().trim();
-
-					if (String(year).indexOf(search) < 0) {
-						matchSearch = false;
-					}
-
-					return matchSearch && (start_year <= year) && (year <= end_year);
-
+					return (start_year <= year) && (year <= end_year);
 				});
 			},
 
@@ -362,6 +378,14 @@
 			{
 				let url = document.getElementById('line-chart').toDataURL();
 				document.getElementById('download-button').href = url;
+			},
+
+			onSelectAllYears() {
+				this.selected.years = _.clone(this.displayedYears);
+			},
+
+			onSelectNoYears() {
+				this.selected.years = [];
 			},
 
 			parseYears()
@@ -399,5 +423,9 @@
 	.right-column-switch {
 		margin-top: -0.50em;
 		margin-bottom: 0.50em;
+	}
+
+	.reference-select {
+		margin-bottom: 0.5rem;
 	}
 </style>
