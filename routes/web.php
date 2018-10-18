@@ -38,6 +38,10 @@ Route::get('/contato', function () {
 Route::post('/contato', 'ContactController@contact');
 Route::post('/participe', 'SubscriptionController@store');
 
+Route::post('/graficos', 'ChartController@store');
+
+Route::get('/graficos/{uuid}', 'ChartController@show');
+
 
 // API
 

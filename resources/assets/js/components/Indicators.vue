@@ -3,6 +3,7 @@
 		<div class="columns">
 
 			<div class="column is-one-third">
+				Selecione pelo menos um indicador.
 				<div class="box is-bordered-info indicator-control is-paddingless">
 					<div class="header content is-marginless">
 						<h3 class="title has-text-info">
@@ -34,6 +35,7 @@
 			</div>
 
 			<div class="column is-one-third">
+				Selecione os anos que deseja visualizar.
 				<div class="box is-bordered-danger indicator-control is-paddingless">
 					<div class="header content is-marginless">
 						<h3 class="title has-text-danger">
@@ -68,7 +70,15 @@
 			</div>
 
 			<div class="column is-one-third">
-				<div class="box is-bordered-warning indicator-control is-paddingless">
+				Selecione outros indicadores ou referências para comparar.
+				<div :class="{
+					'box': true,
+					'is-bordered-warning': right_view === 'indicator',
+					'is-bordered-info': right_view === 'reference',
+					'indicator-control': true,
+					'is-paddingless': true
+					}">
+
 					<div class="header content is-marginless">
 
 						<div class="reference-select has-text-centered">
@@ -87,7 +97,7 @@
 							<button :class="{
 									'button': true,
 									'is-small': true,
-									'is-warning': true,
+									'is-info': true,
 									'has-text-weight-bold': true,
 									'is-outlined': right_view !== 'reference',
 								}"
@@ -107,13 +117,25 @@
 					</div>
 					<div class="body">
 						<div v-for="option of displayedOptionsRight" class="field is-size-7" >
-							<b-checkbox type="is-warning"
+
+							<b-checkbox
+								v-if="right_view === 'indicator'"
+								type="is-warning"
 								v-model="selected.right_column"
 								:native-value="option">
 
 								{{ option.name }}
 
 							</b-checkbox>
+
+							<b-checkbox v-if="right_view === 'reference'" type="is-info"
+								v-model="selected.left_column"
+								:native-value="option">
+
+								{{ option.name }}
+
+							</b-checkbox>
+
 						</div>
 
 						<div v-if="displayedOptionsRight.length === 0" class="is-size-7 has-text-grey">
@@ -152,7 +174,7 @@
 			</div>
 		</div>
 
-		<div class="has-text-centered">
+		<div class="buttons">
 			<a
 				href=""
 				id="download-button"
@@ -164,6 +186,24 @@
 				<span>Baixar gráfico</span>
 
 			</a>
+
+			<a class="button is-info is-outlined" @click="onChartShare('twitter')">
+				<span class="icon">
+					<i class="fab fa-twitter"></i>
+				</span>
+			</a>
+
+			<a class="button is-info is-outlined" @click="onChartShare('facebook')">
+				<span class="icon">
+					<i class="fab fa-facebook"></i>
+				</span>
+			</a>
+
+			<a class="button is-info is-outlined" @click="onChartShare('link')">
+				<span class="icon">
+					<i class="fas fa-link"></i>
+				</span>
+			</a>
 		</div>
 
 	</div>
@@ -174,6 +214,7 @@
 
 		data() {
 			return {
+				colors_blue: ['#1D2951', '#1034A6', '#6593F5', '#57A0D3', '#95C8D8'],
 				indicators: [],
 				references: [],
 				right_view: 'indicator',
@@ -207,7 +248,7 @@
 						}
 					}
 
-					let color = 'rgba(82, 161, 212, ' + (1 - 0.3 * datasets.length) + ')';
+					let color = this.colors_blue[datasets.length];
 
 					let newDataset = {
 						label: indicator.name,
@@ -275,14 +316,18 @@
 
 			displayedOptionsLeft()
 			{
+				if (this.selected.left_column.length === 5) {
+					return;
+				}
+
 				return this.indicators.filter((indicator) => {
 
 					let matchSearch = true;
 					let matchUnit = true;
 					let hasData = indicator.data.length > 0;
-					let isSelected = this.selected.right_column.findIndex((option) => {
-						return (option.datable_type === 'App\\Indicator') && (indicator.id === option.id);
-					}) >= 0;
+					let isSelected = this.right_view === 'indicator' ? this.selected.right_column.findIndex((option) => {
+						return (indicator.id === option.id);
+					}) >= 0 : false;
 
 					let objeto = JSON.stringify(indicator).toLowerCase();
 					let search = this.search.left_column.toLowerCase().trim();
@@ -302,6 +347,10 @@
 
 			displayedOptionsRight()
 			{
+				if (this.selected.right_column.length === 5) {
+					return;
+				}
+
 				let options = null;
 				if (this.right_view === 'indicator') options = this.indicators;
 				else options = this.references;
@@ -380,6 +429,29 @@
 				document.getElementById('download-button').href = url;
 			},
 
+			onChartShare(network)
+			{
+				let url = document.getElementById('line-chart').toDataURL().replace(/^data:image\/(png|jpg);base64,/, '');
+
+				axios.post('/graficos', {chart: url})
+					.then(response => {
+						if (network === 'twitter') {
+							var text = 'Conheça, compreenda e avalie o Plano de Mobilidade Urbana de BH - ​#PlanMobBH! \n' + response.data;
+							var win = window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&via=nossabh', '_blank');
+							if(win !== null && typeof(win) !== 'undefined') {
+								event.preventDefault();
+								win.focus();
+							}
+						} else if (network === 'facebook') {
+							var win = window.open('https://www.facebook.com/dialog/share?app_id=390669861344505&display=popup&href=' + encodeURIComponent(response.data) + '&redirect_uri=' + encodeURIComponent(window.location.href), '_blank');
+							if (win !== null && typeof(win) !== 'undefined') {
+								event.preventDefault();
+								win.focus();
+							}
+						}
+					});
+			},
+
 			onSelectAllYears() {
 				this.selected.years = _.clone(this.displayedYears);
 			},
@@ -427,5 +499,9 @@
 
 	.reference-select {
 		margin-bottom: 0.5rem;
+	}
+
+	.buttons {
+		justify-content: center;
 	}
 </style>

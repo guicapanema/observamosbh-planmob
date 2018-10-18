@@ -325,3 +325,15 @@ img.ficha {
 		}
 	}
 }
+
+// Charts
+
+.section.chart {
+	& img {
+		max-width: 800px;
+	}
+
+	& .buttons {
+		justify-content: center;
+	}
+}

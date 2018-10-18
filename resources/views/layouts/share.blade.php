@@ -24,6 +24,20 @@
 	<meta property="og:url" content="https://www.mobilidadebh.org/">
 	<link rel="canonical" href="https://www.mobilidadebh.org/">
 
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@nossabh">
+	<meta name="twitter:title" content="A mobilidade urbana em Belo Horizonte">
+	<meta name="twitter:description" content="Up than 200 characters.">
+
+	@if ($uuid)
+		<meta name="og:image" content="{{ asset('storage/' . $uuid . '.png') }}">
+		<meta name="twitter:image" content="{{ asset('storage/' . $uuid . '.png') }}">
+		<meta name="twitter:domain" content="https://www.mobilidadebh.org/graficos/{{ $uuid }}">
+	@else
+		<meta name="twitter:domain" content="https://www.mobilidadebh.org">
+	@endif
+
+
 	<!-- Matomo -->
 	<script type="text/javascript">
 		var _paq = _paq || [];
@@ -48,16 +62,9 @@
 </head>
 <body>
 
-	<nav class="navbar is-fixed-top
-		{{ Request::is('/') ? "is-success" : "" }}
-		{{ Request::is('plano*') ? "is-light" : "" }}
-		{{ Request::is('indicadores*') ? "is-info" : "" }}
-		{{ Request::is('participe*') ? "is-danger" : "" }}
-		{{ Request::is('contato*') ? "is-warning" : "" }}">
+	<nav class="navbar is-fixed-top is-info">
 		<div class="navbar-brand">
-			<span class="navbar-item
-						{{ Request::is('/') || Request::is('participe*') || Request::is('contato*') ? "navbar-brand-primary" : "" }}
-						{{ Request::is('plano*') || Request::is('indicadores*') ? "navbar-brand-danger" : "" }}" href="/">
+			<span class="navbar-item navbar-brand-danger" href="/">
 				<strong>#</strong>OBSERVAMOS<strong>BH</strong>
 			</span>
 			<a class="navbar-item share-icon is-hidden-desktop" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça%2C compreenda e avalie o Plano de Mobilidade Urbana de BH - %E2%80%8B%23PlanMobBH!%20%0Ahttps%3A%2F%2Fmobilidadebh.org%2F%0AVia %40nossabh" target="_blank">
@@ -84,19 +91,19 @@
 
 		<div id="navMenu" class="navbar-menu">
 			<div class="navbar-start">
-				<a class="navbar-item {{ Request::is('/') ? "is-active" : "" }}" href="/">
+				<a class="navbar-item" href="/">
 					Início
 				</a>
-				<a class="navbar-item {{ Request::is('plano*') ? "is-active" : "" }}" href="/plano">
+				<a class="navbar-item" href="/plano">
 					O PlanMob
 				</a>
-				<a class="navbar-item {{ Request::is('indicadores*') ? "is-active" : "" }}" href="/indicadores">
+				<a class="navbar-item" href="/indicadores">
 					Indicadores
 				</a>
-				<a class="navbar-item {{ Request::is('participe*') ? "is-active" : "" }}" href="/participe">
+				<a class="navbar-item" href="/participe">
 					Participe
 				</a>
-				<a class="navbar-item {{ Request::is('contato*') ? "is-active" : "" }}" href="/contato">
+				<a class="navbar-item" href="/contato">
 					Contato
 				</a>
 			</div>
@@ -151,9 +158,6 @@
 		</div>
 	</footer>
 
-	<!-- Scripts -->
-	<script src="{{ asset('js/app.js') }}"></script>
-
 	@yield('scripts')
 
 	<script>
@@ -197,7 +201,7 @@
 			}
 		}).on('success', function(e) {
 			window.alert('Link copiado!');
-		});
+		});;
 
 		var shareTwitter = function(event) {
 			var text = 'Conheça, compreenda e avalie o Plano de Mobilidade Urbana de BH - ​#PlanMobBH! \n' + window.location.href + '\nVia @nossabh'

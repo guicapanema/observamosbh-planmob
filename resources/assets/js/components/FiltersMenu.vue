@@ -177,7 +177,7 @@
 					}
 				}
 
-				this.$router.push({ path: '/busca', query: {...this.$route.query, modal: queryModals} });
+				this.$router.push({ path: '/', query: {...this.$route.query, modal: queryModals} });
 
 			},
 
