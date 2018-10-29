@@ -3,7 +3,16 @@
 		<div class="columns">
 
 			<div class="column is-one-third">
-				Selecione pelo menos um indicador.
+
+				<div class="steps">
+					<div class="step-number">
+						1
+					</div>
+					<div class="description">
+						Selecione pelo menos um indicador.
+					</div>
+				</div>
+
 				<div class="box is-bordered-info indicator-control is-paddingless">
 					<div class="header content is-marginless">
 						<h3 class="title has-text-info">
@@ -35,7 +44,16 @@
 			</div>
 
 			<div class="column is-one-third">
-				Selecione os anos que deseja visualizar.
+
+				<div class="steps">
+					<div class="step-number">
+						2
+					</div>
+					<div class="description">
+						Selecione os anos que deseja visualizar.
+					</div>
+				</div>
+
 				<div class="box is-bordered-danger indicator-control is-paddingless">
 					<div class="header content is-marginless">
 						<h3 class="title has-text-danger">
@@ -70,7 +88,16 @@
 			</div>
 
 			<div class="column is-one-third">
-				Selecione outros indicadores ou referências para comparar.
+
+				<div class="steps">
+					<div class="step-number">
+						3
+					</div>
+					<div class="description">
+						Selecione outros indicadores ou referências para comparar.
+					</div>
+				</div>
+
 				<div :class="{
 					'box': true,
 					'is-bordered-warning': right_view === 'indicator',
@@ -199,11 +226,30 @@
 				</span>
 			</a>
 
-			<a class="button is-info is-outlined" @click="onChartShare('link')">
+			<a class="button is-info is-outlined" @click="onChartShare('link')" slot="trigger">
 				<span class="icon">
 					<i class="fas fa-link"></i>
 				</span>
 			</a>
+
+		</div>
+
+		<div v-if="share_url.length">
+			<b-field position="is-centered">
+				<b-input v-model="share_url" type="text" icon="link" size="is-small" id="share-url">
+				</b-input>
+				<p class="control">
+					<b-tooltip label="Copiar link"
+						type="is-light"
+						position="is-right">
+						<button class="button is-info is-small" @click="onLinkCopy()">
+							<span class="icon">
+								<i class="fas fa-copy"></i>
+							</span>
+						</button>
+					</b-tooltip>
+				</p>
+			</b-field>
 		</div>
 
 	</div>
@@ -218,6 +264,7 @@
 				indicators: [],
 				references: [],
 				right_view: 'indicator',
+				share_url: '',
 				search: {
 					left_column: '',
 					right_column: '',
@@ -325,9 +372,9 @@
 					let matchSearch = true;
 					let matchUnit = true;
 					let hasData = indicator.data.length > 0;
-					let isSelected = this.right_view === 'indicator' ? this.selected.right_column.findIndex((option) => {
-						return (indicator.id === option.id);
-					}) >= 0 : false;
+					let isSelected = this.selected.right_column.findIndex((option) => {
+						return (indicator.alias === option.alias);
+					}) >= 0;
 
 					let objeto = JSON.stringify(indicator).toLowerCase();
 					let search = this.search.left_column.toLowerCase().trim();
@@ -370,7 +417,7 @@
 						matchSearch = false;
 					}
 
-					if (this.selected.right_column.length) {
+					if (this.selected.right_column.length && this.right_view === 'indicator') {
 						matchUnit = option.unit === this.selected.right_column[0].unit;
 					}
 
@@ -448,8 +495,23 @@
 								event.preventDefault();
 								win.focus();
 							}
+						} else if (network === 'link') {
+							this.share_url = response.data;
+							setTimeout(() => {
+								document.getElementById("share-url").select();
+							}, 100);
 						}
 					});
+			},
+
+			onLinkCopy() {
+				this.$copyText(this.share_url).then(function (e) {
+					alert('Link copiado!')
+					console.log(e)
+				}, function (e) {
+					alert('Erro ao copiar link.')
+					console.log(e)
+				});
 			},
 
 			onSelectAllYears() {

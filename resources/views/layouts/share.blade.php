@@ -26,8 +26,8 @@
 
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@nossabh">
-	<meta name="twitter:title" content="A mobilidade urbana em Belo Horizonte">
-	<meta name="twitter:description" content="Up than 200 characters.">
+	<meta name="twitter:title" content="PlanMob BH">
+	<meta name="twitter:description" content="Indicadores da mobilidade urbana em Belo Horizonte.">
 
 	@if ($uuid)
 		<meta name="og:image" content="{{ asset('storage/' . $uuid . '.png') }}">

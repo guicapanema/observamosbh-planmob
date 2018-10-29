@@ -9,16 +9,18 @@
 require('./bootstrap');
 require('./removeAccents');
 window.$ = require("jquery");
-window.ImageMap = require('image-map/image-map.js');
+window.ImageMap = require('image-map/dist/image-map.js');
 window.ClipboardJS = require('clipboard/dist/clipboard.js');
 window.tippy = require('tippy.js');
 
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router';
+import VueClipboard from 'vue-clipboard2';
 import Buefy from 'buefy';
 
 Vue.use(VueRouter);
+Vue.use(VueClipboard);
 Vue.use(Buefy, {
 	defaultIconPack: 'fa'
 });
