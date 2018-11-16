@@ -1,6 +1,6 @@
 <template>
 	<section class="section">
-		<planmob-columns v-if="!listView"
+		<planmob-columns v-if="view !== 'list'"
 			:actions="actions"
 			:axes="axes"
 			:filters="filters"
@@ -10,7 +10,7 @@
 			@search="onChangeView('list')">
 		</planmob-columns>
 
-		<planmob-list v-if="listView"
+		<planmob-list v-if="view === 'list'"
 			:actions="actions"
 			:axes="axes"
 			:filters="filters"
@@ -34,7 +34,6 @@
 				axes: [],
 				filters: {},
 				indicators: [],
-				listView: false,
 				loading: false,
 				programs: [],
 				view: ''

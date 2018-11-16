@@ -62,10 +62,6 @@ const routes = [
 					component: planmob
 					}
 				]
-			},
-			{
-				path: 'indicador/:indicador',
-				component: planmob,
 			}
 		]
   	}

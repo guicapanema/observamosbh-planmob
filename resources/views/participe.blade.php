@@ -45,7 +45,7 @@
 			<div class="columns is-centered content">
 				<div class="column is-10 notification is-white has-padding-200">
 					<h1 class="has-text-centered">Baixe as fichas-resumo</h1>
-					<p>Para contribuir com a discussão sobre cidades, mobilidade urbana, mudanças climáticas e participação social, o Nossa BH produziu três fichas-resumo:</p>
+					<p>Para contribuir com a discussão sobre cidades, mobilidade urbana, mudanças climáticas e participação social, o Nossa BH produziu quatro fichas-resumo:</p>
 					<div class="columns is-mobile">
 						<div class="column has-text-centered">
 							<a href="http://nossabh.org.br/ficha-1/"><img class="ficha" src="/img/ficha1.png"></img></a>

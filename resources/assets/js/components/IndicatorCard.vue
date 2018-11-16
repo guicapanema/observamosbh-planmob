@@ -30,8 +30,33 @@
 						Longo prazo: {{indicator.target_long}} {{ indicator.unit }}
 					</div>
 				</div>
+
+				<div class="buttons">
+
+					<b-tooltip label="Ver fórmula" position="is-top" type="is-light">
+						<a class="button is-small is-light" @click="is_formula_modal_open = true">
+							<span class="icon is-small">
+								<i class="fas fa-square-root-alt"></i>
+							</span>
+						</a>
+					</b-tooltip>
+
+					
+
+				</div>
 			</div>
 		<!-- </b-tooltip> -->
+
+		<b-modal :active.sync="is_formula_modal_open" :width="640" scroll="keep">
+			<div class="box content" style="width: auto">
+				<p class="has-text-weight-bold">
+					{{ indicator.name }}
+				</p>
+				<p>
+					{{ indicator.formula }}
+				</p>
+            </div>
+        </b-modal>
 	</div>
 </template>
 
@@ -42,6 +67,8 @@
 		data() {
 			return {
 				datasets: [],
+				is_formula_modal_open: false,
+				max_points: 5,
 				years: [],
 			};
 		},
@@ -59,9 +86,13 @@
 		{
 			parseData()
 			{
+				let data = this.indicator.data.map(data => data.value);
+
+				console.debug(data.length - this.max_points);
+
 				let dataset = {
 					label: this.indicator.name,
-					data: this.indicator.data.map(data => data.value),
+					data: data.slice(-this.max_points),
 					color: 'rgb(82, 161, 212)',
 					unit: this.indicator.unit,
 				};
@@ -124,6 +155,7 @@
 						this.years.push(year);
 					}
 				}
+				this.years = this.years.slice(-this.max_points);
 			},
 		}
 	}
@@ -133,6 +165,15 @@
 
 	.indicator-chart {
 		height: 150px;
+		margin-bottom: 0.5rem;
+	}
+
+	.modal-card-foot {
+		justify-content: right;
+	}
+
+	.buttons .button {
+		margin-right: 0.5rem;
 	}
 
 </style>
