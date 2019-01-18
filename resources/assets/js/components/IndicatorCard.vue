@@ -41,7 +41,13 @@
 						</a>
 					</b-tooltip>
 
-					
+					<b-tooltip label="Baixar série histórica" position="is-top" type="is-light">
+						<a class="button is-small is-light" :href="'/indicadores/' + indicator.id + '/download'">
+							<span class="icon is-small">
+								<i class="fas fa-download"></i>
+							</span>
+						</a>
+					</b-tooltip>
 
 				</div>
 			</div>

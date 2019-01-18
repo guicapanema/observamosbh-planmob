@@ -42,6 +42,7 @@ Route::post('/graficos', 'ChartController@store');
 
 Route::get('/graficos/{uuid}', 'ChartController@show');
 
+Route::get('/indicadores/{indicator}/download', 'IndicatorController@export');
 
 // API
 
