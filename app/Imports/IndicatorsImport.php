@@ -9,6 +9,7 @@ use App\Indicator;
 use App\Reference;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -108,6 +109,31 @@ class IndicatorsImport implements WithHeadingRow, ToCollection
 					'date' => Carbon::create($date, 1, 1),
 					'value' => $value,
 				]);
+			}
+		}
+
+		if(!is_null($row['mobilidados'])) {
+			$mobilidados = DB::table('mobilidados')->where('name', 'LIKE', '%' . $row['mobilidados'] . '%')->get();
+
+			foreach ($mobilidados as $mobilidado) {
+				$reference = Reference::create([
+					'indicator_id' => $indicator->id,
+					'name' => $mobilidado->name,
+					'alias' => $mobilidado->alias,
+					'description' => $mobilidado->description,
+					'unit' => $mobilidado->unit,
+				]);
+
+				$data = DB::table('mobilidados_data')->where('mobilidados_id', $mobilidado->id)->get();
+
+				foreach ($data as $datapoint) {
+					Data::create([
+						'datable_id' => $reference->id,
+						'datable_type' => 'App\\Reference',
+						'date' => $datapoint->date,
+						'value' => $datapoint->value,
+					]);
+				}
 			}
 		}
 	}
