@@ -17,7 +17,7 @@ class CreateDataTable extends Migration
             $table->increments('id');
 			$table->morphs('datable');
 			$table->date('date');
-			$table->integer('value');
+			$table->decimal('value', 15, 4);
             $table->timestamps();
         });
     }

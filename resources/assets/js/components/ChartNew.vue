@@ -45,6 +45,7 @@
 						newDataset.backgroundColor = 'transparent';
 						newDataset.data = dataset.data;
 						newDataset.yAxisID = 'axis-left';
+						newDataset.spanGaps = true;
 
 						newDataset.pointRadius = dataset.pointRadius ? dataset.pointRadius : 3;
 						newDataset.pointHoverRadius = newDataset.pointRadius + 1;
@@ -70,7 +71,7 @@
 						},
 						gridLines: {
 							drawOnChartArea: false
-						}
+						},
 					};
 
 					yAxes.push( {...default_right, ...this.axis_right} );
@@ -83,6 +84,7 @@
 						newDataset.backgroundColor = 'transparent';
 						newDataset.data = dataset.data;
 						newDataset.yAxisID = 'axis-right';
+						newDataset.spanGaps = true;
 
 						innerDatasets.push(newDataset);
 					}

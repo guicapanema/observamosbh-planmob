@@ -404,11 +404,11 @@
 
 				return options.filter((option) => {
 
-					let matchSearch = true;
 					let matchUnit = true;
+					let matchSearch = true;
 					let hasData = option.data.length > 0;
 					let isSelected = this.right_view === 'indicator' ? this.selected.left_column.findIndex(indicator => option.id === indicator.id) >= 0 : false;
-					let referenceMatch = this.right_view === 'reference' ? this.selected.left_column.findIndex(indicator => option.indicator_id === indicator.id) >= 0 : true;
+					let matchReference = this.right_view === 'reference' ? (option.indicator_id === null) || (this.selected.left_column.findIndex(indicator => option.indicator_id === indicator.id) >= 0) : true;
 
 					let objeto = JSON.stringify(option).toLowerCase();
 					let search = this.search.right_column.toLowerCase().trim();
@@ -419,9 +419,11 @@
 
 					if (this.selected.right_column.length && this.right_view === 'indicator') {
 						matchUnit = option.unit === this.selected.right_column[0].unit;
+					} else if (this.selected.left_column.length && this.right_view === 'reference') {
+						matchUnit = option.unit === this.selected.left_column[0].unit;
 					}
 
-					return matchSearch && matchUnit && hasData && !isSelected && referenceMatch;
+					return matchSearch && matchUnit && hasData && !isSelected && matchReference;
 
 				});
 			},
