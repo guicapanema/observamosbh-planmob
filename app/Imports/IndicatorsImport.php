@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Axis;
 use App\Data;
-use App\Program;
 use App\Indicator;
+use App\Metric;
+use App\Program;
 use App\Reference;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -34,9 +35,9 @@ class IndicatorsImport implements WithHeadingRow, ToCollection
 			}
 
 			if (substr($row['numeracao'], 1, 8) === 'métrica') {
-				$this->importReference($row);
+				$this->importMetric($row);
 			} else if (substr($row['numeracao'], 1, 5) === 'apoio') {
-				$this->importReference($row);
+				$this->importMetric($row);
 			} else {
 				$this->importIndicator($row);
 			}
@@ -158,6 +159,32 @@ class IndicatorsImport implements WithHeadingRow, ToCollection
 				Data::create([
 					'datable_id' => $reference->id,
 					'datable_type' => 'App\\Reference',
+					'date' => Carbon::create($date, 1, 1),
+					'value' => $value,
+				]);
+			}
+		}
+	}
+
+	private function importMetric($row)
+	{
+		$name = $row['indicador_ou_metrica'];
+		$unit = $row['unidade'];
+
+		$reference = Metric::create([
+			'name' => $name,
+			'alias' => str_slug($name),
+			'description' => '',
+			'unit' => $unit,
+		]);
+
+		$data = $row->slice(15);
+
+		foreach ($data as $date => $value) {
+			if ( is_numeric($value) ) {
+				Data::create([
+					'datable_id' => $reference->id,
+					'datable_type' => 'App\\Metric',
 					'date' => Carbon::create($date, 1, 1),
 					'value' => $value,
 				]);
