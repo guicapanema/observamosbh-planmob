@@ -17,7 +17,7 @@ class IndicatorController extends Controller
 
 	public function list()
 	{
-		$indicators = Indicator::with('data')->get();
+		$indicators = Indicator::with('data')->whereHas('data')->orderBy('name')->get();
 		return $indicators;
 	}
 }

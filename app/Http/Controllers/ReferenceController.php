@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ReferenceController extends Controller
 {
 	public function list() {
-		$references = Reference::with('data')->get();
+		$references = Reference::with('data')->whereHas('data')->orderBy('name')->get();
 		return $references;
 	}
 }
