@@ -30,7 +30,8 @@
 						<div v-for="option of displayedOptionsLeft" class="field is-size-7" >
 							<b-checkbox type="is-info"
 								v-model="selected.left_column"
-								:native-value="option">
+								:native-value="option"
+								:disabled="(selected.left_column.length >= 4) && !isSelected(option, 'left')">
 
 								{{ option.name }}
 
@@ -100,8 +101,7 @@
 
 				<div :class="{
 					'box': true,
-					'is-bordered-warning': right_view === 'indicator',
-					'is-bordered-info': right_view === 'reference',
+					'is-bordered-warning': true,
 					'indicator-control': true,
 					'is-paddingless': true
 					}">
@@ -116,7 +116,8 @@
 									'has-text-weight-bold': true,
 									'is-outlined': right_view !== 'indicator',
 								}"
-								@click="right_view = 'indicator'">
+								@click="right_view = 'indicator'"
+								:disabled="right_view !== 'indicator' && selected.right_column.length > 0">
 
 								Indicadores
 
@@ -124,13 +125,28 @@
 							<button :class="{
 									'button': true,
 									'is-small': true,
-									'is-info': true,
+									'is-warning': true,
 									'has-text-weight-bold': true,
 									'is-outlined': right_view !== 'reference',
 								}"
-								@click="right_view = 'reference'">
+								@click="right_view = 'reference'"
+								:disabled="right_view !== 'reference' && selected.right_column.length > 0">
 
 								Referências
+
+							</button>
+
+							<button :class="{
+									'button': true,
+									'is-small': true,
+									'is-warning': true,
+									'has-text-weight-bold': true,
+									'is-outlined': right_view !== 'metric',
+								}"
+								@click="right_view = 'metric'"
+								:disabled="right_view !== 'metric' && selected.right_column.length > 0">
+
+								Métricas
 
 							</button>
 						</div>
@@ -146,18 +162,10 @@
 						<div v-for="option of displayedOptionsRight" class="field is-size-7" >
 
 							<b-checkbox
-								v-if="right_view === 'indicator'"
 								type="is-warning"
 								v-model="selected.right_column"
-								:native-value="option">
-
-								{{ option.name }}
-
-							</b-checkbox>
-
-							<b-checkbox v-if="right_view === 'reference'" type="is-info"
-								v-model="selected.left_column"
-								:native-value="option">
+								:native-value="option"
+								:disabled="(selected.right_column.length >= 4) && !isSelected(option, 'right')">
 
 								{{ option.name }}
 
@@ -262,6 +270,7 @@
 			return {
 				colors_blue: ['#1D2951', '#1034A6', '#6593F5', '#57A0D3', '#95C8D8'],
 				indicators: [],
+				metrics: [],
 				references: [],
 				right_view: 'indicator',
 				share_url: '',
@@ -400,7 +409,8 @@
 
 				let options = null;
 				if (this.right_view === 'indicator') options = this.indicators;
-				else options = this.references;
+				else if (this.right_view === 'reference') options = this.references;
+				else if (this.right_view === 'metric') options = this.metrics;
 
 				return options.filter((option) => {
 
@@ -450,6 +460,7 @@
 
 		mounted () {
 			this.fetchIndicators();
+			this.fetchMetrics();
 			this.fetchReferences();
 		},
 
@@ -463,6 +474,15 @@
 					});
 			},
 
+			fetchMetrics()
+			{
+				axios.get('/api/metricas')
+					.then(response => {
+						this.metrics = response.data;
+						this.parseYears();
+					});
+			},
+
 			fetchReferences()
 			{
 				axios.get('/api/referencias')
@@ -470,6 +490,18 @@
 						this.references = response.data;
 						this.parseYears();
 					});
+			},
+
+			isSelected(option, column) {
+				if (column === 'left') {
+					return this.selected.left_column.findIndex(selected => {
+						return selected.id === option.id;
+					}) >= 0;
+				} else {
+					return this.selected.right_column.findIndex(selected => {
+						return selected.id === option.id;
+					}) >= 0;
+				}
 			},
 
 			onChartDownload()
@@ -528,6 +560,17 @@
 			{
 				for (let indicator of this.indicators) {
 					for (let data of indicator.data) {
+						let year = Number(data.date.split('-')[0]);
+
+						if (this.years.indexOf(year) < 0) {
+							this.years.push(year);
+							this.selected.years.push(year);
+						}
+					}
+				}
+
+				for (let metric of this.metrics) {
+					for (let data of metric.data) {
 						let year = Number(data.date.split('-')[0]);
 
 						if (this.years.indexOf(year) < 0) {

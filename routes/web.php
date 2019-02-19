@@ -51,3 +51,4 @@ Route::get('/api/eixos', 'AxisController@list');
 Route::get('/api/indicadores', 'IndicatorController@list');
 Route::get('/api/programas', 'ProgramController@list');
 Route::get('/api/referencias', 'ReferenceController@list');
+Route::get('/api/metricas', 'MetricController@list');
