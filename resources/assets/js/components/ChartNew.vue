@@ -4,7 +4,7 @@
 
 		extends: Line,
 
-		props: ['axis_left', 'axis_right', 'axis_bottom', 'datasets_left', 'datasets_right', 'labels', 'display_legend', 'tooltip'],
+		props: ['axis_left', 'axis_right', 'axis_bottom', 'big_font', 'datasets_left', 'datasets_right', 'labels', 'display_legend', 'tooltip'],
 
 		mounted () {
 			this.parseInputData();
@@ -27,10 +27,12 @@
 						type: 'linear',
 						unit: this.datasets_left[0].unit,
 						ticks: {
-							beginAtZero: true
+							fontSize: this.big_font == true ? 14 : 12,
+							beginAtZero: true,
 						},
 						scaleLabel: {
 							display: true,
+							fontSize: this.big_font == true ? 14 : 12,
 							labelString: this.datasets_left[0].unit
 						},
 					};
@@ -63,11 +65,13 @@
 						unit: this.datasets_right[0].unit,
 						position: 'right',
 						ticks: {
-							beginAtZero: true
+							fontSize: this.big_font == true ? 14 : 12,
+							beginAtZero: true,
 						},
 						scaleLabel: {
 							display: true,
-							labelString: this.datasets_right[0].unit
+							fontSize: this.big_font == true ? 14 : 12,
+							labelString: this.datasets_right[0].unit,
 						},
 						gridLines: {
 							drawOnChartArea: false

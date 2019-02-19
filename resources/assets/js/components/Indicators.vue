@@ -189,6 +189,9 @@
 						gridLines: {
 							color: 'rgb(82, 161, 212)'
 						},
+						ticks: {
+							fontSize: 14,
+						},
 					}"
 					:axis_right="{
 						gridLines: {
@@ -200,11 +203,15 @@
 						type: 'time',
 						time: {
 		                    unit: 'year'
-		                }
+		                },
+						ticks: {
+							fontSize: 14,
+						}
 					}"
 					:datasets_left="getDatasetsLeft"
 					:datasets_right="getDatasetsRight"
-					:display_legend="true">
+					:display_legend="true"
+					:big_font="true">
 				</chart-new>
 			</div>
 		</div>
