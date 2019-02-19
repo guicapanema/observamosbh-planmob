@@ -33,7 +33,7 @@ class MobilidadosImport implements ToCollection
 			DB::table('mobilidados_data')->insert([
 				'mobilidados_id' => $mobilidados->id,
 				'date' => Carbon::create($row[6], 1, 1),
-				'value' => $row[7],
+				'value' => (strpos($row[5], '%') !== false) ? ($row[7] / 100) : $row[7],
 			]);
         }
     }
