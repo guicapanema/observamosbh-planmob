@@ -28,6 +28,8 @@ class MobilidadosImport implements ToCollection
 				dd($row);
 			}
 
+			if(is_null($row[7])) continue;
+
 			DB::table('mobilidados_data')->insert([
 				'mobilidados_id' => $mobilidados->id,
 				'date' => Carbon::create($row[6], 1, 1),
