@@ -27,15 +27,22 @@
 						</p>
 					</div>
 					<div class="body">
-						<div v-for="option of displayedOptionsLeft" class="field is-size-7" >
+						<div v-for="option of displayedOptionsLeft" class="option field is-size-7" >
 							<b-checkbox type="is-info"
 								v-model="selected.left_column"
 								:native-value="option"
 								:disabled="(selected.left_column.length >= 4) && !isSelected(option, 'left')">
 
+							</b-checkbox>
+							<div>
 								{{ option.name }}
 
-							</b-checkbox>
+								<div v-on:click.stop="onFormulaModalOpen(option)"
+									class="icon is-small has-text-grey-lighter">
+									<i class="fas fa-question-circle" ></i>
+								</div>
+							</div>
+
 						</div>
 						<div v-if="displayedOptionsLeft.length === 0" class="is-size-7 has-text-grey">
 							Nenhum resultado corresponde aos Filtros
@@ -159,17 +166,21 @@
 						</p>
 					</div>
 					<div class="body">
-						<div v-for="option of displayedOptionsRight" class="field is-size-7" >
-
-							<b-checkbox
-								type="is-warning"
+						<div v-for="option of displayedOptionsRight" class="option field is-size-7" >
+							<b-checkbox type="is-warning"
 								v-model="selected.right_column"
 								:native-value="option"
 								:disabled="(selected.right_column.length >= 4) && !isSelected(option, 'right')">
 
+							</b-checkbox>
+							<div>
 								{{ option.name }}
 
-							</b-checkbox>
+								<div v-on:click.stop="onFormulaModalOpen(option)"
+									class="icon is-small has-text-grey-lighter">
+									<i class="fas fa-question-circle" ></i>
+								</div>
+							</div>
 
 						</div>
 
@@ -267,6 +278,17 @@
 			</b-field>
 		</div>
 
+		<b-modal :active.sync="is_formula_modal_open" :width="640" scroll="keep">
+			<div class="box content" style="width: auto">
+				<p class="has-text-weight-bold">
+					{{ formula_option.name }}
+				</p>
+				<p>
+					{{ formula_option.formula }}
+				</p>
+            </div>
+        </b-modal>
+
 	</div>
 </template>
 
@@ -291,6 +313,8 @@
 					years: [],
 				},
 				years: [],
+				formula_option: {},
+				is_formula_modal_open: false,
 			}
 		},
 
@@ -379,10 +403,6 @@
 
 			displayedOptionsLeft()
 			{
-				if (this.selected.left_column.length === 5) {
-					return;
-				}
-
 				return this.indicators.filter((indicator) => {
 
 					let matchSearch = true;
@@ -410,10 +430,6 @@
 
 			displayedOptionsRight()
 			{
-				if (this.selected.right_column.length === 5) {
-					return;
-				}
-
 				let options = null;
 				if (this.right_view === 'indicator') options = this.indicators;
 				else if (this.right_view === 'reference') options = this.references;
@@ -545,6 +561,11 @@
 					});
 			},
 
+			onFormulaModalOpen(option) {
+				this.is_formula_modal_open = true;
+				this.formula_option = option;
+			},
+
 			onLinkCopy() {
 				this.$copyText(this.share_url).then(function (e) {
 					alert('Link copiado!')
@@ -617,5 +638,15 @@
 
 	.buttons {
 		justify-content: center;
+	}
+
+	.option.field {
+		display: flex;
+		align-items: center;
+	}
+
+	.option.field .icon:hover {
+		cursor: pointer;
+		color: black !important;
 	}
 </style>
