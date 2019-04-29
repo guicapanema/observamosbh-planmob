@@ -33,13 +33,13 @@
 
 				<div class="buttons">
 
-					<b-tooltip label="Ver fórmula" position="is-top" type="is-light">
+					<!-- <b-tooltip label="Ver fórmula" position="is-top" type="is-light">
 						<a class="button is-small is-light" @click="is_formula_modal_open = true">
 							<span class="icon is-small">
 								<i class="fas fa-square-root-alt"></i>
 							</span>
 						</a>
-					</b-tooltip>
+					</b-tooltip> -->
 
 					<b-tooltip label="Baixar série histórica" position="is-top" type="is-light">
 						<a class="button is-small is-light" :href="'/indicadores/' + indicator.id + '/download'">
