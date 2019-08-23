@@ -80,6 +80,12 @@
 	border-bottom: 2px $info dashed;
 }
 
+.has-underline-dashed-primary {
+	padding: 0.5rem;
+	line-height: 3rem;
+	border-bottom: 2px $primary dashed;
+}
+
 .has-padding-top-200 {
 	padding-top: 2rem;
 }
@@ -359,5 +365,58 @@ img.ficha {
 
 	& .buttons {
 		justify-content: center;
+	}
+}
+
+// Notícias
+
+.post {
+	padding: 3rem 0;
+
+	&:first-of-type {
+		padding-top: 0;
+	}
+
+	&:not(:last-of-type) {
+		border-bottom: 1px solid $grey-lighter;
+	}
+
+	& .category {
+		@extend .is-size-7;
+
+		text-align: center;
+	}
+
+	& h2.title {
+		margin: 0.5rem 0 1rem;
+	}
+
+	& .date {
+		@extend .is-size-7;
+
+		text-align: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.post-image {
+		margin-bottom: 2rem;
+	}
+
+	& figure {
+		margin: 0;
+	}
+
+	& .read-more {
+		margin-top: 2rem;
+	}
+}
+
+ul.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	& li {
+		margin: 0 0.5rem;
 	}
 }

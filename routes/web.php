@@ -44,6 +44,11 @@ Route::get('/graficos/{uuid}', 'ChartController@show');
 
 Route::get('/indicadores/{indicator}/download', 'IndicatorController@export');
 
+Route::get('/como-anda', 'PostController@index');
+
+Route::get('/como-anda/{post_name}', 'PostController@show');
+
+
 // API
 
 Route::get('/api/acoes', 'ActionController@list');

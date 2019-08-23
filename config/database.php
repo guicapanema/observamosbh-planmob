@@ -78,6 +78,21 @@ return [
             'prefix' => '',
         ],
 
+        'wordpress' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('WORDPRESS_DATABASE', 'forge'),
+            'username' => env('WORDPRESS_USERNAME', 'forge'),
+            'password' => env('WORDPRESS_PASSWORD', ''),
+            'unix_socket' => env('WORDPRESS_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => 'wp_',
+            'strict' => true,
+            'engine' => null,
+        ],
+
     ],
 
     /*

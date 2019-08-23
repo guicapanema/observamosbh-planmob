@@ -51,13 +51,14 @@
 	<nav class="navbar is-fixed-top
 		{{ Request::is('/') ? "is-success" : "" }}
 		{{ Request::is('plano*') ? "is-light" : "" }}
+		{{ Request::is('como-anda*') ? "is-primary" : "" }}
 		{{ Request::is('indicadores*') ? "is-info" : "" }}
 		{{ Request::is('participe*') ? "is-danger" : "" }}
 		{{ Request::is('contato*') ? "is-warning" : "" }}">
 		<div class="navbar-brand">
 			<span class="navbar-item
 						{{ Request::is('/') || Request::is('participe*') || Request::is('contato*') ? "navbar-brand-primary" : "" }}
-						{{ Request::is('plano*') || Request::is('indicadores*') ? "navbar-brand-danger" : "" }}" href="/">
+						{{ Request::is('plano*') || Request::is('indicadores*') || Request::is('como-anda*') ? "navbar-brand-danger" : "" }}" href="/">
 				<strong>#</strong>OBSERVAMOS<strong>BH</strong>
 			</span>
 			<a class="navbar-item share-icon is-hidden-desktop" onclick="shareTwitter(event)" href="https://twitter.com/intent/tweet?text=Conheça%2C compreenda e avalie o Plano de Mobilidade Urbana de BH - %E2%80%8B%23PlanMobBH!%20%0Ahttps%3A%2F%2Fmobilidadebh.org%2F%0AVia %40nossabh" target="_blank">
@@ -92,6 +93,9 @@
 				</a>
 				<a class="navbar-item {{ Request::is('indicadores*') ? "is-active" : "" }}" href="/indicadores">
 					Indicadores
+				</a>
+				<a class="navbar-item {{ Request::is('como-anda*') ? "is-active" : "" }}" href="/como-anda">
+					Como anda
 				</a>
 				<a class="navbar-item {{ Request::is('participe*') ? "is-active" : "" }}" href="/participe">
 					Participe
