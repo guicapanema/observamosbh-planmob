@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Honeypot;
 use Illuminate\Http\Request;
 use Mail;
 
@@ -14,6 +15,7 @@ class ContactController extends Controller
 			'nome' => 'required|string|max:255',
 			'email' => 'required|string|email|max:255',
 			'mensagem' => 'required|string'
+			'message' => new Honeypot,
 		]);
 
 		$messageBody = "Mensagem de: " . request('nome') . " (" . request('email') . ")\r\n\r\n" . request('mensagem');
