@@ -14,9 +14,9 @@
 							</div>
 
 							<h2 class="title has-text-centered">
-								<span class="has-underline-dashed-primary">
+								<a href="/como-anda/{{ $post->post_name }}" class="has-underline-dashed-primary has-text-dark">
 									{!! $post->title !!}
-								</span>
+								</a>
 							</h2>
 
 							<div class="date">
@@ -27,7 +27,9 @@
 								<div class="columns is-centered post-image">
 									<div class="column is-8">
 										<figure class="image is-16by9">
-											<img src="{{ $post->thumbnail->size('planmob-thumbnail')['url'] }}">
+											<a href="/como-anda/{{ $post->post_name }}">
+												<img src="{{ $post->thumbnail->size('planmob-thumbnail')['url'] }}">
+											</a>
 										</figure>
 									</div>
 								</div>
